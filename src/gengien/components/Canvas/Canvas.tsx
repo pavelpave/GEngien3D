@@ -1,6 +1,7 @@
 import React, { createRef } from "react";
 import { ICanvasProps } from "../Interfaces";
 import * as type from "./Types";
+import AbstractCanvas from "./AbstractCanvas";
 
 interface IMyState {
   ready: boolean;
@@ -64,12 +65,71 @@ class Canvas extends React.Component<ICanvasProps, IMyState> {
    * @member { any | HTMLElement }
    */
   protected canvasDomElement: any | HTMLElement;
-  
+  /**
+   * инициализирует компоненты
+   * @member { function }
+   */
+  protected onComponentInit: any;
+  /**
+   * Когда какой-то компонент загружен, то вызывается это событие
+   * @member { function }
+   */
+  protected onComponentReady: any;
+  /**
+   * поиск по объекту components
+   * todo:переписать на более быстрый метод
+   * @member { function }
+   */
+  protected getComponentByName: any;
+  /**
+   * поиск по объекту components
+   * todo:переписать на более быстрый метод
+   * @member { function }
+   */
+  protected getComponentByUuid: any;
+  /**
+   * включение или выключение теней
+   * @member { boolean }
+   */
+  protected enableShadows?: boolean;
+  /**
+   * включает дебаг режим (отображает камеру и помогает дебаг моду)
+   *  @member { boolean }
+   */
+  protected debug?: boolean;
+
   constructor(props: ICanvasProps) {
     super(props);
     this.state = {
       ready: false,
     };
+  }
+
+  componentDidMount() {
+    const {
+      fullscreen = false,
+      enableShadows = false,
+      enableVR = false,
+      enableQuadCamera = false,
+      quadData = null,
+      debug = false,
+      gammaFactor = 1,
+    } = this.props;
+    this.debug = debug;
+    this.canvasDomElement = this.refCanvas.current;
+    this.canvasHeight = this.canvasDomElement.parentElement.clientHeight;
+    this.canvasWidth = this.canvasDomElement.parentElement.clientWidth;
+    const canvas = new AbstractCanvas({
+      fullscreen: fullscreen,
+      canvasWidth: this.canvasWidth,
+      canvasHeight: this.canvasHeight,
+      canvasDomElement: this.canvasDomElement,
+      enableVR,
+      enableQuadCamera,
+      quadData,
+      enableShadows,
+      gammaFactor,
+    });
   }
 
   render() {
@@ -81,7 +141,23 @@ class Canvas extends React.Component<ICanvasProps, IMyState> {
         this.props.children,
         (child) => {
           if (React.isValidElement(child)) {
-            return React.cloneElement(child, propsCanvasChildren);
+            return React.cloneElement(child, {
+              scene: this.scene,
+              enableVR: this.enableVR,
+              enableQuadCamera: this.enableQuadCamera,
+              renderer: this.renderer,
+              effect: this.effect,
+              canvasWidth: this.canvasWidth,
+              canvasHeight: this.canvasHeight,
+              addRenderCall: this.addRenderCall,
+              canvasDomElement: this.canvasDomElement,
+              onComponentInit: this.onComponentInit,
+              onComponentReady: this.onComponentReady,
+              getComponentByName: this.getComponentByName,
+              getComponentByUuid: this.getComponentByUuid,
+              enableShadows: this.enableShadows,
+              debug: this.debug,
+            });
           } else {
             return null;
           }
@@ -110,9 +186,3 @@ export default Canvas;
 // getComponentByUuid: this.getComponentByUuid,
 // enableShadows: this.enableShadows,
 // debug: this.debug,
-// refDomElHud: this.refDomElHud,
-// renderHud: (HudJsx) => {
-//   this.setState({
-//     renderHud: HudJsx,
-//   });
-// },
