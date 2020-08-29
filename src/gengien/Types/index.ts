@@ -16,4 +16,4 @@ export type QuadCamera = {
     rotation: [];
   };
 };
-export type TextboxProps = null & React.HTMLAttributes<HTMLDivElement>;
+export type TextboxProps = any & React.HTMLAttributes<HTMLDivElement>;

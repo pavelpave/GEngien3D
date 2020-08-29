@@ -1,6 +1,6 @@
 import React, { createRef } from "react";
-import { ICanvasProps } from "../Interfaces";
-import * as type from "./Types";
+import { ICanvasProps } from "../../Interfaces";
+import * as type from "../../Types";
 import AbstractCanvas from "./AbstractCanvas";
 
 interface IMyState {
@@ -10,7 +10,7 @@ interface IMyState {
 /**
  * Класс описывающий корневой компонент в котором
  * создается канвас и инициализируется three js
- * @class
+ * @class Canvas
  */
 class Canvas extends React.Component<ICanvasProps, IMyState> {
   /**
@@ -33,12 +33,12 @@ class Canvas extends React.Component<ICanvasProps, IMyState> {
    * (перспективные камеры)
    * @member { boolean | type.QuadCamera }
    */
-  protected enableQuadCamera?: false | type.QuadCamera;
+  protected enableQuadCamera?: boolean | type.QuadCamera;
   /**
    * главный объект для отрисовки в WEBGL
    * @member { null | object }
    */
-  protected renderer!: null | object;
+  protected renderer!: null | object | any;
   /**
    * это внутреняя переменная отвечающяя за эфекты для камеры (VR,Quad)
    * @member { null | object | any }
@@ -98,6 +98,10 @@ class Canvas extends React.Component<ICanvasProps, IMyState> {
    */
   protected debug?: boolean;
 
+  fullscreen: any;
+  quadData: any;
+  gammaFactor: any;
+
   constructor(props: ICanvasProps) {
     super(props);
     this.state = {
@@ -119,7 +123,7 @@ class Canvas extends React.Component<ICanvasProps, IMyState> {
     this.canvasDomElement = this.refCanvas.current;
     this.canvasHeight = this.canvasDomElement.parentElement.clientHeight;
     this.canvasWidth = this.canvasDomElement.parentElement.clientWidth;
-    const canvas = new AbstractCanvas({
+    let params = {
       fullscreen: fullscreen,
       canvasWidth: this.canvasWidth,
       canvasHeight: this.canvasHeight,
@@ -129,34 +133,48 @@ class Canvas extends React.Component<ICanvasProps, IMyState> {
       quadData,
       enableShadows,
       gammaFactor,
-    });
+      renderCalls: [],
+      renderer: this.renderer
+    }
+    const canvas = new AbstractCanvas(params);
+    this.scene = canvas.scene
+    this.renderer = canvas.renderer
+    this.enableVR = canvas.enableVR
+    this.enableQuadCamera = canvas.enableQuadCamera
+    this.effect = canvas.effect
+    this.addRenderCall = canvas.addRenderCall
+    this.setState({
+      ready: true,
+    })
   }
 
   render() {
     console.log(this.props, "canvas");
     const { ready } = this.state;
-    const propsCanvasChildren = {};
+    let requiredPropertys = {
+      scene: this.scene,
+      enableVR: this.enableVR,
+      enableQuadCamera: this.enableQuadCamera,
+      renderer: this.renderer,
+      effect: this.effect,
+      canvasWidth: this.canvasWidth,
+      canvasHeight: this.canvasHeight,
+      addRenderCall: this.addRenderCall,
+      canvasDomElement: this.canvasDomElement,
+      onComponentInit: this.onComponentInit,
+      onComponentReady: this.onComponentReady,
+      getComponentByName: this.getComponentByName,
+      getComponentByUuid: this.getComponentByUuid,
+      enableShadows: this.enableShadows,
+      debug: this.debug,
+    };
     if (ready) {
       const childrenWithProps = React.Children.map(
         this.props.children,
         (child) => {
           if (React.isValidElement(child)) {
             return React.cloneElement(child, {
-              scene: this.scene,
-              enableVR: this.enableVR,
-              enableQuadCamera: this.enableQuadCamera,
-              renderer: this.renderer,
-              effect: this.effect,
-              canvasWidth: this.canvasWidth,
-              canvasHeight: this.canvasHeight,
-              addRenderCall: this.addRenderCall,
-              canvasDomElement: this.canvasDomElement,
-              onComponentInit: this.onComponentInit,
-              onComponentReady: this.onComponentReady,
-              getComponentByName: this.getComponentByName,
-              getComponentByUuid: this.getComponentByUuid,
-              enableShadows: this.enableShadows,
-              debug: this.debug,
+              requiredPropertys: requiredPropertys,
             });
           } else {
             return null;
@@ -166,23 +184,8 @@ class Canvas extends React.Component<ICanvasProps, IMyState> {
 
       return <canvas ref={this.refCanvas}>{childrenWithProps}</canvas>;
     } else {
-      return null;
+      return <canvas ref={this.refCanvas}></canvas>;
     }
   }
 }
 export default Canvas;
-// scene: this.scene,
-// enableVR: this.enableVR,
-// enableQuadCamera: this.enableQuadCamera,
-// renderer: this.renderer,
-// effect: this.effect,
-// canvasWidth: this.canvasWidth,
-// canvasHeight: this.canvasHeight,
-// addRenderCall: this.addRenderCall,
-// canvasDomElement: this.canvasDomElement,
-// onComponentInit: this.onComponentInit,
-// onComponentReady: this.onComponentReady,
-// getComponentByName: this.getComponentByName,
-// getComponentByUuid: this.getComponentByUuid,
-// enableShadows: this.enableShadows,
-// debug: this.debug,
