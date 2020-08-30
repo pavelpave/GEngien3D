@@ -6,22 +6,9 @@ import {
   MeshBasicMaterial,
   PerspectiveCamera as ThreePerspectiveCamera,
   OrthographicCamera,
-  PointLight,
 } from "three";
-
-import CONST from "../../constants";
-
-interface IPropsCameraAbstract {
-  requiredPropertys: any;
-  zoomOrhoganal: any;
-  zoomPerspective: any;
-  position: any;
-  degreesToCameraPerspective: any;
-  aspect: any;
-  far: any;
-  near: any;
-  orthoganalEnable: any;
-}
+import { IPropsCameraAbstract } from "../../Interfaces";
+import { v4 } from "uuid";
 
 interface IStateCameraAbstract {}
 
@@ -47,7 +34,7 @@ export default class CameraAbstract extends React.Component<
   far: number;
   /**
    * - неар для камеры
-   * @member near 
+   * @member near
    */
   near: number;
   /**
@@ -70,6 +57,7 @@ export default class CameraAbstract extends React.Component<
    * @member resize
    */
   resize: any;
+
   constructor(props: any) {
     super(props);
     const {
@@ -124,15 +112,20 @@ export default class CameraAbstract extends React.Component<
       this.obj.add(this.aimMesh);
       this.obj.add(this.rayMesh);
     }
-    this.obj.name = CONST.DATA_OBJECT_SCENE.MAIN_CAMERA.name;
-    scene.add(this.obj);
+    this.obj.name = props.name ? props.name : `No name ${v4()}`;
+    this.obj.uuid = props.uuid ? props.uuid : v4();
     if (enableVR || enableQuadCamera) {
       addRenderCall(() => this.rendererEffect(effect, scene));
     }
     if (!enableVR && !enableQuadCamera) {
       addRenderCall(() => renderer.render(scene, this.obj));
     }
+
     window.addEventListener("resize", this.resize);
+    onComponentReady({
+      name: this.obj.name,
+      uuid: this.obj.uuid,
+    });
   }
 
   /**

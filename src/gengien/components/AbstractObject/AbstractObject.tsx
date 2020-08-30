@@ -1,5 +1,11 @@
 import React from "react";
-import { WebGLRenderer } from "three";
+import {
+  WebGLRenderer,
+  TextureLoader,
+  RepeatWrapping,
+  MeshBasicMaterial,
+  Vector3,
+} from "three";
 import { v4 } from "uuid";
 import { isEqual } from "lodash";
 import * as type from "../../Types";
@@ -72,7 +78,47 @@ export default abstract class AbstractObject extends React.Component<
     this.uuid = null;
     this.visible = true;
   }
-
+  /**
+   * - устанавливает текстуру на объект
+   * @param texture
+   */
+  setTexture = (texture: string) => {
+    let map = new TextureLoader().load(texture);
+    map.wrapS = RepeatWrapping;
+    map.wrapT = RepeatWrapping;
+    map.repeat.set(1, 1);
+    var material = new MeshBasicMaterial({
+      map: map,
+      transparent: true,
+    });
+    material.needsUpdate = true;
+    this.obj.material = material;
+  };
+  /**
+   * - удалаяет объект @member obj
+   * @param parent
+   */
+  removeObject = (parent: any) => {
+    if (this.obj) {
+      let { material, geometry } = this.obj;
+      if (material && geometry) {
+        material.dispose();
+        geometry.dispose();
+      }
+      if (parent) {
+        parent.remove(this.obj);
+      } else {
+        if (this.obj.parent) this.obj.parent.remove(this.obj);
+      }
+    }
+  };
+  /**
+   * - получить текущий объект @member obj
+   */
+  getObject = () => {
+    if (!this.obj) return false;
+    return this.obj;
+  };
   /**
    * - устанавливает цвет для @member obj
    * @param cssColor
@@ -114,20 +160,35 @@ export default abstract class AbstractObject extends React.Component<
     this.obj.scale.set(...scale);
   };
   /**
+   *  - устанавливает кватернион для @member obj
+   * @param quaternion
+   */
+  setQuaternion = (quaternion: type.Quaternion) => {
+    if (!this.obj || !this.obj.quaternion || !quaternion) return;
+    this.obj.children[0].quaternion.setFromAxisAngle(
+      new Vector3(quaternion[0], quaternion[1], quaternion[2]).normalize(),
+      quaternion[3]
+    );
+  };
+  /**
+   * добавляет объект к сцене
+   * @param scene
+   */
+  addToScene = (scene: any) => {
+    scene.add(this.obj);
+  };
+  /**
    * - инициализирует @member obj
    */
-  initComponent = () => {
-    const { requiredPropertys , name = null } = this.props;
+  initComponent = (name: string, uuid: string) => {
+    const { requiredPropertys } = this.props;
     if (name) {
       this.name = name;
-    } else {
-      this.name = `No name ${v4()}`;
     }
+    this.uuid = uuid ? uuid : v4();
     requiredPropertys!.onComponentInit({
-      name: this.name,
-      obj: null,
-      uuid: null,
-      instance: this,
+      name: name,
+      uuid: uuid,
     });
     return this.name;
   };
@@ -136,11 +197,10 @@ export default abstract class AbstractObject extends React.Component<
    */
   readyComponent = () => {
     const { requiredPropertys } = this.props;
+    debugger;
     requiredPropertys!.onComponentReady({
       name: this.name,
-      obj: this.obj,
       uuid: this.uuid,
-      instance: this,
     });
   };
   /**

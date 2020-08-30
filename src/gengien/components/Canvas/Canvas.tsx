@@ -66,28 +66,6 @@ class Canvas extends React.Component<ICanvasProps, IMyState> {
    */
   protected canvasDomElement: any | HTMLElement;
   /**
-   * инициализирует компоненты
-   * @member { function }
-   */
-  protected onComponentInit: any;
-  /**
-   * Когда какой-то компонент загружен, то вызывается это событие
-   * @member { function }
-   */
-  protected onComponentReady: any;
-  /**
-   * поиск по объекту components
-   * todo:переписать на более быстрый метод
-   * @member { function }
-   */
-  protected getComponentByName: any;
-  /**
-   * поиск по объекту components
-   * todo:переписать на более быстрый метод
-   * @member { function }
-   */
-  protected getComponentByUuid: any;
-  /**
    * включение или выключение теней
    * @member { boolean }
    */
@@ -98,16 +76,83 @@ class Canvas extends React.Component<ICanvasProps, IMyState> {
    */
   protected debug?: boolean;
 
+  public components: [] | any;
+
   fullscreen: any;
   quadData: any;
   gammaFactor: any;
 
   constructor(props: ICanvasProps) {
     super(props);
+    this.components = [];
+    this.enableShadows = false;
     this.state = {
       ready: false,
     };
   }
+  /**
+   * поиск по объекту components
+   * todo:переписать на более быстрый метод
+   * @member { function }
+   */
+  getComponentByName = (data: any): any => {
+    let result = null;
+    this.components.forEach((component: any) => {
+      if (component.uuid === data.uuid) result = component;
+    });
+    return result;
+  };
+  /**
+   * поиск по объекту components
+   * todo:переписать на более быстрый метод
+   * @member { function }
+   */
+  getComponentByUuid = (uuid: string) => {
+    // return this.components.find((component, index) => {
+    //   return component.uuid === uuid;
+    // });
+  };
+
+  onLoadingProgress = () => {
+    const { onLoadingProgress } = this.props;
+    const componentsCount = this.components.length;
+    const readyComponentsCount = this.components.filter((component: any) => {
+      return component.ready;
+    }).length;
+    const progress = Math.round((readyComponentsCount * 100) / componentsCount);
+    if (onLoadingProgress) {
+      onLoadingProgress(progress);
+    }
+  };
+  /**
+   * инициализирует компоненты
+   * @member { function }
+   */
+  onComponentInit = (data: any) => {
+    // console.log('onComponentInit', name);
+    const { name, uuid } = data;
+    this.components.push({
+      name,
+      uuid,
+      ready: false,
+    });
+    this.onLoadingProgress();
+  };
+  /**
+   * Когда какой-то компонент загружен, то вызывается это событие
+   * @member { function }
+   */
+  onComponentReady = (data: any) => {
+    const { name, uuid } = data;
+    console.log("onComponentReady", this.components);
+    debugger;
+    const component = this.getComponentByName(data);
+    if (component) {
+      component.ready = true;
+      component.uuid = uuid;
+      this.onLoadingProgress();
+    }
+  };
 
   componentDidMount() {
     const {
@@ -134,18 +179,18 @@ class Canvas extends React.Component<ICanvasProps, IMyState> {
       enableShadows,
       gammaFactor,
       renderCalls: [],
-      renderer: this.renderer
-    }
+      renderer: this.renderer,
+    };
     const canvas = new AbstractCanvas(params);
-    this.scene = canvas.scene
-    this.renderer = canvas.renderer
-    this.enableVR = canvas.enableVR
-    this.enableQuadCamera = canvas.enableQuadCamera
-    this.effect = canvas.effect
-    this.addRenderCall = canvas.addRenderCall
+    this.scene = canvas.scene;
+    this.renderer = canvas.renderer;
+    this.enableVR = canvas.enableVR;
+    this.enableQuadCamera = canvas.enableQuadCamera;
+    this.effect = canvas.effect;
+    this.addRenderCall = canvas.addRenderCall;
     this.setState({
       ready: true,
-    })
+    });
   }
 
   render() {
