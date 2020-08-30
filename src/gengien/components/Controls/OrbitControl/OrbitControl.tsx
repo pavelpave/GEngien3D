@@ -5,7 +5,6 @@ import CONST from "../../../constants";
 import { v4 } from "uuid";
 
 interface IPropsOrbitControl {}
-interface IStateOrbitControl {}
 
 /**
  * - отвечает за систему управления "орбитальную"

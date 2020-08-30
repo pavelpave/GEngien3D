@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>GEngien3D API Documentation</title>
+    
+    <meta name="description" content="Documentation for GEngien3D library" />
+    
+        <meta name="keywords" content="docs, documentation, three.js, three.js event system, GEngien3D, renderer, html5, javascript, jsdoc" />
+        <meta name="keyword" content="docs, documentation, three.js, three.js event system, GEngien3D, renderer, html5, javascript, jsdoc" />
+    
+    
+    
+    
+    <meta property="og:title" content=""/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:image" content=""/>
+    
+    <meta property="og:url" content=""/>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <script src="scripts/jquery.min.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link href="https://fonts.googleapis.com/css?family=Libre+Franklin:400,700" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/main.css">
+
+    
+    <script>
+    var config = {"monospaceLinks":false,"cleverLinks":false,"default":{"outputSourceFiles":true},"applicationName":"GEngien3D","footer":"Made with ♥ by PuhDWL","copyright":"GEngien3D Copyright © 2020 PuhDWL.","disqus":"","googleAnalytics":"UA-103772589-5","openGraph":{"title":"","type":"website","image":"","site_name":"","url":""},"meta":{"title":"GEngien3D API Documentation","description":"Documentation for GEngien3D library","keyword":"docs, documentation, three.js, three.js event system, GEngien3D, renderer, html5, javascript, jsdoc"},"linenums":true};
+    </script>
+    
+
+    
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', config.googleAnalytics]);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    
+</head>
+<body>
+<div id="wrap" class="clearfix">
+    
+<div class="navigation">
+    <h3 class="applicationName"><a href="index.html">GEngien3D</a></h3>
+    <button id="menuToggle" class="btn btn-link btn-lg menu-toggle">
+        <span class="glyphicon glyphicon-menu-hamburger"></span>
+    </button>
+    <div class="search">
+        <input id="search" type="text" class="form-control input-md" placeholder="Search...">
+    </div>
+    <ul class="list">
+    
+    
+        <li class="item" data-name="global">
+            <span class="title namespace ">
+                
+                <span class="namespaceTag">
+                    <span class="glyphicon glyphicon-globe"></span>
+                </span>
+                
+                
+                    <a href="global.html">Global</a>
+                
+            </span>
+            
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li class="parent " data-name="THREE"><a href="global.html#THREE">THREE</a></li>
+            
+                <li class="parent " data-name="THREE"><a href="global.html#THREE">THREE</a></li>
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="methods itemMembers">
+            
+            </ul>
+            
+            <ul class="events itemMembers">
+            
+            </ul>
+            
+        </li>
+    
+    </ul>
+</div>
+
+    <div class="main">
+        <h1 class="page-title" data-filename="StereoEffect.js.html">Source: StereoEffect.js</h1>
+        
+
+
+    
+    <section>
+        <header>
+            <div class="header content-size">
+                <h2>StereoEffect.js</h2>
+            </div>
+        </header>
+        <article>
+            <pre id="source-code" class="prettyprint source linenums"><code>/**
+ * @author alteredq / http://alteredqualia.com/
+ * @author mrdoob / http://mrdoob.com/
+ * @author arodic / http://aleksandarrodic.com/
+ * @author fonserbc / http://fonserbc.github.io/
+ * @author samsy / http://samsy.ninja/
+ * @author ivee-tech / http://editor.ivee.tech
+ *
+ * Off-axis stereoscopic effect based on http://paulbourke.net/stereographics/stereorender/
+ */
+
+let THREE = require('three')
+
+function StereoEffect (renderer) {
+  let scope = this
+  this.eyeSeparation = 3
+  this.focalLength = 15 	// Distance to the non-parallax or projection plane
+  Object.defineProperties(this, {
+    separation: {
+      get: function () {
+        return scope.eyeSeparation
+      },
+      set: function (value) {
+        console.warn('THREE.StereoEffect: .separation is now .eyeSeparation.')
+        scope.eyeSeparation = value
+      }
+    },
+    targetDistance: {
+      get: function () {
+        return scope.focalLength
+      },
+      set: function (value) {
+        console.warn('THREE.StereoEffect: .targetDistance is now .focalLength.')
+        scope.focalLength = value
+      }
+    }
+  })
+  // internals
+  let _width, _height
+  let _position = new THREE.Vector3()
+  let _quaternion = new THREE.Quaternion()
+  let _scale = new THREE.Vector3()
+  let _cameraL = new THREE.PerspectiveCamera()
+  let _cameraR = new THREE.PerspectiveCamera()
+  let _fov
+  let _outer, _inner, _top, _bottom
+  let _ndfl, _halfFocalWidth, _halfFocalHeight
+  let _innerFactor, _outerFactor
+
+  // initialization
+
+  renderer.autoClear = false
+
+  this.setSize = function (width, height) {
+    _width = width / 2
+    _height = height
+    renderer.setSize(width, height)
+  }
+
+  this.render = function (scene, camera) {
+    scene.updateMatrixWorld()
+    if (camera.parent === null) camera.updateMatrixWorld()
+    camera.matrixWorld.decompose(_position, _quaternion, _scale)
+    // Effective fov of the camera
+    _fov = THREE.Math.radToDeg(2 * Math.atan(Math.tan(THREE.Math.degToRad(camera.fov) * 0.5) / camera.zoom))
+    _ndfl = camera.near / this.focalLength
+    _halfFocalHeight = Math.tan(THREE.Math.degToRad(_fov) * 0.5) * this.focalLength
+    _halfFocalWidth = _halfFocalHeight * 0.5 * camera.aspect
+    _top = _halfFocalHeight * _ndfl
+    _bottom = -_top
+    _innerFactor = (_halfFocalWidth + this.eyeSeparation / 2.0) / (_halfFocalWidth * 2.0)
+    _outerFactor = 1.0 - _innerFactor
+    _outer = _halfFocalWidth * 2.0 * _ndfl * _outerFactor
+    _inner = _halfFocalWidth * 2.0 * _ndfl * _innerFactor
+
+    // left
+
+    _cameraL.projectionMatrix.makePerspective(
+      -_outer,
+      _inner,
+      _top,
+      _bottom,
+      camera.near,
+      camera.far
+    )
+    _cameraL.children = camera.children
+		_cameraL.name = 'cameraL'
+    _cameraL.position.copy(_position)
+    _cameraL.quaternion.copy(_quaternion)
+    _cameraL.translateX(-this.eyeSeparation / 2.0)
+
+    // right
+
+    _cameraR.projectionMatrix.makePerspective(
+      -_inner,
+      _outer,
+      _top,
+      _bottom,
+      camera.near,
+      camera.far
+    )
+    _cameraR.children = camera.children
+		_cameraR.name = 'cameraR'
+    _cameraR.position.copy(_position)
+    _cameraR.quaternion.copy(_quaternion)
+    _cameraR.translateX(this.eyeSeparation / 2.0)
+
+    renderer.clear()
+    renderer.setScissorTest(true)
+    renderer.setScissor(0, 0, _width, _height)
+    renderer.setViewport(0, 0, _width, _height)
+    renderer.render(scene, _cameraL)
+    renderer.setScissor(_width, 0, _width, _height)
+    renderer.setViewport(_width, 0, _width, _height)
+    renderer.render(scene, _cameraR)
+		renderer.cameraR = _cameraR
+		renderer.cameraL = _cameraL
+    renderer.setScissorTest(false)
+
+  }
+
+}
+
+StereoEffect.prototype = Object.create(THREE.EventDispatcher.prototype)
+StereoEffect.prototype.constructor = StereoEffect
+
+module.exports = StereoEffect
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+
+
+        
+
+        <footer class="content-size">
+            <div class="footer">
+                Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.5</a> on Sun Aug 30 2020 21:53:29 GMT+0300 (GMT+03:00)
+            </div>
+        </footer>
+    </div>
+</div>
+<script>prettyPrint();</script>
+<script src="scripts/main.js"></script>
+
+
+</body>
+</html>

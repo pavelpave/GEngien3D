@@ -5,6 +5,10 @@ import { IPropsForCamera } from "../../Interfaces";
 import CONST from "../../constants";
 import { v4 } from "uuid";
 
+/**
+ * - класс описывающий универсаную камеру на основе пропсов решает какой тип камеры будет использоватся
+ * @class Camera
+ */
 class Camera extends AbstractObject {
   constructor(props: IPropsForCamera) {
     super(props);
@@ -48,23 +52,6 @@ class Camera extends AbstractObject {
     this.setState({
       ready: true,
     });
-    // Camera.render = function () {
-    //   const { ready } = this.state;
-    //   if (!ready) return null;
-    //   const childrenWithProps = React.Children.map(
-    //     this.props.children,
-    //     (child) => {
-    //       if (React.isValidElement(child)) {
-    //         return React.cloneElement(child, {
-    //           ...this.props,
-    //           camera: this.obj,
-    //         });
-    //       }
-    //     }
-    //   );
-
-    //   return <>{childrenWithProps}</>;
-    // };
   }
 
   setZoom = (zoom: number | null) => {
