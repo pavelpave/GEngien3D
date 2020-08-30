@@ -10,7 +10,9 @@ import {
 import { IPropsCameraAbstract } from "../../Interfaces";
 import { v4 } from "uuid";
 
-interface IStateCameraAbstract {}
+interface IStateCameraAbstract {
+  ready: boolean;
+}
 
 export default class CameraAbstract extends React.Component<
   IPropsCameraAbstract,
@@ -77,6 +79,7 @@ export default class CameraAbstract extends React.Component<
       enableShadows,
       debug,
     } = props.requiredPropertys;
+    this.state = { ready: false };
     this.aspect = enableVR ? canvasWidth / canvasHeight : 1;
     this.degreesToCameraPerspective = enableVR ? 60 : 100;
     if (props.degreesToCameraPerspective && !enableVR) {

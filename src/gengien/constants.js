@@ -1,7 +1,13 @@
 export default {
   DATA_OBJECT_SCENE: {
+    ORBIT_CONTROLS: {
+      name: "ORBIT_CONTROLS",
+    },
     MAIN_CAMERA: {
-      name: "camera",
+      name: "CAMERA",
+    },
+    GENGIEN_SCENE: {
+      name: "GENGIEN_SCENE",
     },
   },
 };

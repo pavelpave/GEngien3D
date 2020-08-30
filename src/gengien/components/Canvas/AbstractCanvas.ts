@@ -1,7 +1,7 @@
 import { Clock, Scene, WebGLRenderer } from "three";
 import StereoEffect from "./StereoEffect";
 import { QuadViewPorts } from "./QuadViewPorts";
-// import { SCENE_NAME } from '../../../constants'
+import CONST from "../../constants";
 import { IAbstractCanvasProps, IAbstractCanvas } from "../../Interfaces";
 import * as type from "../../Types";
 
@@ -42,7 +42,7 @@ class AbstractCanvas implements IAbstractCanvas {
     this.fullscreen = props.fullscreen;
     this.effect = null;
     this.scene = new Scene();
-    this.scene.name = "GENGIEN_SCENE";
+    this.scene.name = CONST.DATA_OBJECT_SCENE.GENGIEN_SCENE.name;
     this.renderer = new WebGLRenderer({
       canvas: this.canvasDomElement,
       powerPreference: "high-performance",

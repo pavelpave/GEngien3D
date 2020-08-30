@@ -31,7 +31,9 @@ interface IPropsAbstractObject {
   name?: string | null;
 }
 
-interface IStateAbstractObject {}
+interface IStateAbstractObject {
+  ready: boolean;
+}
 
 export default abstract class AbstractObject extends React.Component<
   any,
@@ -77,6 +79,9 @@ export default abstract class AbstractObject extends React.Component<
     this.material = null;
     this.uuid = null;
     this.visible = true;
+    this.state = {
+      ready: false,
+    };
   }
   /**
    * - устанавливает текстуру на объект
@@ -197,7 +202,6 @@ export default abstract class AbstractObject extends React.Component<
    */
   readyComponent = () => {
     const { requiredPropertys } = this.props;
-    debugger;
     requiredPropertys!.onComponentReady({
       name: this.name,
       uuid: this.uuid,
@@ -293,7 +297,7 @@ export default abstract class AbstractObject extends React.Component<
     this.onPropsUpdate(prevProps, this.props);
   }
 
-  render() {
-    return null;
-  }
+  // render() {
+  //   return null;
+  // }
 }

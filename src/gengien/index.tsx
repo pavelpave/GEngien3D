@@ -1,6 +1,6 @@
 import Canvas from "./components/Canvas/Canvas";
 import Camera from "./components/Camera/Camera";
-// import OrbitControls from './components/controls/OrbitControls';
+import OrbitControl from './components/Controls/OrbitControl';
 // import DraggableFirstPersonControls from './components/controls/DraggableFirstPersonControls';
 // import VRFirstPersonControls from './components/controls/VRControls/VRFirstPersonControls';
 // import Raycast from './components/controls/Raycast';
@@ -26,7 +26,8 @@ import AbstractObject from "./components/AbstractObject";
 export {
   AbstractObject,
   Canvas,
-  Camera
+  Camera,
+  OrbitControl
   // PerspectiveCamera,
   // OrbitControls,
   // DraggableFirstPersonControls,

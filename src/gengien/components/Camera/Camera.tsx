@@ -5,7 +5,6 @@ import { IPropsForCamera } from "../../Interfaces";
 import CONST from "../../constants";
 import { v4 } from "uuid";
 
-interface IStateForCamera {}
 class Camera extends AbstractObject {
   constructor(props: IPropsForCamera) {
     super(props);
@@ -49,6 +48,23 @@ class Camera extends AbstractObject {
     this.setState({
       ready: true,
     });
+    // Camera.render = function () {
+    //   const { ready } = this.state;
+    //   if (!ready) return null;
+    //   const childrenWithProps = React.Children.map(
+    //     this.props.children,
+    //     (child) => {
+    //       if (React.isValidElement(child)) {
+    //         return React.cloneElement(child, {
+    //           ...this.props,
+    //           camera: this.obj,
+    //         });
+    //       }
+    //     }
+    //   );
+
+    //   return <>{childrenWithProps}</>;
+    // };
   }
 
   setZoom = (zoom: number | null) => {
@@ -65,8 +81,33 @@ class Camera extends AbstractObject {
     }
   };
 
+  shouldComponentUpdate(nextProps: any) {
+    const { zoom } = this.props;
+    if (nextProps.zoom) {
+      if (zoom !== nextProps.zoom) {
+        this.setZoom(nextProps.zoom);
+      }
+    }
+    this.onPropsUpdate(this.props, nextProps);
+    return true;
+  }
+
   render() {
-    return null;
+    const { ready } = this.state;
+    if (!ready) return null;
+    const childrenWithProps = React.Children.map(
+      this.props.children,
+      (child) => {
+        if (React.isValidElement(child)) {
+          return React.cloneElement(child, {
+            ...this.props,
+            camera: this.obj,
+          });
+        }
+      }
+    );
+
+    return <>{childrenWithProps}</>;
   }
 }
 
