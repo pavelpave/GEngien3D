@@ -1,5 +1,5 @@
-import Canvas from './components/Canvas/Canvas';
-// import PerspectiveCamera from './components/cameras/PerspectiveCamera';
+import Canvas from "./components/Canvas/Canvas";
+import Camera from "./components/Camera/Camera";
 // import OrbitControls from './components/controls/OrbitControls';
 // import DraggableFirstPersonControls from './components/controls/DraggableFirstPersonControls';
 // import VRFirstPersonControls from './components/controls/VRControls/VRFirstPersonControls';
@@ -15,7 +15,7 @@ import Canvas from './components/Canvas/Canvas';
 // import Sky from "./components/objects/Sky";
 // import Fog from "./components/effects/Fog";
 // import Screenshot from "./components/utils/Screenshot";
-// import AbstractObject from "./components/abstract/AbstractObject";
+import AbstractObject from "./components/AbstractObject";
 // import Grid from "./components/objects/Grid";
 // import DragAndDropControl from './components/controls/DragAndDropControl'
 // import {HandlersCustomEvent} from './components/HandlersCustomEvent'
@@ -24,28 +24,29 @@ import Canvas from './components/Canvas/Canvas';
 // import Line from './components/primitives/Line'
 
 export {
-    // AbstractObject,
-    Canvas,
-    // PerspectiveCamera,
-    // OrbitControls,
-    // DraggableFirstPersonControls,
-    // VRFirstPersonControls,
-    // Raycast,
-    // Box,
-    // Sphere,F
-    // Cylinder,
-    // AmbientLight,
-    // DirectionalLight,
-    // SpotLight,
-    // PointLight,
-    // GLTF,
-    // Sky,
-    // Fog,
-    // Screenshot,
-    // Grid,
-    // DragAndDropControl,
-    // HandlersCustomEvent,
-    // GenericGroupObject,
-    // OrthoganalControl,
-    // Line
+  AbstractObject,
+  Canvas,
+  Camera
+  // PerspectiveCamera,
+  // OrbitControls,
+  // DraggableFirstPersonControls,
+  // VRFirstPersonControls,
+  // Raycast,
+  // Box,
+  // Sphere,F
+  // Cylinder,
+  // AmbientLight,
+  // DirectionalLight,
+  // SpotLight,
+  // PointLight,
+  // GLTF,
+  // Sky,
+  // Fog,
+  // Screenshot,
+  // Grid,
+  // DragAndDropControl,
+  // HandlersCustomEvent,
+  // GenericGroupObject,
+  // OrthoganalControl,
+  // Line
 };

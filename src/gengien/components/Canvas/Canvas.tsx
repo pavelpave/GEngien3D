@@ -149,7 +149,6 @@ class Canvas extends React.Component<ICanvasProps, IMyState> {
   }
 
   render() {
-    console.log(this.props, "canvas");
     const { ready } = this.state;
     let requiredPropertys = {
       scene: this.scene,

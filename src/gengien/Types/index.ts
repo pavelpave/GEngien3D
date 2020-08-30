@@ -1,3 +1,6 @@
+import { Vector3 } from "three";
+import { type } from "os";
+
 export type QuadCamera = {
   leftUpCamera: {
     position: [];
@@ -17,3 +20,7 @@ export type QuadCamera = {
   };
 };
 export type TextboxProps = any & React.HTMLAttributes<HTMLDivElement>;
+
+export type Position = [] | Vector3 | object | any
+export type Rotation = [] | Vector3 | object | any
+export type Scale = [] | Vector3 | object | any
