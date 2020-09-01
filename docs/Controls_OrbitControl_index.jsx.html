@@ -64,46 +64,6 @@
     <ul class="list">
     
     
-        <li class="item" data-name="global">
-            <span class="title namespace ">
-                
-                <span class="namespaceTag">
-                    <span class="glyphicon glyphicon-globe"></span>
-                </span>
-                
-                
-                    <a href="global.html">Global</a>
-                
-            </span>
-            
-            <ul class="members itemMembers">
-            
-            <span class="subtitle">Members</span>
-            
-                <li class="parent " data-name="THREE"><a href="global.html#THREE">THREE</a></li>
-            
-                <li class="parent " data-name="THREE"><a href="global.html#THREE">THREE</a></li>
-            
-            </ul>
-            
-            <ul class="typedefs itemMembers">
-            
-            </ul>
-            
-            <ul class="typedefs itemMembers">
-            
-            </ul>
-            
-            <ul class="methods itemMembers">
-            
-            </ul>
-            
-            <ul class="events itemMembers">
-            
-            </ul>
-            
-        </li>
-    
         <li class="item" data-name="AbstractObject">
             <span class="title  ">
                 
@@ -164,218 +124,154 @@
             
         </li>
     
+        <li class="item" data-name="Canvas">
+            <span class="title  ">
+                
+                
+                    <a href="Canvas.html">Canvas</a>
+                
+            </span>
+            
+            <ul class="members itemMembers">
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="methods itemMembers">
+            
+            </ul>
+            
+            <ul class="events itemMembers">
+            
+            </ul>
+            
+        </li>
+    
+        <li class="item" data-name="OrbitControl">
+            <span class="title  ">
+                
+                
+                    <a href="OrbitControl.html">OrbitControl</a>
+                
+            </span>
+            
+            <ul class="members itemMembers">
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="methods itemMembers">
+            
+            </ul>
+            
+            <ul class="events itemMembers">
+            
+            </ul>
+            
+        </li>
+    
     </ul>
 </div>
 
     <div class="main">
-        <h1 class="page-title" data-filename="global.html">Global</h1>
+        <h1 class="page-title" data-filename="Controls_OrbitControl_index.jsx.html">Source: Controls/OrbitControl/index.jsx</h1>
         
 
 
+    
+    <section>
+        <header>
+            <div class="header content-size">
+                <h2>Controls/OrbitControl/index.jsx</h2>
+            </div>
+        </header>
+        <article>
+            <pre id="source-code" class="prettyprint source linenums"><code>import OrbitControl from "./OrbitControl";
+/**
+ * @extends AbstractObject
+ * - отвечает за систему управления "орбитальную"
+ * @example
+ * function App() {
+ *   return (
+ *     &lt;div className={"exemple_app-wraper"}>
+ *       &lt;Canvas enableVR={false} debug={true}>
+ *         &lt;Camera>
+ *           &lt;OrbitControl />
+ *         &lt;/Camera>
+ *       &lt;/Canvas>
+ *     &lt;/div>
+ *   );
+ * }
+ * 
+ * export default App;
+ * @example
+ * class OrbitControl extends AbstractObject {
+ *   constructor(props: IPropsOrbitControl) {
+ *     super(props);
+ *   }
+ *
+ *   componentDidMount() {
+ *     const {
+ *       requiredPropertys,
+ *       minDistance = 3,
+ *       maxDistance = 20,
+ *       camera,
+ *       name = CONST.DATA_OBJECT_SCENE.ORBIT_CONTROLS.name,
+ *       uuid = v4(),
+ *       type = "",
+ *     } = this.props;
+ *     const { canvasDomElement } = requiredPropertys;
+ *     this.initComponent(name, uuid);
+ *     this.obj = new ThreeOrbitControls(camera, canvasDomElement, type);
+ *
+ *     this.obj.rotateSpeed = 0.3;
+ *     this.obj.zoomSpeed = 0.9;
+ *
+ *     this.obj.minDistance = minDistance;
+ *     this.obj.maxDistance = maxDistance;
+ *     this.name = name;
+ *     this.uuid = uuid;
+ *     this.readyComponent();
+ *   }
+ *
+ *   resize = () => {
+ *     const { fullscreen = true } = this.props;
+ *     if (fullscreen) {
+ *       this.obj.aspect = window.innerWidth / window.innerHeight;
+ *       this.obj.updateProjectionMatrix();
+ *     }
+ *   };
+ *   render() {
+ *     return null;
+ *   }
+ * }
+ *
+ * export default OrbitControl;
+ * @class OrbitControl
+ * @param {minDistance} [minDistance = 3] - минимальная дистанция для отрисовки
+ * @param {maxDistance} [maxDistance = 20] - максимальная дистанция для отрисовки
+ * @param {name} name - не рекомендуется к изменению
+ * @param {uuid} uuid - не рекомендуется к изменению
+ */
+export default OrbitControl;
+</code></pre>
+        </article>
+    </section>
 
-<section>
-    
-<header>
-    <div class="header content-size">
-        <h2>Global
-        </h2>
-        
-    </div>
-</header>  
-
-<article class="content-size">
-    
-        <div class="container-overview">
-        
-
-        
-            
-
-            
-<dl class="details">
-    
-        
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-
-            
-        
-        </div>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-        <h3 class="subsection-title">Members</h3>
-        
-        <dl class="list-members">
-            
-<dt>
-    <div class="nameContainer">
-        <h4 class="name" id="THREE">
-            <a class="share-icon" href="#THREE"><span class="glyphicon glyphicon-link"></span></a>
-            <span class="">THREE</span>
-            
-            
-            
-            
-            
-        </h4>
-    </div>
-    
-    
-</dt>
-<dd>
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-    
-    
-    <dt class="tag-author">Author:</dt>
-    <dd class="tag-author">
-        <ul>
-            <li>alteredq / http://alteredqualia.com/</li>
-        
-            <li>mrdoob / http://mrdoob.com/</li>
-        
-            <li>arodic / http://aleksandarrodic.com/</li>
-        
-            <li>fonserbc / http://fonserbc.github.io/</li>
-        
-            <li>samsy / http://samsy.ninja/</li>
-        
-            <li>ivee-tech / http://editor.ivee.techOff-axis stereoscopic effect based on http://paulbourke.net/stereographics/stereorender/</li>
-        </ul>
-    </dd>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <div class="nameContainer">
-        <h4 class="name" id="THREE">
-            <a class="share-icon" href="#THREE"><span class="glyphicon glyphicon-link"></span></a>
-            <span class="">THREE</span>
-            
-            
-            
-            
-            
-        </h4>
-    </div>
-    
-    
-</dt>
-<dd>
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-    
-    
-    <dt class="tag-author">Author:</dt>
-    <dd class="tag-author">
-        <ul>
-            <li>alteredq / http://alteredqualia.com/</li>
-        
-            <li>mrdoob / http://mrdoob.com/</li>
-        
-            <li>arodic / http://aleksandarrodic.com/</li>
-        
-            <li>fonserbc / http://fonserbc.github.io/</li>
-        
-            <li>samsy / http://samsy.ninja/</li>
-        
-            <li>ivee-tech / http://editor.ivee.techOff-axis stereoscopic effect based on http://paulbourke.net/stereographics/stereorender/</li>
-        </ul>
-    </dd>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-</dd>
-
-        </dl>
-    
-    
-    
-    
-    
-    
-    
-
-    
-</article>
-
-</section>  
 
 
 
@@ -385,7 +281,7 @@
 
         <footer class="content-size">
             <div class="footer">
-                Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.5</a> on Tue Sep 01 2020 23:04:56 GMT+0300 (GMT+03:00)
+                Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.5</a> on Tue Sep 01 2020 23:41:32 GMT+0300 (GMT+03:00)
             </div>
         </footer>
     </div>

@@ -1,14 +1,3 @@
-/**
- * @author alteredq / http://alteredqualia.com/
- * @author mrdoob / http://mrdoob.com/
- * @author arodic / http://aleksandarrodic.com/
- * @author fonserbc / http://fonserbc.github.io/
- * @author samsy / http://samsy.ninja/
- * @author ivee-tech / http://editor.ivee.tech
- *
- * Off-axis stereoscopic effect based on http://paulbourke.net/stereographics/stereorender/
- */
-
 let THREE = require("three");
 
 function QuadViewPorts(renderer, canvasDomElement, quadData) {

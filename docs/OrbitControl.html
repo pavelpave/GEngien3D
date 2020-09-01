@@ -188,57 +188,305 @@
 </div>
 
     <div class="main">
-        <h1 class="page-title" data-filename="index.html">Index</h1>
+        <h1 class="page-title" data-filename="OrbitControl.html">Class: OrbitControl</h1>
         
 
 
+
+<section>
+    
+<header>
+    <div class="header content-size">
+        <h2>OrbitControl
+        </h2>
+        
+    </div>
+</header>  
+
+<article class="content-size">
+    
+        <div class="container-overview">
+        
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="OrbitControl">
+            <a class="share-icon" href="#OrbitControl"><span class="glyphicon glyphicon-link"></span></a>
+            <span class="">
+                new OrbitControl
+            </span>
+            <span class="signature">(<span class="optional">minDistance</span>, <span class="optional">maxDistance</span>, name, uuid)</span>
+            
+            
+            
+            
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="Controls_OrbitControl_index.jsx.html#line2">index.jsx:2</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Default</th>
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>minDistance</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">minDistance</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    3
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                <p>минимальная дистанция для отрисовки</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>maxDistance</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">maxDistance</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    20
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                <p>максимальная дистанция для отрисовки</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">name</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                <p>не рекомендуется к изменению</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>uuid</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">uuid</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                <p>не рекомендуется к изменению</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+        <h5>Examples</h5>
+        
+
+    
+    <pre class="prettyprint"><code>function App() {  return (    <div className={"exemple_app-wraper"}>      <Canvas enableVR={false} debug={true}>        <Camera>          <OrbitControl />        </Camera>      </Canvas>    </div>  );}export default App;</code></pre>
     
 
 
-    <h3> </h3>
-
-
-
-
-
-
-
-
+    
+    <pre class="prettyprint"><code>class OrbitControl extends AbstractObject {  constructor(props: IPropsOrbitControl) {    super(props);  }  componentDidMount() {    const {      requiredPropertys,      minDistance = 3,      maxDistance = 20,      camera,      name = CONST.DATA_OBJECT_SCENE.ORBIT_CONTROLS.name,      uuid = v4(),      type = "",    } = this.props;    const { canvasDomElement } = requiredPropertys;    this.initComponent(name, uuid);    this.obj = new ThreeOrbitControls(camera, canvasDomElement, type);    this.obj.rotateSpeed = 0.3;    this.obj.zoomSpeed = 0.9;    this.obj.minDistance = minDistance;    this.obj.maxDistance = maxDistance;    this.name = name;    this.uuid = uuid;    this.readyComponent();  }  resize = () => {    const { fullscreen = true } = this.props;    if (fullscreen) {      this.obj.aspect = window.innerWidth / window.innerHeight;      this.obj.updateProjectionMatrix();    }  };  render() {    return null;  }}export default OrbitControl;</code></pre>
     
 
+    
+</dd>
 
+        
+        </div>
+    
+    
+    
+        <h3 class="subsection-title">Extends</h3>
+        
+        <ul>
+            <li><a href="AbstractObject.html">AbstractObject</a></li>
+        </ul>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
+    
+</article>
 
-    <section>
-        <article class="readme content-size"><p>This project was bootstrapped with <a target="_blank" href="https://github.com/facebook/create-react-app">Create React App</a>.</p>
-<h2>Available Scripts</h2>
-<p>In the project directory, you can run:</p>
-<h3><code>yarn start</code></h3>
-<p>Runs the app in the development mode.<br />
-Open <a target="_blank" href="http://localhost:3000">http://localhost:3000</a> to view it in the browser.</p>
-<p>The page will reload if you make edits.<br />
-You will also see any lint errors in the console.</p>
-<h3><code>yarn test</code></h3>
-<p>Launches the test runner in the interactive watch mode.<br />
-See the section about <a target="_blank" href="https://facebook.github.io/create-react-app/docs/running-tests">running tests</a> for more information.</p>
-<h3><code>yarn build</code></h3>
-<p>Builds the app for production to the <code>build</code> folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.</p>
-<p>The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!</p>
-<p>See the section about <a target="_blank" href="https://facebook.github.io/create-react-app/docs/deployment">deployment</a> for more information.</p>
-<h3><code>yarn eject</code></h3>
-<p><strong>Note: this is a one-way operation. Once you <code>eject</code>, you can’t go back!</strong></p>
-<p>If you aren’t satisfied with the build tool and configuration choices, you can <code>eject</code> at any time. This command will remove the single build dependency from your project.</p>
-<p>Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except <code>eject</code> will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.</p>
-<p>You don’t have to ever use <code>eject</code>. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.</p>
-<h2>Learn More</h2>
-<p>You can learn more in the <a target="_blank" href="https://facebook.github.io/create-react-app/docs/getting-started">Create React App documentation</a>.</p>
-<p>To learn React, check out the <a target="_blank" href="https://reactjs.org/">React documentation</a>.</p>
-<h2>yarn global add parcel-bundler</h2>
-<p>and we also have to install parcel-bundler globally — it is used to bundle the files so that we can see live examples of our documented components:</p></article>
-    </section>
-
+</section>  
 
 
 

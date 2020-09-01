@@ -8,8 +8,23 @@ interface IMyState {
 }
 
 /**
- * Класс описывающий корневой компонент в котором
- * создается канвас и инициализируется three js
+ * -Класс описывающий корневой компонент в котором создается канвас и инициализируется three js
+ * @example
+ * import React from "react";
+ * import { Canvas, Camera, OrbitControl } from "./gengien";
+ * function App() {
+ *   return (
+ *     <div className={"exemple_app-wraper"}>
+ *       <Canvas enableVR={false} debug={true}>
+ *         <Camera>
+ *           <OrbitControl />
+ *         </Camera>
+ *       </Canvas>
+ *     </div>
+ *   );
+ * }
+ *
+ * export default App;
  * @class Canvas
  */
 class Canvas extends React.Component<ICanvasProps, IMyState> {
@@ -81,6 +96,8 @@ class Canvas extends React.Component<ICanvasProps, IMyState> {
   fullscreen: any;
   quadData: any;
   gammaFactor: any;
+  state: { ready: boolean };
+  props: any;
 
   constructor(props: ICanvasProps) {
     super(props);
@@ -211,14 +228,15 @@ class Canvas extends React.Component<ICanvasProps, IMyState> {
       enableShadows: this.enableShadows,
       debug: this.debug,
     };
+    let props = {
+      requiredPropertys: requiredPropertys
+    }
     if (ready) {
       const childrenWithProps = React.Children.map(
         this.props.children,
         (child) => {
           if (React.isValidElement(child)) {
-            return React.cloneElement(child, {
-              requiredPropertys: requiredPropertys,
-            });
+            return React.cloneElement(child, props);
           } else {
             return null;
           }

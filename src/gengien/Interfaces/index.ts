@@ -9,7 +9,7 @@ export interface ICanvasProps {
   debug?: boolean;
   gammaFactor?: number;
   clock?: any;
-  onLoadingProgress?: any
+  onLoadingProgress?: any;
 }
 export interface IAbstractCanvasProps extends ICanvasProps {
   canvasDomElement: HTMLElement;
@@ -74,13 +74,13 @@ export interface IPropsForCamera extends IRequiredPropertyForChildrens {
 }
 
 export interface IPropsCameraAbstract {
-  requiredPropertys: any;
-  zoomOrhoganal: any;
-  zoomPerspective: any;
-  position: any;
-  degreesToCameraPerspective: any;
-  aspect: any;
-  far: any;
-  near: any;
-  orthoganalEnable: any;
+  requiredPropertys?: any;
+  zoomOrhoganal?: any;
+  zoomPerspective?: any;
+  position?: any;
+  degreesToCameraPerspective?: any;
+  aspect?: any;
+  far?: any;
+  near?: any;
+  orthoganalEnable?: any;
 }

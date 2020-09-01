@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  WebGLRenderer,
   TextureLoader,
   RepeatWrapping,
   MeshBasicMaterial,
@@ -9,32 +8,16 @@ import {
 import { v4 } from "uuid";
 import { isEqual } from "lodash";
 import * as type from "../../Types";
+import {
+  IPropsAbstractObject,
+  IStateAbstractObject,
+} from "./interface/IAbstractObject";
 
-interface IPropsAbstractObject {
-  requiredPropertys?: {
-    addRenderCall: any;
-    canvasDomElement: HTMLElement;
-    canvasHeight: number | null;
-    canvasWidth: number | null;
-    debug: boolean | null;
-    effect: null | any;
-    enableQuadCamera: boolean | type.QuadCamera;
-    enableShadows: boolean;
-    enableVR: boolean;
-    getComponentByName: object | any;
-    getComponentByUuid: object | any;
-    onComponentInit: void | any;
-    onComponentReady: void | any;
-    renderer: WebGLRenderer;
-    scene: object | null | any;
-  };
-  name?: string | null;
-}
-
-interface IStateAbstractObject {
-  ready: boolean;
-}
-
+/**
+ * - используется для сборки абстрактных свойств объектов
+ * @class
+ * @protected
+ */
 export default abstract class AbstractObject extends React.Component<
   any,
   IStateAbstractObject,
@@ -70,6 +53,10 @@ export default abstract class AbstractObject extends React.Component<
    * @member visible
    */
   visible: boolean | null;
+
+  state: { ready: boolean };
+
+  // props: { requiredPropertys: any; } | undefined;
 
   constructor(props: any) {
     super(props);

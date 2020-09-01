@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>GEngien3D API Documentation</title>
+    
+    <meta name="description" content="Documentation for GEngien3D library" />
+    
+        <meta name="keywords" content="docs, documentation, three.js, three.js event system, GEngien3D, renderer, html5, javascript, jsdoc" />
+        <meta name="keyword" content="docs, documentation, three.js, three.js event system, GEngien3D, renderer, html5, javascript, jsdoc" />
+    
+    
+    
+    
+    <meta property="og:title" content=""/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:image" content=""/>
+    
+    <meta property="og:url" content=""/>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <script src="scripts/jquery.min.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link href="https://fonts.googleapis.com/css?family=Libre+Franklin:400,700" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/main.css">
+
+    
+    <script>
+    var config = {"monospaceLinks":false,"cleverLinks":false,"default":{"outputSourceFiles":true},"applicationName":"GEngien3D","footer":"Made with ♥ by PuhDWL","copyright":"GEngien3D Copyright © 2020 PuhDWL.","disqus":"","googleAnalytics":"UA-103772589-5","openGraph":{"title":"","type":"website","image":"","site_name":"","url":""},"meta":{"title":"GEngien3D API Documentation","description":"Documentation for GEngien3D library","keyword":"docs, documentation, three.js, three.js event system, GEngien3D, renderer, html5, javascript, jsdoc"},"linenums":true};
+    </script>
+    
+
+    
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', config.googleAnalytics]);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    
+</head>
+<body>
+<div id="wrap" class="clearfix">
+    
+<div class="navigation">
+    <h3 class="applicationName"><a href="index.html">GEngien3D</a></h3>
+    <button id="menuToggle" class="btn btn-link btn-lg menu-toggle">
+        <span class="glyphicon glyphicon-menu-hamburger"></span>
+    </button>
+    <div class="search">
+        <input id="search" type="text" class="form-control input-md" placeholder="Search...">
+    </div>
+    <ul class="list">
+    
+    
+        <li class="item" data-name="AbstractObject">
+            <span class="title  ">
+                
+                
+                    <a href="AbstractObject.html">AbstractObject</a>
+                
+            </span>
+            
+            <ul class="members itemMembers">
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="methods itemMembers">
+            
+            </ul>
+            
+            <ul class="events itemMembers">
+            
+            </ul>
+            
+        </li>
+    
+        <li class="item" data-name="Camera">
+            <span class="title  ">
+                
+                
+                    <a href="Camera.html">Camera</a>
+                
+            </span>
+            
+            <ul class="members itemMembers">
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="methods itemMembers">
+            
+            </ul>
+            
+            <ul class="events itemMembers">
+            
+            </ul>
+            
+        </li>
+    
+        <li class="item" data-name="Canvas">
+            <span class="title  ">
+                
+                
+                    <a href="Canvas.html">Canvas</a>
+                
+            </span>
+            
+            <ul class="members itemMembers">
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="methods itemMembers">
+            
+            </ul>
+            
+            <ul class="events itemMembers">
+            
+            </ul>
+            
+        </li>
+    
+        <li class="item" data-name="OrbitControl">
+            <span class="title  ">
+                
+                
+                    <a href="OrbitControl.html">OrbitControl</a>
+                
+            </span>
+            
+            <ul class="members itemMembers">
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="methods itemMembers">
+            
+            </ul>
+            
+            <ul class="events itemMembers">
+            
+            </ul>
+            
+        </li>
+    
+    </ul>
+</div>
+
+    <div class="main">
+        <h1 class="page-title" data-filename="Canvas.html">Class: Canvas</h1>
+        
+
+
+
+<section>
+    
+<header>
+    <div class="header content-size">
+        <h2>Canvas
+        </h2>
+        
+    </div>
+</header>  
+
+<article class="content-size">
+    
+        <div class="container-overview">
+        
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="Canvas">
+            <a class="share-icon" href="#Canvas"><span class="glyphicon glyphicon-link"></span></a>
+            <span class="">
+                new Canvas
+            </span>
+            <span class="signature">(<span class="optional">fullscreen</span>, <span class="optional">enableShadows</span>, <span class="optional">enableVR</span>, <span class="optional">enableQuadCamera</span>, <span class="optional">quadData</span>, debug, gammaFactor)</span>
+            
+            
+            
+            
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="Canvas_index.jsx.html#line2">index.jsx:2</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <ul>
+<li>Класс описывающий корневой компонент в котором создается канвас и инициализируется three js</li>
+</ul>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Default</th>
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>fullscreen</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">fullscreen</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                <p>устанавливает полноэкранный мод</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>enableShadows</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">enableShadows</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                <p>включает тени</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>enableVR</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">enableVR</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                <p>включит или выключит VR  мод</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>enableQuadCamera</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">enableQuadCamera</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    null
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                <p>включит или выключит 4-х камерный мод</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>quadData</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">quadData</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    null
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                <p>данные для 4-х камерного мода описывающие камеры</p>
+                
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Default</th>
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>leftUpCamera</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">quadData</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    { position:[], rotation: []}
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                </td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>rightUpCamera</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">quadData</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    { position:[], rotation: []}
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                </td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>leftLowerCamera</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">quadData</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    { position:[], rotation: []}
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                </td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>rightLowerCamera</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">quadData</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    { position:[], rotation: []}
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                </td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+            </td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>debug</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">debug</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                <p>для режима разработки позволяет управлять сценой и её объектами</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>gammaFactor</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">gammaFactor</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                <p>ваще хз =)</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+        <h5>Example</h5>
+        
+
+    
+    <pre class="prettyprint"><code>import React from "react";import { Canvas, Camera, OrbitControl } from "./gengien";function App() {  return (    <div className={"exemple_app-wraper"}>      <Canvas enableVR={false} debug={true}>        <Camera>          <OrbitControl />        </Camera>      </Canvas>    </div>  );}export default App;</code></pre>
+    
+
+    
+</dd>
+
+        
+        </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+</article>
+
+</section>  
+
+
+
+
+
+        
+
+        <footer class="content-size">
+            <div class="footer">
+                Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.5</a> on Tue Sep 01 2020 23:41:32 GMT+0300 (GMT+03:00)
+            </div>
+        </footer>
+    </div>
+</div>
+<script>prettyPrint();</script>
+<script src="scripts/main.js"></script>
+
+
+</body>
+</html>

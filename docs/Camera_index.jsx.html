@@ -188,55 +188,136 @@
 </div>
 
     <div class="main">
-        <h1 class="page-title" data-filename="index.html">Index</h1>
+        <h1 class="page-title" data-filename="Camera_index.jsx.html">Source: Camera/index.jsx</h1>
         
 
 
     
-
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-    
-
-
-
-
     <section>
-        <article class="readme content-size"><p>This project was bootstrapped with <a target="_blank" href="https://github.com/facebook/create-react-app">Create React App</a>.</p>
-<h2>Available Scripts</h2>
-<p>In the project directory, you can run:</p>
-<h3><code>yarn start</code></h3>
-<p>Runs the app in the development mode.<br />
-Open <a target="_blank" href="http://localhost:3000">http://localhost:3000</a> to view it in the browser.</p>
-<p>The page will reload if you make edits.<br />
-You will also see any lint errors in the console.</p>
-<h3><code>yarn test</code></h3>
-<p>Launches the test runner in the interactive watch mode.<br />
-See the section about <a target="_blank" href="https://facebook.github.io/create-react-app/docs/running-tests">running tests</a> for more information.</p>
-<h3><code>yarn build</code></h3>
-<p>Builds the app for production to the <code>build</code> folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.</p>
-<p>The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!</p>
-<p>See the section about <a target="_blank" href="https://facebook.github.io/create-react-app/docs/deployment">deployment</a> for more information.</p>
-<h3><code>yarn eject</code></h3>
-<p><strong>Note: this is a one-way operation. Once you <code>eject</code>, you can’t go back!</strong></p>
-<p>If you aren’t satisfied with the build tool and configuration choices, you can <code>eject</code> at any time. This command will remove the single build dependency from your project.</p>
-<p>Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except <code>eject</code> will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.</p>
-<p>You don’t have to ever use <code>eject</code>. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.</p>
-<h2>Learn More</h2>
-<p>You can learn more in the <a target="_blank" href="https://facebook.github.io/create-react-app/docs/getting-started">Create React App documentation</a>.</p>
-<p>To learn React, check out the <a target="_blank" href="https://reactjs.org/">React documentation</a>.</p>
-<h2>yarn global add parcel-bundler</h2>
-<p>and we also have to install parcel-bundler globally — it is used to bundle the files so that we can see live examples of our documented components:</p></article>
+        <header>
+            <div class="header content-size">
+                <h2>Camera/index.jsx</h2>
+            </div>
+        </header>
+        <article>
+            <pre id="source-code" class="prettyprint source linenums"><code>import Camera from "./Camera";
+/**
+ * - класс описывающий универсаную камеру на основе пропсов решает какой тип камеры будет использоватся
+ * @example
+ * import React from "react";
+ * import AbstractObject from "../AbstractObject";
+ * import CameraAbstract from "./CameraAbstract";
+ * import { IPropsForCamera } from "../../Interfaces";
+ * import CONST from "../../constants";
+ * import { v4 } from "uuid";
+ * class Camera extends AbstractObject {
+ *     constructor(props: IPropsForCamera) {
+ *       super(props);
+ *       this.state = {
+ *         ready: false,
+ *       };
+ *       this.obj = null;
+ *     }
+ *
+ *     componentDidMount() {
+ *       const {
+ *         requiredPropertys,
+ *         zoomOrhoganal = null,
+ *         zoomPerspective = null,
+ *         position = [0, 0, 0],
+ *         degreesToCameraPerspective,
+ *         aspect,
+ *         far,
+ *         near,
+ *         orthoganalEnable,
+ *         name = CONST.DATA_OBJECT_SCENE.MAIN_CAMERA.name,
+ *         uuid = v4(),
+ *       } = this.props;
+ *       this.initComponent(name, uuid);
+ *       const Camera = new CameraAbstract({
+ *         requiredPropertys,
+ *         zoomOrhoganal,
+ *         zoomPerspective,
+ *         position,
+ *         degreesToCameraPerspective,
+ *         aspect,
+ *         far,
+ *         near,
+ *         orthoganalEnable,
+ *       });
+ *       this.obj = Camera.obj;
+ *       this.addToScene(requiredPropertys.scene);
+ *       this.resize();
+ *       window.addEventListener("resize", this.resize);
+ *       this.readyComponent();
+ *       this.setState({
+ *         ready: true,
+ *       });
+ *     }
+ *
+ *     setZoom = (zoom: number | null) => {
+ *       if (!zoom) return;
+ *       this.obj.zoom = zoom;
+ *       this.obj.updateProjectionMatrix();
+ *     };
+ *
+ *     resize = () => {
+ *       const { fullscreen = true } = this.props;
+ *       if (fullscreen) {
+ *         this.obj.aspect = window.innerWidth / window.innerHeight;
+ *         this.obj.updateProjectionMatrix();
+ *       }
+ *     };
+ *
+ *     shouldComponentUpdate(nextProps: any) {
+ *       const { zoom } = this.props;
+ *       if (nextProps.zoom) {
+ *         if (zoom !== nextProps.zoom) {
+ *           this.setZoom(nextProps.zoom);
+ *         }
+ *       }
+ *       this.onPropsUpdate(this.props, nextProps);
+ *       return true;
+ *     }
+ *
+ *     render() {
+ *       const { ready } = this.state;
+ *       if (!ready) return null;
+ *       const childrenWithProps = React.Children.map(
+ *         this.props.children,
+ *         (child) => {
+ *           if (React.isValidElement(child)) {
+ *             return React.cloneElement(child, {
+ *               ...this.props,
+ *               camera: this.obj,
+ *             });
+ *           }
+ *         }
+ *       );
+ *
+ *       return &lt;>{childrenWithProps}&lt;/>;
+ *     }
+ *   }
+ *
+ *   export default Camera;
+ *
+ * @class Camera
+ *
+ *
+ * @param {zoomOrhoganal} zoomOrhoganal - устанавливает приближение для ортоганальной камеры
+ * @param {zoomPerspective} zoomPerspective - устанавливает приближение для перспективной камеры
+ * @param {position} position - установит позицию для камеры
+ * @param {degreesToCameraPerspective} degreesToCameraPerspective - устанавливает угол обзора
+ * @param {aspect} aspect - установит aspect для камеры
+ * @param {far} far - установит far для камеры
+ * @param {near} near - установит near для камеры
+ * @param {orthoganalEnable} orthoganalEnable - включает ортоганальную проекцию для камеры
+ * @param {name} name - не рекомендуется к изменению 
+ * @param {uuid} uuid - не рекомендуется к изменению 
+ */
+export default Camera;
+</code></pre>
+        </article>
     </section>
 
 
@@ -248,7 +329,7 @@ Your app is ready to be deployed!</p>
 
         <footer class="content-size">
             <div class="footer">
-                Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.5</a> on Tue Sep 01 2020 23:41:32 GMT+0300 (GMT+03:00)
+                Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.5</a> on Tue Sep 01 2020 23:41:32 GMT+0300 (GMT+03:00)
             </div>
         </footer>
     </div>

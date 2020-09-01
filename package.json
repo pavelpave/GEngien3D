@@ -1,5 +1,5 @@
 {
-  "name": "gengien",
+  "name": "Gengien3D",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -21,7 +21,7 @@
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1",
+    "react-scripts": "^3.4.3",
     "three": "^0.120.0",
     "typescript": "~3.7.2",
     "uuid": "^8.3.0"
