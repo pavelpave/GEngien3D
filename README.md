@@ -46,3 +46,7 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 ## yarn global add parcel-bundler
 and we also have to install parcel-bundler globally — it is used to bundle the files so that we can see live examples of our documented components:
+
+
+## docs
+documentations (https://github.com/pavelpave/GEngien3D/blob/master/docs/index.html)
