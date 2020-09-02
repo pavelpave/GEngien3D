@@ -64,6 +64,44 @@
     <ul class="list">
     
     
+        <li class="item" data-name="global">
+            <span class="title namespace ">
+                
+                <span class="namespaceTag">
+                    <span class="glyphicon glyphicon-globe"></span>
+                </span>
+                
+                
+                    <a href="global.html">Global</a>
+                
+            </span>
+            
+            <ul class="members itemMembers">
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li class="parent  " data-name="addEventCustomListener"><a href="global.html#addEventCustomListener">addEventCustomListener</a></li>
+            
+            </ul>
+            
+            <ul class="events itemMembers">
+            
+            </ul>
+            
+        </li>
+    
         <li class="item" data-name="AbstractObject">
             <span class="title  ">
                 
@@ -188,7 +226,7 @@
 </div>
 
     <div class="main">
-        <h1 class="page-title" data-filename="Canvas_index.jsx.html">Source: Canvas/index.jsx</h1>
+        <h1 class="page-title" data-filename="components_Camera_index.jsx.html">Source: components/Camera/index.jsx</h1>
         
 
 
@@ -196,44 +234,126 @@
     <section>
         <header>
             <div class="header content-size">
-                <h2>Canvas/index.jsx</h2>
+                <h2>components/Camera/index.jsx</h2>
             </div>
         </header>
         <article>
-            <pre id="source-code" class="prettyprint source linenums"><code>import Canvas from "./Canvas";
+            <pre id="source-code" class="prettyprint source linenums"><code>import Camera from "./Camera";
 /**
- * - Класс описывающий корневой компонент в котором создается канвас и инициализируется three js
+ * - класс описывающий универсаную камеру на основе пропсов решает какой тип камеры будет использоватся
  * @example
  * import React from "react";
- * import { Canvas, Camera, OrbitControl } from "./gengien";
- * function App() {
- *   return (
- *     &lt;div className={"exemple_app-wraper"}>
- *       &lt;Canvas enableVR={false} debug={true}>
- *         &lt;Camera>
- *           &lt;OrbitControl />
- *         &lt;/Camera>
- *       &lt;/Canvas>
- *     &lt;/div>
- *   );
- * }
+ * import AbstractObject from "../AbstractObject";
+ * import CameraAbstract from "./CameraAbstract";
+ * import { IPropsForCamera } from "../../Interfaces";
+ * import CONST from "../../constants";
+ * import { v4 } from "uuid";
+ * class Camera extends AbstractObject {
+ *     constructor(props: IPropsForCamera) {
+ *       super(props);
+ *       this.state = {
+ *         ready: false,
+ *       };
+ *       this.obj = null;
+ *     }
  *
- * export default App;
- * @class Canvas
+ *     componentDidMount() {
+ *       const {
+ *         requiredPropertys,
+ *         zoomOrhoganal = null,
+ *         zoomPerspective = null,
+ *         position = [0, 0, 0],
+ *         degreesToCameraPerspective,
+ *         aspect,
+ *         far,
+ *         near,
+ *         orthoganalEnable,
+ *         name = CONST.DATA_OBJECT_SCENE.MAIN_CAMERA.name,
+ *         uuid = v4(),
+ *       } = this.props;
+ *       this.initComponent(name, uuid);
+ *       const Camera = new CameraAbstract({
+ *         requiredPropertys,
+ *         zoomOrhoganal,
+ *         zoomPerspective,
+ *         position,
+ *         degreesToCameraPerspective,
+ *         aspect,
+ *         far,
+ *         near,
+ *         orthoganalEnable,
+ *       });
+ *       this.obj = Camera.obj;
+ *       this.addToScene(requiredPropertys.scene);
+ *       this.resize();
+ *       window.addEventListener("resize", this.resize);
+ *       this.readyComponent();
+ *       this.setState({
+ *         ready: true,
+ *       });
+ *     }
  *
- * @param {fullscreen} [fullscreen = false] - устанавливает полноэкранный мод
- * @param {enableShadows} [enableShadows = false] - включает тени
- * @param {enableVR} [enableVR = false] - включит или выключит VR  мод
- * @param {enableQuadCamera} [enableQuadCamera = null] - включит или выключит 4-х камерный мод
- * @param {quadData} [quadData = null] - данные для 4-х камерного мода описывающие камеры
- * @param {quadData} [quadData.leftUpCamera = { position:[], rotation: []}] 
- * @param {quadData} [quadData.rightUpCamera = { position:[], rotation: []}] 
- * @param {quadData} [quadData.leftLowerCamera = { position:[], rotation: []}] 
- * @param {quadData} [quadData.rightLowerCamera = { position:[], rotation: []}] 
- * @param {debug} debug - для режима разработки позволяет управлять сценой и её объектами
- * @param {gammaFactor} gammaFactor - ваще хз =)
+ *     setZoom = (zoom: number | null) => {
+ *       if (!zoom) return;
+ *       this.obj.zoom = zoom;
+ *       this.obj.updateProjectionMatrix();
+ *     };
+ *
+ *     resize = () => {
+ *       const { fullscreen = true } = this.props;
+ *       if (fullscreen) {
+ *         this.obj.aspect = window.innerWidth / window.innerHeight;
+ *         this.obj.updateProjectionMatrix();
+ *       }
+ *     };
+ *
+ *     shouldComponentUpdate(nextProps: any) {
+ *       const { zoom } = this.props;
+ *       if (nextProps.zoom) {
+ *         if (zoom !== nextProps.zoom) {
+ *           this.setZoom(nextProps.zoom);
+ *         }
+ *       }
+ *       this.onPropsUpdate(this.props, nextProps);
+ *       return true;
+ *     }
+ *
+ *     render() {
+ *       const { ready } = this.state;
+ *       if (!ready) return null;
+ *       const childrenWithProps = React.Children.map(
+ *         this.props.children,
+ *         (child) => {
+ *           if (React.isValidElement(child)) {
+ *             return React.cloneElement(child, {
+ *               ...this.props,
+ *               camera: this.obj,
+ *             });
+ *           }
+ *         }
+ *       );
+ *
+ *       return &lt;>{childrenWithProps}&lt;/>;
+ *     }
+ *   }
+ *
+ *   export default Camera;
+ *
+ * @class Camera
+ *
+ *
+ * @param {zoomOrhoganal} zoomOrhoganal - устанавливает приближение для ортоганальной камеры
+ * @param {zoomPerspective} zoomPerspective - устанавливает приближение для перспективной камеры
+ * @param {position} position - установит позицию для камеры
+ * @param {degreesToCameraPerspective} degreesToCameraPerspective - устанавливает угол обзора
+ * @param {aspect} aspect - установит aspect для камеры
+ * @param {far} far - установит far для камеры
+ * @param {near} near - установит near для камеры
+ * @param {orthoganalEnable} orthoganalEnable - включает ортоганальную проекцию для камеры
+ * @param {name} name - не рекомендуется к изменению 
+ * @param {uuid} uuid - не рекомендуется к изменению 
  */
-export default Canvas;
+export default Camera;
 </code></pre>
         </article>
     </section>
@@ -247,7 +367,7 @@ export default Canvas;
 
         <footer class="content-size">
             <div class="footer">
-                Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.5</a> on Tue Sep 01 2020 23:41:32 GMT+0300 (GMT+03:00)
+                Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.5</a> on Thu Sep 03 2020 00:02:33 GMT+0300 (GMT+03:00)
             </div>
         </footer>
     </div>

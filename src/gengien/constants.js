@@ -1,5 +1,8 @@
 export default {
   DATA_OBJECT_SCENE: {
+    BOX: {
+      name: "BOX_PRIMITIVE",
+    },
     ORBIT_CONTROLS: {
       name: "ORBIT_CONTROLS",
     },

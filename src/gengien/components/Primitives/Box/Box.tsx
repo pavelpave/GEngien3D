@@ -1,67 +1,65 @@
-import React from "react";
+import { BoxGeometry, MeshBasicMaterial, Mesh } from "three";
+import { addEventCustomListener } from "../../../utils";
+import AbstractCanvas from "../../AbstractObject";
+import CONST from "../../../constants";
+import { v4 } from "uuid";
 
-class Box extends React.Component {
-  // constructor(props: ) {
-  //     super();
-  //     this.timeOutControls = null;
-  //     this.state = {
-  //       objectScene: null,
-  //     };
-  //   }
-
+class Box extends AbstractCanvas {
+  
   componentWillUnmount() {
-    // const { objectScene } = this.state;
-    // if (objectScene !== null) {
-    //   objectScene.removeObject(objectScene.parent);
-    //   clearTimeout(this.timeOutControls);
-    // }
-  }
+    this.unmountObjectComponent();
+  }  
 
   componentDidMount() {
-    // const {
-    //   scene,
-    //   enableShadows,
-    //   scale = [2, 2, 2, 1, 1, 1],
-    //   color = "#ff001a",
-    //   position = [0, 0, 0],
-    //   rotation = [0, 0, 0],
-    //   callback = null,
-    //   parent = false,
-    //   material = null,
-    //   uuid = null,
-    //   customAttribute = {},
-    //   texture = null,
-    //   name = "Box",
-    // } = this.props;
-    // this.initComponent();
-    // let objectScene = new BoxAbstract({
-    //   scene,
-    //   enableShadows,
-    //   scale,
-    //   color,
-    //   material,
-    //   position,
-    //   rotation,
-    //   texture,
-    //   uuid,
-    //   customAttribute,
-    //   callback,
-    //   parent,
-    //   name,
-    // });
-    // this.obj = objectScene;
-    // this.setState({
-    //   objectScene: objectScene,
-    // });
-    // this.onPropsUpdate({}, this.props);
-    // this.timeOutControls = setTimeout(() => {
-    //   this.readyComponent();
-    // }, 1);
+    const {
+      requiredPropertys,
+      scale = [2, 2, 2],
+      color = "red",
+      position = [0, 0, 0],
+      rotation = [0, 0, 0],
+      callbacks = [],
+      parent = false,
+      material = {},
+      uuid = v4(),
+      customAttribute = {},
+      texture = null,
+      name = CONST.DATA_OBJECT_SCENE.BOX.name,
+    } = this.props;
+    const { scene, enableShadows } = requiredPropertys;
+    this.initComponent(name, uuid);
+    console.log(color)
+    const geometry = new BoxGeometry(...scale);
+    let objectMaterial = {
+      color: color,
+    };
+    if (material) {
+      objectMaterial = material;
+    } else {
+      this.setColor(color);
+    }
+    this.material = new MeshBasicMaterial(objectMaterial);
+    this.obj = new Mesh(geometry, this.material);
+    addEventCustomListener(this.obj, callbacks);
+    this.setPosition(position);
+    this.setRotation(rotation);
+    this.obj.name = name;
+    this.obj.castShadow = enableShadows;
+    this.obj.receiveShadow = enableShadows;
+    this.obj.uuid = uuid;
+    this.obj._customAttribute = customAttribute;
+    this.setColor(color);
+    if (texture) {
+      this.setTexture(texture);
+    }
+    if (parent) {
+      this.addToScene(parent);
+    } else {
+      this.addToScene(scene);
+    }
+    this.readyComponent();
   }
 
   render() {
-    // const { color } = this.props;
-    // this.setColor(color);
     return null;
   }
 }

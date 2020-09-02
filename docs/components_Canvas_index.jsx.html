@@ -64,6 +64,44 @@
     <ul class="list">
     
     
+        <li class="item" data-name="global">
+            <span class="title namespace ">
+                
+                <span class="namespaceTag">
+                    <span class="glyphicon glyphicon-globe"></span>
+                </span>
+                
+                
+                    <a href="global.html">Global</a>
+                
+            </span>
+            
+            <ul class="members itemMembers">
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li class="parent  " data-name="addEventCustomListener"><a href="global.html#addEventCustomListener">addEventCustomListener</a></li>
+            
+            </ul>
+            
+            <ul class="events itemMembers">
+            
+            </ul>
+            
+        </li>
+    
         <li class="item" data-name="AbstractObject">
             <span class="title  ">
                 
@@ -188,7 +226,7 @@
 </div>
 
     <div class="main">
-        <h1 class="page-title" data-filename="AbstractObject_index.jsx.html">Source: AbstractObject/index.jsx</h1>
+        <h1 class="page-title" data-filename="components_Canvas_index.jsx.html">Source: components/Canvas/index.jsx</h1>
         
 
 
@@ -196,36 +234,44 @@
     <section>
         <header>
             <div class="header content-size">
-                <h2>AbstractObject/index.jsx</h2>
+                <h2>components/Canvas/index.jsx</h2>
             </div>
         </header>
         <article>
-            <pre id="source-code" class="prettyprint source linenums"><code>import AbstractObject from "./AbstractObject";
+            <pre id="source-code" class="prettyprint source linenums"><code>import Canvas from "./Canvas";
 /**
- * 
- * - используется для сборки абстрактных свойств объектов получает доступ к абстрактным методам 
+ * - Класс описывающий корневой компонент в котором создается канвас и инициализируется three js
  * @example
- * class Camera extends AbstractObject {
- *  ...
+ * import React from "react";
+ * import { Canvas, Camera, OrbitControl } from "./gengien";
+ * function App() {
+ *   return (
+ *     &lt;div className={"exemple_app-wraper"}>
+ *       &lt;Canvas enableVR={false} debug={true}>
+ *         &lt;Camera>
+ *           &lt;OrbitControl />
+ *         &lt;/Camera>
+ *       &lt;/Canvas>
+ *     &lt;/div>
+ *   );
  * }
- * @class AbstractObject
- * @param {setTexture} setTexture - устанавливает текстуру на контекстный объект
- * @param {removeObject} removeObject - удалит контекстный объект со сцены
- * @param {getObject} getObject - получает текущий объект
- * @param {setColor} setColor - установит цвет на материалы контекстного объекта
- * @param {getPosition} getPosition - получает текущюю позицию объекта
- * @param {setRotation} setRotation - устанавливает {rotate} для объекта
- * @param {setPosition} setPosition - устанавливает {position} для объекта
- * @param {setScale} setScale - устанавливает {scale} для объекта
- * @param {setQuaternion} setQuaternion - устанавливает {quaternion} для объекта
- * @param {addToScene} addToScene - добавит контекстный объект на сцену
- * @param {initComponent} [options] - добавит контекстный объект в кол стек для дальнейшей работы с ним
- * @param {initComponent} [options.name = ""] - name
- * @param {initComponent} [options.uuid = ""] - uuid
- * @param {readyComponent} readyComponent - отправит в кол стек сообщение о том что контекстный элемент был добавлен на сцену
- * @param {readyComponent} readyComponent - отправит в кол стек сообщение о том что контекстный элемент был добавлен на сцену
+ *
+ * export default App;
+ * @class Canvas
+ *
+ * @param {fullscreen} [fullscreen = false] - устанавливает полноэкранный мод
+ * @param {enableShadows} [enableShadows = false] - включает тени
+ * @param {enableVR} [enableVR = false] - включит или выключит VR  мод
+ * @param {enableQuadCamera} [enableQuadCamera = null] - включит или выключит 4-х камерный мод
+ * @param {quadData} [quadData = null] - данные для 4-х камерного мода описывающие камеры
+ * @param {quadData} [quadData.leftUpCamera = { position:[], rotation: []}] 
+ * @param {quadData} [quadData.rightUpCamera = { position:[], rotation: []}] 
+ * @param {quadData} [quadData.leftLowerCamera = { position:[], rotation: []}] 
+ * @param {quadData} [quadData.rightLowerCamera = { position:[], rotation: []}] 
+ * @param {debug} debug - для режима разработки позволяет управлять сценой и её объектами
+ * @param {gammaFactor} gammaFactor - ваще хз =)
  */
-export default AbstractObject;
+export default Canvas;
 </code></pre>
         </article>
     </section>
@@ -239,7 +285,7 @@ export default AbstractObject;
 
         <footer class="content-size">
             <div class="footer">
-                Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.5</a> on Tue Sep 01 2020 23:41:32 GMT+0300 (GMT+03:00)
+                Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.5</a> on Thu Sep 03 2020 00:02:33 GMT+0300 (GMT+03:00)
             </div>
         </footer>
     </div>

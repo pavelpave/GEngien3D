@@ -78,12 +78,6 @@
             
             <ul class="members itemMembers">
             
-            <span class="subtitle">Members</span>
-            
-                <li class="parent " data-name="THREE"><a href="global.html#THREE">THREE</a></li>
-            
-                <li class="parent " data-name="THREE"><a href="global.html#THREE">THREE</a></li>
-            
             </ul>
             
             <ul class="typedefs itemMembers">
@@ -95,6 +89,10 @@
             </ul>
             
             <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li class="parent  " data-name="addEventCustomListener"><a href="global.html#addEventCustomListener">addEventCustomListener</a></li>
             
             </ul>
             
@@ -164,11 +162,71 @@
             
         </li>
     
+        <li class="item" data-name="Canvas">
+            <span class="title  ">
+                
+                
+                    <a href="Canvas.html">Canvas</a>
+                
+            </span>
+            
+            <ul class="members itemMembers">
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="methods itemMembers">
+            
+            </ul>
+            
+            <ul class="events itemMembers">
+            
+            </ul>
+            
+        </li>
+    
+        <li class="item" data-name="OrbitControl">
+            <span class="title  ">
+                
+                
+                    <a href="OrbitControl.html">OrbitControl</a>
+                
+            </span>
+            
+            <ul class="members itemMembers">
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="methods itemMembers">
+            
+            </ul>
+            
+            <ul class="events itemMembers">
+            
+            </ul>
+            
+        </li>
+    
     </ul>
 </div>
 
     <div class="main">
-        <h1 class="page-title" data-filename="Canvas_StereoEffect.js.html">Source: Canvas/StereoEffect.js</h1>
+        <h1 class="page-title" data-filename="components_AbstractObject_index.jsx.html">Source: components/AbstractObject/index.jsx</h1>
         
 
 
@@ -176,137 +234,36 @@
     <section>
         <header>
             <div class="header content-size">
-                <h2>Canvas/StereoEffect.js</h2>
+                <h2>components/AbstractObject/index.jsx</h2>
             </div>
         </header>
         <article>
-            <pre id="source-code" class="prettyprint source linenums"><code>/**
- * @author alteredq / http://alteredqualia.com/
- * @author mrdoob / http://mrdoob.com/
- * @author arodic / http://aleksandarrodic.com/
- * @author fonserbc / http://fonserbc.github.io/
- * @author samsy / http://samsy.ninja/
- * @author ivee-tech / http://editor.ivee.tech
- *
- * Off-axis stereoscopic effect based on http://paulbourke.net/stereographics/stereorender/
+            <pre id="source-code" class="prettyprint source linenums"><code>import AbstractObject from "./AbstractObject";
+/**
+ * 
+ * - используется для сборки абстрактных свойств объектов получает доступ к абстрактным методам 
+ * @example
+ * class Camera extends AbstractObject {
+ *  ...
+ * }
+ * @class AbstractObject
+ * @param {setTexture} setTexture - устанавливает текстуру на контекстный объект
+ * @param {removeObject} removeObject - удалит контекстный объект со сцены
+ * @param {getObject} getObject - получает текущий объект
+ * @param {setColor} setColor - установит цвет на материалы контекстного объекта
+ * @param {getPosition} getPosition - получает текущюю позицию объекта
+ * @param {setRotation} setRotation - устанавливает {rotate} для объекта
+ * @param {setPosition} setPosition - устанавливает {position} для объекта
+ * @param {setScale} setScale - устанавливает {scale} для объекта
+ * @param {setQuaternion} setQuaternion - устанавливает {quaternion} для объекта
+ * @param {addToScene} addToScene - добавит контекстный объект на сцену
+ * @param {initComponent} [options] - добавит контекстный объект в кол стек для дальнейшей работы с ним
+ * @param {initComponent} [options.name = ""] - name
+ * @param {initComponent} [options.uuid = ""] - uuid
+ * @param {readyComponent} readyComponent - отправит в кол стек сообщение о том что контекстный элемент был добавлен на сцену
+ * @param {readyComponent} readyComponent - отправит в кол стек сообщение о том что контекстный элемент был добавлен на сцену
  */
-
-let THREE = require('three')
-
-function StereoEffect (renderer) {
-  let scope = this
-  this.eyeSeparation = 3
-  this.focalLength = 15 	// Distance to the non-parallax or projection plane
-  Object.defineProperties(this, {
-    separation: {
-      get: function () {
-        return scope.eyeSeparation
-      },
-      set: function (value) {
-        console.warn('THREE.StereoEffect: .separation is now .eyeSeparation.')
-        scope.eyeSeparation = value
-      }
-    },
-    targetDistance: {
-      get: function () {
-        return scope.focalLength
-      },
-      set: function (value) {
-        console.warn('THREE.StereoEffect: .targetDistance is now .focalLength.')
-        scope.focalLength = value
-      }
-    }
-  })
-  // internals
-  let _width, _height
-  let _position = new THREE.Vector3()
-  let _quaternion = new THREE.Quaternion()
-  let _scale = new THREE.Vector3()
-  let _cameraL = new THREE.PerspectiveCamera()
-  let _cameraR = new THREE.PerspectiveCamera()
-  let _fov
-  let _outer, _inner, _top, _bottom
-  let _ndfl, _halfFocalWidth, _halfFocalHeight
-  let _innerFactor, _outerFactor
-
-  // initialization
-
-  renderer.autoClear = false
-
-  this.setSize = function (width, height) {
-    _width = width / 2
-    _height = height
-    renderer.setSize(width, height)
-  }
-
-  this.render = function (scene, camera) {
-    scene.updateMatrixWorld()
-    if (camera.parent === null) camera.updateMatrixWorld()
-    camera.matrixWorld.decompose(_position, _quaternion, _scale)
-    // Effective fov of the camera
-    _fov = THREE.Math.radToDeg(2 * Math.atan(Math.tan(THREE.Math.degToRad(camera.fov) * 0.5) / camera.zoom))
-    _ndfl = camera.near / this.focalLength
-    _halfFocalHeight = Math.tan(THREE.Math.degToRad(_fov) * 0.5) * this.focalLength
-    _halfFocalWidth = _halfFocalHeight * 0.5 * camera.aspect
-    _top = _halfFocalHeight * _ndfl
-    _bottom = -_top
-    _innerFactor = (_halfFocalWidth + this.eyeSeparation / 2.0) / (_halfFocalWidth * 2.0)
-    _outerFactor = 1.0 - _innerFactor
-    _outer = _halfFocalWidth * 2.0 * _ndfl * _outerFactor
-    _inner = _halfFocalWidth * 2.0 * _ndfl * _innerFactor
-
-    // left
-
-    _cameraL.projectionMatrix.makePerspective(
-      -_outer,
-      _inner,
-      _top,
-      _bottom,
-      camera.near,
-      camera.far
-    )
-    _cameraL.children = camera.children
-		_cameraL.name = 'cameraL'
-    _cameraL.position.copy(_position)
-    _cameraL.quaternion.copy(_quaternion)
-    _cameraL.translateX(-this.eyeSeparation / 2.0)
-
-    // right
-
-    _cameraR.projectionMatrix.makePerspective(
-      -_inner,
-      _outer,
-      _top,
-      _bottom,
-      camera.near,
-      camera.far
-    )
-    _cameraR.children = camera.children
-		_cameraR.name = 'cameraR'
-    _cameraR.position.copy(_position)
-    _cameraR.quaternion.copy(_quaternion)
-    _cameraR.translateX(this.eyeSeparation / 2.0)
-
-    renderer.clear()
-    renderer.setScissorTest(true)
-    renderer.setScissor(0, 0, _width, _height)
-    renderer.setViewport(0, 0, _width, _height)
-    renderer.render(scene, _cameraL)
-    renderer.setScissor(_width, 0, _width, _height)
-    renderer.setViewport(_width, 0, _width, _height)
-    renderer.render(scene, _cameraR)
-		renderer.cameraR = _cameraR
-		renderer.cameraL = _cameraL
-    renderer.setScissorTest(false)
-
-  }
-
-}
-
-StereoEffect.prototype = Object.create(THREE.EventDispatcher.prototype)
-StereoEffect.prototype.constructor = StereoEffect
-
-module.exports = StereoEffect
+export default AbstractObject;
 </code></pre>
         </article>
     </section>
@@ -320,7 +277,7 @@ module.exports = StereoEffect
 
         <footer class="content-size">
             <div class="footer">
-                Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.5</a> on Tue Sep 01 2020 23:04:56 GMT+0300 (GMT+03:00)
+                Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.5</a> on Thu Sep 03 2020 00:02:33 GMT+0300 (GMT+03:00)
             </div>
         </footer>
     </div>

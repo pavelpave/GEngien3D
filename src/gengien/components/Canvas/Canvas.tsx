@@ -160,7 +160,7 @@ class Canvas extends React.Component<ICanvasProps, IMyState> {
    * @member { function }
    */
   onComponentReady = (data: any) => {
-    const { name, uuid } = data;
+    const { uuid } = data;
     console.log("onComponentReady", this.components);
     const component = this.getComponentByName(data);
     if (component) {

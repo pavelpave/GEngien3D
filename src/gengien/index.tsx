@@ -4,7 +4,7 @@ import OrbitControl from './components/Controls/OrbitControl';
 // import DraggableFirstPersonControls from './components/controls/DraggableFirstPersonControls';
 // import VRFirstPersonControls from './components/controls/VRControls/VRFirstPersonControls';
 // import Raycast from './components/controls/Raycast';
-// import Box from "./components/primitives/Box";
+import Box from "./components/Primitives/Box";
 // import Sphere from "./components/primitives/Sphere";
 // import Cylinder from "./components/primitives/Cylinder";
 // import AmbientLight from "./components/lights/AmbientLight";
@@ -27,13 +27,13 @@ export {
   AbstractObject,
   Canvas,
   Camera,
-  OrbitControl
+  OrbitControl,
   // PerspectiveCamera,
   // OrbitControls,
   // DraggableFirstPersonControls,
   // VRFirstPersonControls,
   // Raycast,
-  // Box,
+  Box,
   // Sphere,F
   // Cylinder,
   // AmbientLight,

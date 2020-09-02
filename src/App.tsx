@@ -1,5 +1,5 @@
-import React from "react";
-import { Canvas, Camera, OrbitControl } from "./gengien";
+import React, { useState } from "react";
+import { Canvas, Camera, OrbitControl, Box } from "./gengien";
 
 /**
  *  * The interaction manager deals with mouse, touch and pointer events. Any DisplayObject can be interactive
@@ -20,16 +20,39 @@ import { Canvas, Camera, OrbitControl } from "./gengien";
  * }
  * @class App
  */
-function App() {
-  return (
-    <div className={"exemple_app-wraper"}>
-      <Canvas enableVR={false} debug={true}>
-        <Camera>
-          <OrbitControl />
-        </Camera>
-      </Canvas>
-    </div>
-  );
+
+interface IState {
+  color: string;
+}
+class App extends React.Component<any, IState, {}> {
+  constructor(props: any) {
+    super(props);
+    this.state = {
+      color: "red",
+    };
+  }
+
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({
+        color: "blue",
+      });
+    }, 5000);
+  }
+
+  render() {
+    const { color } = this.state;
+    return (
+      <div className={"exemple_app-wraper"}>
+        <Canvas enableVR={false} debug={true}>
+          <Camera>
+            <OrbitControl />
+          </Camera>
+          <Box color={color} />
+        </Canvas>
+      </div>
+    );
+  }
 }
 
 export default App;

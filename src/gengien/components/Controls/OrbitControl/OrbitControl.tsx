@@ -1,4 +1,3 @@
-import React from "react";
 import AbstractObject from "../../AbstractObject";
 import ThreeOrbitControls from "./ThreeOrbitControls";
 import CONST from "../../../constants";
@@ -11,14 +10,10 @@ interface IPropsOrbitControl {}
  * @class OrbitControl
  */
 class OrbitControl extends AbstractObject {
-  constructor(props: IPropsOrbitControl) {
-    super(props);
-  }
-
   componentDidMount() {
     const {
       requiredPropertys,
-      minDistance = 3,
+      minDistance = 5,
       maxDistance = 20,
       camera,
       name = CONST.DATA_OBJECT_SCENE.ORBIT_CONTROLS.name,

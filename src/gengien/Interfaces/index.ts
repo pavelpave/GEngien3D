@@ -84,3 +84,18 @@ export interface IPropsCameraAbstract {
   near?: any;
   orthoganalEnable?: any;
 }
+
+export interface IPropsForBox {
+  requiredPropertys?: any;
+  scale: [];
+  color: string;
+  position: [];
+  rotation: [];
+  callbacks: [];
+  parent: any;
+  material: {};
+  uuid: string;
+  customAttribute: {};
+  texture: string;
+  name: string;
+}

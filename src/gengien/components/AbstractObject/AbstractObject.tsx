@@ -8,10 +8,7 @@ import {
 import { v4 } from "uuid";
 import { isEqual } from "lodash";
 import * as type from "../../Types";
-import {
-  IPropsAbstractObject,
-  IStateAbstractObject,
-} from "./interface/IAbstractObject";
+import { IStateAbstractObject } from "./interface/IAbstractObject";
 
 /**
  * - используется для сборки абстрактных свойств объектов
@@ -70,6 +67,11 @@ export default abstract class AbstractObject extends React.Component<
       ready: false,
     };
   }
+
+  unmountObjectComponent = () => {
+    let parent = this.obj.parent;
+    if (parent) this.removeObject(parent);
+  };
   /**
    * - устанавливает текстуру на объект
    * @param texture
@@ -206,9 +208,9 @@ export default abstract class AbstractObject extends React.Component<
       scale,
       visible,
       intensity,
+      color,
       selectedMaterial = null,
     } = prevProps;
-
     if (nextProps.materials && this.obj !== null) {
       this.obj = this.obj.obj ? this.obj.obj : this.obj;
       if (this.obj !== undefined) {
@@ -255,6 +257,11 @@ export default abstract class AbstractObject extends React.Component<
         this.setScale(nextProps.scale);
       }
     }
+    if (nextProps.color) {
+      if (!color || !isEqual(color, nextProps.color)) {
+        this.setColor(nextProps.color);
+      }
+    }
     if (this.obj) {
       if (visible !== nextProps.visible) {
         this.obj.visible = nextProps.visible;
@@ -283,8 +290,4 @@ export default abstract class AbstractObject extends React.Component<
   componentDidUpdate(prevProps: any) {
     this.onPropsUpdate(prevProps, this.props);
   }
-
-  // render() {
-  //   return null;
-  // }
 }
