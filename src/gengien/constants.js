@@ -1,5 +1,8 @@
 export default {
   DATA_OBJECT_SCENE: {
+    PLANE: {
+      name: "PLANE_PRIMITIVE",
+    },
     BOX: {
       name: "BOX_PRIMITIVE",
     },

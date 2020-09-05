@@ -76,7 +76,7 @@ export default abstract class AbstractObject extends React.Component<
    * - устанавливает текстуру на объект
    * @param texture
    */
-  setTexture = (texture: string) => {
+  setTexture = (texture: string = "") => {
     let map = new TextureLoader().load(texture);
     map.wrapS = RepeatWrapping;
     map.wrapT = RepeatWrapping;
@@ -209,6 +209,7 @@ export default abstract class AbstractObject extends React.Component<
       visible,
       intensity,
       color,
+      texture,
       selectedMaterial = null,
     } = prevProps;
     if (nextProps.materials && this.obj !== null) {
@@ -261,6 +262,9 @@ export default abstract class AbstractObject extends React.Component<
       if (!color || !isEqual(color, nextProps.color)) {
         this.setColor(nextProps.color);
       }
+    }
+    if (!isEqual(nextProps.texture, texture)) {
+      this.setTexture(nextProps.texture);
     }
     if (this.obj) {
       if (visible !== nextProps.visible) {

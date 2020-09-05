@@ -1,6 +1,10 @@
 import React, { useState } from "react";
-import { Canvas, Camera, OrbitControl, Box } from "./gengien";
-
+import { Canvas, Camera, OrbitControl, Box, Plane } from "./gengien";
+import { urlTexture, urlTextureTwo } from "./test.js";
+interface IState {
+  color: string;
+  texture: string;
+}
 /**
  *  * The interaction manager deals with mouse, touch and pointer events. Any DisplayObject can be interactive
  * if its interactive parameter is set to true
@@ -20,35 +24,35 @@ import { Canvas, Camera, OrbitControl, Box } from "./gengien";
  * }
  * @class App
  */
-
-interface IState {
-  color: string;
-}
 class App extends React.Component<any, IState, {}> {
   constructor(props: any) {
     super(props);
     this.state = {
       color: "red",
+      texture: urlTexture,
     };
   }
 
   componentDidMount() {
     setTimeout(() => {
       this.setState({
-        color: "blue",
+        texture: urlTextureTwo,
       });
     }, 5000);
   }
 
   render() {
-    const { color } = this.state;
+    const { color, texture } = this.state;
+    console.log(texture)
     return (
       <div className={"exemple_app-wraper"}>
-        <Canvas enableVR={false} debug={true}>
+        <Canvas enableVR={false} debug={false}>
           <Camera>
             <OrbitControl />
           </Camera>
-          <Box color={color} />
+          {/* Тут сомнительная текстурка слабонервным не смотеть)))) */}
+          <Box color={color} texture={texture} />
+          <Plane color={color} texture={texture}/>
         </Canvas>
       </div>
     );

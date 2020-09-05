@@ -286,48 +286,342 @@
 </div>
 
     <div class="main">
-        <h1 class="page-title" data-filename="components_AbstractObject_index.jsx.html">Source: components/AbstractObject/index.jsx</h1>
+        <h1 class="page-title" data-filename="Box.html">Class: Box</h1>
         
 
 
-    
-    <section>
-        <header>
-            <div class="header content-size">
-                <h2>components/AbstractObject/index.jsx</h2>
-            </div>
-        </header>
-        <article>
-            <pre id="source-code" class="prettyprint source linenums"><code>import AbstractObject from "./AbstractObject";
-/**
- * 
- * - используется для сборки абстрактных свойств объектов получает доступ к абстрактным методам 
- * @example
- * class Camera extends AbstractObject {
- *  ...
- * }
- * @class AbstractObject
- * @param {setTexture} setTexture - устанавливает текстуру на контекстный объект
- * @param {removeObject} removeObject - удалит контекстный объект со сцены
- * @param {getObject} getObject - получает текущий объект
- * @param {setColor} setColor - установит цвет на материалы контекстного объекта
- * @param {getPosition} getPosition - получает текущюю позицию объекта
- * @param {setRotation} setRotation - устанавливает {rotate} для объекта
- * @param {setPosition} setPosition - устанавливает {position} для объекта
- * @param {setScale} setScale - устанавливает {scale} для объекта
- * @param {setQuaternion} setQuaternion - устанавливает {quaternion} для объекта
- * @param {addToScene} addToScene - добавит контекстный объект на сцену
- * @param {initComponent} [options] - добавит контекстный объект в кол стек для дальнейшей работы с ним
- * @param {initComponent} [options.name = ""] - name
- * @param {initComponent} [options.uuid = ""] - uuid
- * @param {readyComponent} readyComponent - отправит в кол стек сообщение о том что контекстный элемент был добавлен на сцену
- * @param {readyComponent} readyComponent - отправит в кол стек сообщение о том что контекстный элемент был добавлен на сцену
- */
-export default AbstractObject;
-</code></pre>
-        </article>
-    </section>
 
+<section>
+    
+<header>
+    <div class="header content-size">
+        <h2>Box
+        </h2>
+        
+    </div>
+</header>  
+
+<article class="content-size">
+    
+        <div class="container-overview">
+        
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="Box">
+            <a class="share-icon" href="#Box"><span class="glyphicon glyphicon-link"></span></a>
+            <span class="">
+                new Box
+            </span>
+            <span class="signature">(scale, position, rotation, callbacks, parent, material, uuid, customAttribute, texture, name)</span>
+            
+            
+            
+            
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="components_Primitives_Box_index.jsx.html#line2">index.jsx:2</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <ul>
+<li>Примитив BOX просто кубик)</li>
+</ul>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>scale</code></td>
+            
+            
+            <td class="type">
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>[scale = [ 2, 2, 2 ]] - отвечает за размер бокса принимает до 6 параметров числовых первые 3 параметра это высота ширина и глубина остальные отвечают за вершины</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>position</code></td>
+            
+            
+            <td class="type">
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>[position = [ 0, 0, 0 ]] - отвечает за размер бокса принимает 3 числовых значения координаты (x,y,z)</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>rotation</code></td>
+            
+            
+            <td class="type">
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>[rotation = [ 0, 0, 0 ]] - отвечает за поворот бокса принимает 3 числовых значения под капотом будет использовать градусы (x,y,z)</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>callbacks</code></td>
+            
+            
+            <td class="type">
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>[callbacks] - масив из события для данного объекта type: click, event: callback</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>parent</code></td>
+            
+            
+            <td class="type">
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>[parent] - это объект который служит заменой сцене при инициализации этогшо объекта это будущий родитель этого объекта</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>material</code></td>
+            
+            
+            <td class="type">
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>[material] - объект с материлами (с авто обновлением)</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>uuid</code></td>
+            
+            
+            <td class="type">
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>[uuid] - Не рекомендуется к изменению</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>customAttribute</code></td>
+            
+            
+            <td class="type">
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>[customAttribute] - Создаст поле в объекте коробки в котором будут лежать пользовательские данные _customAttribute</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>texture</code></td>
+            
+            
+            <td class="type">
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>[texture] - URL для текстуры ( под капотом будет использовать специальный текстур лоадер )</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+            
+            <td class="type">
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>[name] - Не рекомендуется к изменению</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+        <h5>Example</h5>
+        
+
+    
+    <pre class="prettyprint"><code>тут должен был быть jsx</code></pre>
+    
+
+    
+</dd>
+
+        
+        </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+</article>
+
+</section>  
 
 
 
@@ -337,7 +631,7 @@ export default AbstractObject;
 
         <footer class="content-size">
             <div class="footer">
-                Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.5</a> on Sat Sep 05 2020 19:33:33 GMT+0300 (GMT+03:00)
+                Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.5</a> on Sat Sep 05 2020 19:33:33 GMT+0300 (GMT+03:00)
             </div>
         </footer>
     </div>

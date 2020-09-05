@@ -16,6 +16,7 @@ import Box from "./components/Primitives/Box";
 // import Fog from "./components/effects/Fog";
 // import Screenshot from "./components/utils/Screenshot";
 import AbstractObject from "./components/AbstractObject";
+import Plane from './components/Primitives/Plane'
 // import Grid from "./components/objects/Grid";
 // import DragAndDropControl from './components/controls/DragAndDropControl'
 // import {HandlersCustomEvent} from './components/HandlersCustomEvent'
@@ -34,6 +35,7 @@ export {
   // VRFirstPersonControls,
   // Raycast,
   Box,
+  Plane,
   // Sphere,F
   // Cylinder,
   // AmbientLight,

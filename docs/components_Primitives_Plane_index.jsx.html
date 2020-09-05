@@ -286,7 +286,7 @@
 </div>
 
     <div class="main">
-        <h1 class="page-title" data-filename="components_AbstractObject_index.jsx.html">Source: components/AbstractObject/index.jsx</h1>
+        <h1 class="page-title" data-filename="components_Primitives_Plane_index.jsx.html">Source: components/Primitives/Plane/index.jsx</h1>
         
 
 
@@ -294,36 +294,35 @@
     <section>
         <header>
             <div class="header content-size">
-                <h2>components/AbstractObject/index.jsx</h2>
+                <h2>components/Primitives/Plane/index.jsx</h2>
             </div>
         </header>
         <article>
-            <pre id="source-code" class="prettyprint source linenums"><code>import AbstractObject from "./AbstractObject";
+            <pre id="source-code" class="prettyprint source linenums"><code>import Plane from "./Plane";
 /**
- * 
- * - используется для сборки абстрактных свойств объектов получает доступ к абстрактным методам 
+ * - Примитив PLANE просто кубик)
+ * @class Plane
  * @example
- * class Camera extends AbstractObject {
- *  ...
- * }
- * @class AbstractObject
- * @param {setTexture} setTexture - устанавливает текстуру на контекстный объект
- * @param {removeObject} removeObject - удалит контекстный объект со сцены
- * @param {getObject} getObject - получает текущий объект
- * @param {setColor} setColor - установит цвет на материалы контекстного объекта
- * @param {getPosition} getPosition - получает текущюю позицию объекта
- * @param {setRotation} setRotation - устанавливает {rotate} для объекта
- * @param {setPosition} setPosition - устанавливает {position} для объекта
- * @param {setScale} setScale - устанавливает {scale} для объекта
- * @param {setQuaternion} setQuaternion - устанавливает {quaternion} для объекта
- * @param {addToScene} addToScene - добавит контекстный объект на сцену
- * @param {initComponent} [options] - добавит контекстный объект в кол стек для дальнейшей работы с ним
- * @param {initComponent} [options.name = ""] - name
- * @param {initComponent} [options.uuid = ""] - uuid
- * @param {readyComponent} readyComponent - отправит в кол стек сообщение о том что контекстный элемент был добавлен на сцену
- * @param {readyComponent} readyComponent - отправит в кол стек сообщение о том что контекстный элемент был добавлен на сцену
+ * тут должен был быть jsx
+ *
+ * @param width [width = 10] - задает высоту для плоскости
+ * @param height [height = 10] - задает ширину для плоскости
+ * @param segments [segments = 10] - задает количество сегментов (полигонов) для плоскости 
+ * @param doubleSide [doubleSide = false] - включает или отключает двухсторонний режим
+ * @param pivot [pivot = false] - если не передан то по дефолту тут фолс если хотите задать пивот то задайте этому параметру масив координат
+ * @param visiblePivot [visiblePivot = false] - включает или отключает отображение "гвоздика"
+ * @param scale [scale = [ 2, 2, 2 ]] - отвечает за размер бокса принимает до 6 параметров числовых первые 3 параметра это высота ширина и глубина остальные отвечают за вершины
+ * @param position [position = [ 0, 0, 0 ]] - отвечает за размер бокса принимает 3 числовых значения координаты (x,y,z)
+ * @param rotation [rotation = [ 0, 0, 0 ]] - отвечает за поворот бокса принимает 3 числовых значения под капотом будет использовать градусы (x,y,z)
+ * @param callbacks [callbacks] - масив из события для данного объекта type: click, event: callback
+ * @param parent [parent] - это объект который служит заменой сцене при инициализации этогшо объекта это будущий родитель этого объекта
+ * @param material [material] - объект с материлами (с авто обновлением)
+ * @param uuid [uuid] - Не рекомендуется к изменению
+ * @param customAttribute [customAttribute] - Создаст поле в объекте коробки в котором будут лежать пользовательские данные _customAttribute
+ * @param texture [texture] - URL для текстуры ( под капотом будет использовать специальный текстур лоадер )
+ * @param name [name] - Не рекомендуется к изменению
  */
-export default AbstractObject;
+export default Plane;
 </code></pre>
         </article>
     </section>

@@ -286,7 +286,7 @@
 </div>
 
     <div class="main">
-        <h1 class="page-title" data-filename="OrbitControl.html">Class: OrbitControl</h1>
+        <h1 class="page-title" data-filename="Plane.html">Class: Plane</h1>
         
 
 
@@ -295,7 +295,7 @@
     
 <header>
     <div class="header content-size">
-        <h2>OrbitControl
+        <h2>Plane
         </h2>
         
     </div>
@@ -310,12 +310,12 @@
             
 <dt>
     <div class="nameContainer">
-        <h4 class="name" id="OrbitControl">
-            <a class="share-icon" href="#OrbitControl"><span class="glyphicon glyphicon-link"></span></a>
+        <h4 class="name" id="Plane">
+            <a class="share-icon" href="#Plane"><span class="glyphicon glyphicon-link"></span></a>
             <span class="">
-                new OrbitControl
+                new Plane
             </span>
-            <span class="signature">(<span class="optional">minDistance</span>, <span class="optional">maxDistance</span>, name, uuid)</span>
+            <span class="signature">(width, height, segments, doubleSide, pivot, visiblePivot, scale, position, rotation, callbacks, parent, material, uuid, customAttribute, texture, name)</span>
             
             
             
@@ -324,7 +324,7 @@
     
         
         <div class="tag-source">
-            <a href="components_Controls_OrbitControl_index.jsx.html#line2">index.jsx:2</a>
+            <a href="components_Primitives_Plane_index.jsx.html#line2">index.jsx:2</a>
         </div>
         
     </div>
@@ -333,6 +333,12 @@
 </dt>
 <dd>
     
+    
+    <div class="description">
+        <ul>
+<li>Примитив PLANE просто кубик)</li>
+</ul>
+    </div>
     
 
     
@@ -352,8 +358,6 @@
 		<th>Type</th>
 		
 		
-		<th>Default</th>
-		
 		
 		<th class="last">Description</th>
 	</tr>
@@ -364,104 +368,216 @@
 	
         <tr>
             
-                <td class="name"><code>minDistance</code></td>
+                <td class="name"><code>width</code></td>
             
             
             <td class="type">
             
-                
-<span class="param-type">minDistance</span>
-
-
-            
             </td>
             
-            
-                <td class="default">
-                
-                    3
-                
-                </td>
             
             
             <td class="description last">
                 
-                    
-                        <span class="optional">optional</span>
-                    
-                    
-                        
-                    
-                
-                <p>минимальная дистанция для отрисовки</p></td>
+                <p>[width = 10] - задает высоту для плоскости</p></td>
         </tr>
 	
 	
 	
         <tr>
             
-                <td class="name"><code>maxDistance</code></td>
+                <td class="name"><code>height</code></td>
             
             
             <td class="type">
             
-                
-<span class="param-type">maxDistance</span>
-
-
-            
             </td>
             
-            
-                <td class="default">
-                
-                    20
-                
-                </td>
             
             
             <td class="description last">
                 
-                    
-                        <span class="optional">optional</span>
-                    
-                    
-                        
-                    
-                
-                <p>максимальная дистанция для отрисовки</p></td>
+                <p>[height = 10] - задает ширину для плоскости</p></td>
         </tr>
 	
 	
 	
         <tr>
             
-                <td class="name"><code>name</code></td>
+                <td class="name"><code>segments</code></td>
             
             
             <td class="type">
             
-                
-<span class="param-type">name</span>
-
-
-            
             </td>
             
-            
-                <td class="default">
-                
-                </td>
             
             
             <td class="description last">
                 
-                    
-                    
-                        
-                    
+                <p>[segments = 10] - задает количество сегментов (полигонов) для плоскости</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>doubleSide</code></td>
+            
+            
+            <td class="type">
+            
+            </td>
+            
+            
+            
+            <td class="description last">
                 
-                <p>не рекомендуется к изменению</p></td>
+                <p>[doubleSide = false] - включает или отключает двухсторонний режим</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>pivot</code></td>
+            
+            
+            <td class="type">
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>[pivot = false] - если не передан то по дефолту тут фолс если хотите задать пивот то задайте этому параметру масив координат</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>visiblePivot</code></td>
+            
+            
+            <td class="type">
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>[visiblePivot = false] - включает или отключает отображение &quot;гвоздика&quot;</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>scale</code></td>
+            
+            
+            <td class="type">
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>[scale = [ 2, 2, 2 ]] - отвечает за размер бокса принимает до 6 параметров числовых первые 3 параметра это высота ширина и глубина остальные отвечают за вершины</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>position</code></td>
+            
+            
+            <td class="type">
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>[position = [ 0, 0, 0 ]] - отвечает за размер бокса принимает 3 числовых значения координаты (x,y,z)</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>rotation</code></td>
+            
+            
+            <td class="type">
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>[rotation = [ 0, 0, 0 ]] - отвечает за поворот бокса принимает 3 числовых значения под капотом будет использовать градусы (x,y,z)</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>callbacks</code></td>
+            
+            
+            <td class="type">
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>[callbacks] - масив из события для данного объекта type: click, event: callback</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>parent</code></td>
+            
+            
+            <td class="type">
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>[parent] - это объект который служит заменой сцене при инициализации этогшо объекта это будущий родитель этого объекта</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>material</code></td>
+            
+            
+            <td class="type">
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>[material] - объект с материлами (с авто обновлением)</p></td>
         </tr>
 	
 	
@@ -473,27 +589,67 @@
             
             <td class="type">
             
-                
-<span class="param-type">uuid</span>
-
-
-            
             </td>
             
-            
-                <td class="default">
-                
-                </td>
             
             
             <td class="description last">
                 
-                    
-                    
-                        
-                    
+                <p>[uuid] - Не рекомендуется к изменению</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>customAttribute</code></td>
+            
+            
+            <td class="type">
+            
+            </td>
+            
+            
+            
+            <td class="description last">
                 
-                <p>не рекомендуется к изменению</p></td>
+                <p>[customAttribute] - Создаст поле в объекте коробки в котором будут лежать пользовательские данные _customAttribute</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>texture</code></td>
+            
+            
+            <td class="type">
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>[texture] - URL для текстуры ( под капотом будет использовать специальный текстур лоадер )</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+            
+            <td class="type">
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>[name] - Не рекомендуется к изменению</p></td>
         </tr>
 	
 	
@@ -536,16 +692,11 @@
     
     
     
-        <h5>Examples</h5>
+        <h5>Example</h5>
         
 
     
-    <pre class="prettyprint"><code>function App() {  return (    <div className={"exemple_app-wraper"}>      <Canvas enableVR={false} debug={true}>        <Camera>          <OrbitControl />        </Camera>      </Canvas>    </div>  );}export default App;</code></pre>
-    
-
-
-    
-    <pre class="prettyprint"><code>class OrbitControl extends AbstractObject {  constructor(props: IPropsOrbitControl) {    super(props);  }  componentDidMount() {    const {      requiredPropertys,      minDistance = 3,      maxDistance = 20,      camera,      name = CONST.DATA_OBJECT_SCENE.ORBIT_CONTROLS.name,      uuid = v4(),      type = "",    } = this.props;    const { canvasDomElement } = requiredPropertys;    this.initComponent(name, uuid);    this.obj = new ThreeOrbitControls(camera, canvasDomElement, type);    this.obj.rotateSpeed = 0.3;    this.obj.zoomSpeed = 0.9;    this.obj.minDistance = minDistance;    this.obj.maxDistance = maxDistance;    this.name = name;    this.uuid = uuid;    this.readyComponent();  }  resize = () => {    const { fullscreen = true } = this.props;    if (fullscreen) {      this.obj.aspect = window.innerWidth / window.innerHeight;      this.obj.updateProjectionMatrix();    }  };  render() {    return null;  }}export default OrbitControl;</code></pre>
+    <pre class="prettyprint"><code>тут должен был быть jsx</code></pre>
     
 
     
@@ -555,12 +706,6 @@
         </div>
     
     
-    
-        <h3 class="subsection-title">Extends</h3>
-        
-        <ul>
-            <li><a href="AbstractObject.html">AbstractObject</a></li>
-        </ul>
     
     
     
