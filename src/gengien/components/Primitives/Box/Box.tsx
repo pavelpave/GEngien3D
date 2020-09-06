@@ -48,9 +48,6 @@ class Box extends AbstractCanvas {
     this.obj._customAttribute = customAttribute;
     this.setColor(color);
     this.setTexture(texture);
-    if (texture) {
-     
-    }
     if (parent) {
       this.addToScene(parent);
     } else {

@@ -1,55 +1,41 @@
 import Canvas from "./components/Canvas/Canvas";
 import Camera from "./components/Camera/Camera";
-import OrbitControl from './components/Controls/OrbitControl';
-// import DraggableFirstPersonControls from './components/controls/DraggableFirstPersonControls';
-// import VRFirstPersonControls from './components/controls/VRControls/VRFirstPersonControls';
-// import Raycast from './components/controls/Raycast';
+import OrbitControl from "./components/Controls/OrbitControl";
 import Box from "./components/Primitives/Box";
-// import Sphere from "./components/primitives/Sphere";
-// import Cylinder from "./components/primitives/Cylinder";
-// import AmbientLight from "./components/lights/AmbientLight";
-// import DirectionalLight from "./components/lights/DirectionalLight";
-// import SpotLight from "./components/lights/SpotLight";
-// import PointLight from "./components/lights/PointLight";
-// import GLTF from "./components/objects/GLTF";
-// import Sky from "./components/objects/Sky";
-// import Fog from "./components/effects/Fog";
-// import Screenshot from "./components/utils/Screenshot";
+import Plane from "./components/Primitives/Plane";
+import Cylinder from "./components/Primitives/Cylinder";
+import Line from "./components/Primitives/Line";
+import Sphere from "./components/Primitives/Sphere";
+import GLTF from "./components/Objects/GLTF";
+import OBJ from "./components/Objects/OBJ";
+import Grid from "./components/Objects/Grid";
+import GenericGroupObject from "./components/Objects/GenericGroupObject";
+import Sky from "./components/Objects/Sky";
 import AbstractObject from "./components/AbstractObject";
-import Plane from './components/Primitives/Plane'
-// import Grid from "./components/objects/Grid";
-// import DragAndDropControl from './components/controls/DragAndDropControl'
-// import {HandlersCustomEvent} from './components/HandlersCustomEvent'
-// import GenericGroupObject from './components/GenericGroupObject'
-// import OrthoganalControl from './components/controls/OrthoganalControl'
-// import Line from './components/primitives/Line'
+import {
+  AmbientLight,
+  DirectionalLight,
+  PointLight,
+  SpotLight,
+} from "./components/Lighting";
 
 export {
   AbstractObject,
   Canvas,
   Camera,
   OrbitControl,
-  // PerspectiveCamera,
-  // OrbitControls,
-  // DraggableFirstPersonControls,
-  // VRFirstPersonControls,
-  // Raycast,
   Box,
   Plane,
-  // Sphere,F
-  // Cylinder,
-  // AmbientLight,
-  // DirectionalLight,
-  // SpotLight,
-  // PointLight,
-  // GLTF,
-  // Sky,
-  // Fog,
-  // Screenshot,
-  // Grid,
-  // DragAndDropControl,
-  // HandlersCustomEvent,
-  // GenericGroupObject,
-  // OrthoganalControl,
-  // Line
+  Cylinder,
+  Line,
+  Sphere,
+  GLTF,
+  OBJ,
+  GenericGroupObject,
+  Grid,
+  Sky,
+  AmbientLight,
+  DirectionalLight,
+  PointLight,
+  SpotLight,
 };

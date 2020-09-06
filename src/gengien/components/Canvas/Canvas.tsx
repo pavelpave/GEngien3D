@@ -179,6 +179,7 @@ class Canvas extends React.Component<ICanvasProps, IMyState> {
       quadData = null,
       debug = false,
       gammaFactor = 1,
+      getScene = null,
     } = this.props;
     this.debug = debug;
     this.canvasDomElement = this.refCanvas.current;
@@ -204,6 +205,9 @@ class Canvas extends React.Component<ICanvasProps, IMyState> {
     this.enableQuadCamera = canvas.enableQuadCamera;
     this.effect = canvas.effect;
     this.addRenderCall = canvas.addRenderCall;
+    if (getScene) {
+      getScene(canvas.scene);
+    }
     this.setState({
       ready: true,
     });
@@ -229,8 +233,8 @@ class Canvas extends React.Component<ICanvasProps, IMyState> {
       debug: this.debug,
     };
     let props = {
-      requiredPropertys: requiredPropertys
-    }
+      requiredPropertys: requiredPropertys,
+    };
     if (ready) {
       const childrenWithProps = React.Children.map(
         this.props.children,

@@ -61,7 +61,7 @@ import OrbitControl from "./OrbitControl";
  * export default OrbitControl;
  * @class OrbitControl
  * @param {minDistance} [minDistance = 3] - минимальная дистанция для отрисовки
- * @param {maxDistance} [maxDistance = 20] - максимальная дистанция для отрисовки
+ * @param {maxDistance} [maxDistance = 200] - максимальная дистанция для отрисовки
  * @param {name} name - не рекомендуется к изменению
  * @param {uuid} uuid - не рекомендуется к изменению
  */

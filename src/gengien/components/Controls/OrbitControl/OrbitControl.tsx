@@ -14,7 +14,7 @@ class OrbitControl extends AbstractObject {
     const {
       requiredPropertys,
       minDistance = 5,
-      maxDistance = 20,
+      maxDistance = 200,
       camera,
       name = CONST.DATA_OBJECT_SCENE.ORBIT_CONTROLS.name,
       uuid = v4(),

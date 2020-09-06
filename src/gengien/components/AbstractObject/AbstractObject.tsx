@@ -8,6 +8,7 @@ import {
 import { v4 } from "uuid";
 import { isEqual } from "lodash";
 import * as type from "../../Types";
+import { checkRequiredProperty } from "../../utils";
 import { IStateAbstractObject } from "./interface/IAbstractObject";
 
 /**
@@ -69,8 +70,11 @@ export default abstract class AbstractObject extends React.Component<
   }
 
   unmountObjectComponent = () => {
-    let parent = this.obj.parent;
-    if (parent) this.removeObject(parent);
+    if (this.obj)
+      if (this.obj.parent) {
+        let parent = this.obj.parent;
+        if (parent) this.removeObject(parent);
+      }
   };
   /**
    * - устанавливает текстуру на объект
@@ -180,7 +184,9 @@ export default abstract class AbstractObject extends React.Component<
       this.name = name;
     }
     this.uuid = uuid ? uuid : v4();
-    requiredPropertys!.onComponentInit({
+    let propretys = checkRequiredProperty(requiredPropertys, this.props);
+    if (!propretys) return;
+    propretys!.onComponentInit({
       name: name,
       uuid: uuid,
     });
@@ -191,7 +197,9 @@ export default abstract class AbstractObject extends React.Component<
    */
   readyComponent = () => {
     const { requiredPropertys } = this.props;
-    requiredPropertys!.onComponentReady({
+    let propretys = checkRequiredProperty(requiredPropertys, this.props);
+    if (!propretys) return;
+    propretys!.onComponentReady({
       name: this.name,
       uuid: this.uuid,
     });
