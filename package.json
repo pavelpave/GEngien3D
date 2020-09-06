@@ -23,6 +23,7 @@
     "react-dom": "^16.13.1",
     "react-scripts": "^3.4.3",
     "three": "^0.120.0",
+    "three.interaction": "^0.2.3",
     "typescript": "~3.7.2",
     "uuid": "^8.3.0"
   },
@@ -31,7 +32,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "docs": "jsdoc -c jsdoc.conf.json -R README.md"
+    "docs": "jsdoc -c jsdoc.conf.json -R README.md",
+    "serve": "serve -s build"
   },
   "eslintConfig": {
     "extends": "react-app"

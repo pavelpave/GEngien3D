@@ -24,7 +24,12 @@ const getPropertysForGenericGroup = (props) => {
   }
   return false;
 };
-
+/**
+ * - проверит наличие обязательных данных для отрисовки
+ * @function checkRequiredProperty
+ * @param {*} requiredPropertys
+ * @param {*} props
+ */
 export const checkRequiredProperty = (requiredPropertys, props) => {
   if (!requiredPropertys) {
     return getPropertysForGenericGroup(props.children);
@@ -32,3 +37,5 @@ export const checkRequiredProperty = (requiredPropertys, props) => {
     return requiredPropertys;
   }
 };
+
+export const clearMemory = (scene, dragcontrols, transformControl) => {};

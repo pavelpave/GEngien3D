@@ -9,7 +9,9 @@ import {
   Line,
   Sphere,
   GLTF,
+  Raycaster,
   OBJ,
+  DragAndDropControl,
   Grid,
   GenericGroupObject,
   Sky,
@@ -84,6 +86,7 @@ class App extends React.Component<any, IState, {}> {
           debug={false}
         >
           <Camera position={[0, 20, 0]}>
+            <Raycaster />
             <OrbitControl />
             <Sky url={sky} />
           </Camera>
@@ -91,11 +94,22 @@ class App extends React.Component<any, IState, {}> {
           {/* <Sphere color={color} texture={texture} /> */}
           {/* <Plane color={color} texture={texture}/>
           <Cylinder color={color} texture={texture} position={[10,10,10]}/> */}
-          {/* <GLTF animation={animation} url={"/models/book/scene.gltf"} /> */}
-          <OBJ
+          <GLTF
+            callback={[
+              {
+                type: "click",
+                event: (e: any) => {
+                  console.log(e);
+                },
+              },
+            ]}
+            animation={animation}
+            url={"/models/book/scene.gltf"}
+          />
+          {/* <OBJ
             url={"/models/city/Center city Sci-Fi/Center City Sci-Fi.obj"}
             urlMLT={"/models/city/Center city Sci-Fi/Center_City_Sci-Fi.mtl"}
-          />
+          /> */}
           {/* <Grid /> */}
           <GenericComponentReactSruct />
           <DirectionalLight />

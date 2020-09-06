@@ -137,7 +137,7 @@ class GLTF extends AbstractObject {
         }
         this.addToScene(parent ? parent : scene);
         this.uuid = uuid;
-        this.obj._customAttribute = customAttribute
+        this.obj._customAttribute = customAttribute;
         this.obj.castShadow = enableShadows;
         this.obj.receiveShadow = enableShadows;
         this.mixer = new AnimationMixer(this.obj);

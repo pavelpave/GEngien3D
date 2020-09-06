@@ -1,5 +1,11 @@
 export default {
   DATA_OBJECT_SCENE: {
+    DRAG_CONTROL: {
+      name: "DRAG_CONTROLLER",
+    },
+    TRANSFORM_CONTROLLER: {
+      name: "TRANSFORM_CONTROLLER",
+    },
     GENERIC_GROUP: {
       name: "GENERIC_GROUP",
     },
