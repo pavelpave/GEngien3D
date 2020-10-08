@@ -21,7 +21,12 @@ import {
 } from "./gengien";
 import { urlTexture, urlTextureTwo } from "./testTexture.js";
 import GenericComponentReactSruct from "./GenericComponentReactSruct";
-
+import Bake from "./example/Bake";
+import Mountain from "./example/Mountain";
+import SchoolRom from "./example/SchoolRom";
+import Book from "./example/Book";
+import RenderStructure from "./gengien/components/mods/DevMode/GenerateGUI/components/Render-structure/RenderStructure";
+import DevMode from './gengien/components/mods'
 interface IState {
   color: string;
   texture: string;
@@ -76,7 +81,7 @@ class App extends React.Component<any, IState, {}> {
 
   render() {
     const { color, texture, sky, animation, linkToSceneObject } = this.state;
-    console.log(linkToSceneObject, "scene");
+    // console.log(linkToSceneObject, "scene");
     return (
       <div className={"exemple_app-wraper"}>
         <Canvas
@@ -89,30 +94,19 @@ class App extends React.Component<any, IState, {}> {
             <Raycaster />
             <OrbitControl />
             <Sky url={sky} />
+            <DevMode />
           </Camera>
-          {/* Тут сомнительная текстурка слабонервным не смотеть)))) */}
-          {/* <Sphere color={color} texture={texture} /> */}
-          {/* <Plane color={color} texture={texture}/>
-          <Cylinder color={color} texture={texture} position={[10,10,10]}/> */}
-          <GLTF
-            callback={[
-              {
-                type: "click",
-                event: (e: any) => {
-                  console.log(e);
-                },
-              },
-            ]}
-            animation={animation}
-            url={"/models/book/scene.gltf"}
-          />
+          <Book />
           {/* <OBJ
             url={"/models/city/Center city Sci-Fi/Center City Sci-Fi.obj"}
             urlMLT={"/models/city/Center city Sci-Fi/Center_City_Sci-Fi.mtl"}
           /> */}
           {/* <Grid /> */}
-          <GenericComponentReactSruct />
-          <DirectionalLight />
+          <Bake />
+          {/*<Mountain />*/}
+          {/*<GenericComponentReactSruct />*/}
+          <DirectionalLight color={'#696969'} position={[1, 1, 1]} />
+          {/*<SpotLight color={'#FF0000'} position={[1, 1, 1]} intensity={2} />*/}
         </Canvas>
       </div>
     );

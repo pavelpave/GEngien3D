@@ -1,3 +1,4 @@
+
 import Canvas from "./components/Canvas/Canvas";
 import Camera from "./components/Camera/Camera";
 import OrbitControl from "./components/Controls/OrbitControl";
@@ -14,6 +15,7 @@ import GenericGroupObject from "./components/Objects/GenericGroupObject";
 import Sky from "./components/Objects/Sky";
 import DragAndDropControl from "./components/Controls/DragAndDropControl";
 import AbstractObject from "./components/AbstractObject";
+import DevMode from './components/mods';
 import {
   AmbientLight,
   DirectionalLight,
@@ -42,4 +44,5 @@ export {
   DirectionalLight,
   PointLight,
   SpotLight,
+  DevMode,
 };

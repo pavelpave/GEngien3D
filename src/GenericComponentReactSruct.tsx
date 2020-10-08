@@ -1,5 +1,5 @@
 import React from "react";
-import { Sphere, GenericGroupObject } from "./gengien";
+import {Sphere, GenericGroupObject, GLTF, Canvas} from "./gengien";
 import { urlTexture } from "./testTexture.js";
 
 class GenericComponentReactSruct extends React.Component {
@@ -11,7 +11,11 @@ class GenericComponentReactSruct extends React.Component {
     const color = "red";
     return (
       <GenericGroupObject>
-        {/* <Sphere color={color} texture={texture} /> */}
+         <Sphere
+           color={color}
+           texture={texture}
+           posirion={[20, 0, 20]}
+         />
       </GenericGroupObject>
     );
   }

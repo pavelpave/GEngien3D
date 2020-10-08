@@ -1,12 +1,116 @@
+@import "~bootstrap/scss/bootstrap";
+
 body {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
-.exemple_app{
-    &-wraper{
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background-color: rgba($color: #b1b1b1, $alpha: 1.0);
+.exemple_app {
+  &-wraper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba($color: #b1b1b1, $alpha: 1.0);
+  }
+}
+button:active, input:active, input:focus, button:focus{
+  outline: none;
+}
+
+// devMode
+.display-dev-mode {
+  position: absolute;
+  top: 10px;
+  border-radius: 5px;
+  right: 26px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  width: 260px;
+  background: transparent;
+  border: 3px solid #fff;
+  z-index: 1;
+}
+.dev_mode{
+  position: absolute;
+  right: 0;
+  //background: #2F4F4F;
+  background: #708090;
+  height: 100%;
+  overflow-y: scroll;
+  max-width: 300px;
+  width: 300px;
+  transition: 0.5s;
+  &.show {
+    height: 100%;
+  }
+  &.hid {
+    height: 0;
+  }
+}
+.dev-mode {
+  color: #fff;
+  &-content {
+    margin-top: 4em;
+    padding: 10px;
+  }
+  &-folder{
+    display: flex;
+    align-items: center;
+    &-drop-image{
+      width: 17px;
+      height: 17px;
+      background-position: center;
+      background-size: 50%;
+      background-repeat: no-repeat;
+      transition: 0.5s;
+      &.active{
+        transform: rotate(0deg);
+      }
+      &.not-active{
+        transform: rotate(90deg);
+      }
     }
+    &-button{
+      text-align: left;
+      width: 100%;
+      background: transparent;
+      border: none;
+      margin: 5px 0;
+      &.not-active{
+        border-left: 3px solid #d3d3d3;
+        color: #fff;
+      }
+      &.active{
+        border-left: 3px solid #1E90FF;
+        color: #0C5DA5;
+      }
+    }
+    &-children{
+      margin-left: 15px;
+    }
+  }
+  &-fields{
+    border-radius: 5px;
+    padding: 10px;
+    &-wrapper{
+      display: flex;
+      align-items: center;
+    }
+    &-input{
+      height: 1.5em;
+      max-width: 50%;
+      margin-left: 10px;
+    }
+    &-checkbox{
+      width: 20px;
+      height: 20px;
+      margin-left: 10px;
+    }
+    &-number{
+      height: 1.5em;
+      max-width: 50%;
+      margin-left: 10px;
+    }
+  }
+
 }

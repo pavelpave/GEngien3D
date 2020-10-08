@@ -95,6 +95,7 @@ class GLTF extends AbstractObject {
     this.mixer = null;
     this.currentAnimation = null;
     this.clips = [];
+    // @ts-ignore
     this.loader = new GLTFLoader();
     this.loader.crossOrigin = true;
     this.loader.manager.onLoad = () => {
