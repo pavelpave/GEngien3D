@@ -7,7 +7,9 @@ const Folders = (props) => {
   const {
     name,
     id,
+    select,
     toggleDropDown,
+    selectObject,
     isOpen,
     children
   } = props
@@ -15,8 +17,10 @@ const Folders = (props) => {
     <>
       <Button
         open={isOpen}
-        onClick={() => toggleDropDown(id)}
+        chooseButton={selectObject}
+        toggle={toggleDropDown}
         id={id}
+        select={select}
         name={name}/>
       <Collapse className={'dev-mode-folder-children'} in={isOpen}>
         <div id={id}>

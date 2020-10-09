@@ -1,54 +1,76 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import RenderStructure from "./components/Render-structure";
-import {v4} from 'uuid'
+import { v4 } from 'uuid'
 
 
 class GUI extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      folder: [
-        {name: 'Обьекты сцены', id: v4(), isOpen: false, folders: []},
-        {name: 'Геометрия', id: v4(), isOpen: false, folders: []},
+      nodes: [
+        {
+          name: 'Обьекты сцены',
+          id: v4(),
+          isOpen: false,
+          type: 'folder',
+          childrens: [
+            {
+              name: 'name',
+              id: v4(),
+              isOpen: false,
+              isSelect: false,
+              childrens: [],
+              type: 'folder',
+            },
+            {
+              name: 'name',
+              id: v4(),
+              isOpen: false,
+              isSelect: false,
+              type: 'folder',
+              childrens: [
+                {
+                  name: 'name',
+                  id: v4(),
+                  isOpen: false,
+                  isSelect: false,
+                  childrens: [],
+                  type: 'folder',
+                }
+              ],
+            },
+          ],
+          isSelect: false},
+        {name: 'Геометрия', id: v4(), isOpen: false, childrens: [], isSelect: false, type: 'folder',},
         {
           name: 'Камера',
           id: v4(),
           isOpen: false,
-          folders: [
+          isSelect: false,
+          type: 'folder',
+          childrens: [
             {
               name: 'child',
               id: v4(),
               isOpen: false,
-              fields: [
-                {
-                  name: 'ffff',
-                  type: 'inp'
-                }
-              ],
-              folders: [
+              isSelect: false,
+              type: 'folder',
+              childrens: [
                 {
                   name: 'child1',
                   id: v4(),
                   isOpen: false,
-                  fields: [
-                    {
-                      name: 'gfsgdf',
-                      type: 'inp'
-                    }
-                  ],
-                  folders: [
+                  isSelect: false,
+                  type: 'folder',
+                  childrens: [
                     {
                       name: 'child ifdf',
                       id: v4(),
                       isOpen: false,
-                      fields: [ 
-                        {
-                        name: 'gsg',
-                        type: 'inp'
-                      }
-                      ],
-                      folders: []
+                      isSelect: false,
+                      type: 'folder',
+                      childrens: []
                     },
                   ]
                 },
@@ -56,8 +78,9 @@ class GUI extends React.Component {
                   name: 'child2',
                   id: v4(),
                   isOpen: false,
-                  fields: [],
-                  folders: []
+                  isSelect: false,
+                  type: 'folder',
+                  childrens: []
                 },
               ]
             },
@@ -65,36 +88,43 @@ class GUI extends React.Component {
               name: 'child3',
               id: v4(),
               isOpen: false,
-              fields: [],
-              folders: [],
+              isSelect: false,
+              type: 'folder',
+              childrens: [],
             }
           ]
         },
-        {name: 'Материалы', id: v4(), isOpen: false, folders: []},
+        {name: 'Материалы', id: v4(), isOpen: false, childrens: [], isSelect: false,type: 'folder',},
         {
           name: 'Объект',
           id: v4(),
           isOpen: false,
-          fields: [
-            {
-              name: 'aasd',
-              type: 'asdas',
-              id: v4()
-            }
-          ],
-          folders: [
+          isSelect: false,
+          type: 'folder',
+          childrens: [
             {
               name: 'Children',
               id: v4(),
               isOpen: false,
-              fields: [],
-              folders: [
+              isSelect: false,
+              type: 'folder',
+              childrens: [
                 {
                   name: 'Children1',
                   id: v4(),
                   isOpen: false,
-                  fields: [],
-                  folders: []
+                  isSelect: false,
+                  type: 'folder',
+                  childrens: [
+                    {
+                      name: 'Children12',
+                      id: v4(),
+                      isOpen: false,
+                      isSelect: false,
+                      type: 'field',
+                      childrens: []
+                    }
+                  ]
                 }
               ]
             }
@@ -104,22 +134,76 @@ class GUI extends React.Component {
     }
   }
 
+  allUnselected = () => {
+    const searchIsSelected = (node) => {
+      let cancel = node.map(el => {
+        if (el.isSelect === true) {
+          return (
+            {
+              ...el,
+              isSelect: false
+            }
+          )
+        } else {
+          if (el.childrens && el.childrens.length) {
+            let newItem = el
+            let newChild = searchIsSelected(el.childrens)
+            newItem.childrens = newChild
+            return newItem
+          }
+          return el
+        }
+      })
+      return cancel
+    }
+    return searchIsSelected(this.state.nodes)
+  }
+  selectObject = (id) =>{
+    const getSelected = (node) =>{
+      console.log(node)
+      let newSelected = node.map(el =>{
+        if(el.id === id){
+          return (
+            {
+              ...el,
+              isSelect: !el.isSelect
+            }
+          )
+        }else{
+          if(el.childrens && el.childrens.length){
+            let newItem = el
+            let newChild = getSelected(el.childrens)
+            newItem.childrens = newChild
+            return newItem
+          }
+          return el
+        }
+      })
+      return newSelected
+    }
+    let newSelected = getSelected(this.allUnselected())
+    this.setState({
+      nodes: newSelected
+    })
+  }
   toggleDropDown = (id) => {
-    const recurseSearchIsOpen = (node, parent = false) => {
+
+    const recurseSearchIsOpen = (node = []) => {
+
       let newFolder = node.map((item) => {
         if (item.id === id) {
          let newitem = {
             ...item,
-            isOpen: !item.isOpen,
+           isOpen: !item.isOpen,
           }
           return item = newitem
         } else {
-          let newItem = false
-          if (item.folders && item.folders.length) {
-            newItem = recurseSearchIsOpen(item.folders)
+          let newItem
+          if (item.childrens && item.childrens.length) {
+            newItem = recurseSearchIsOpen(item.childrens)
           }
           if(newItem) {
-            item.folders = newItem
+            item.childrens = newItem
             return  item
           }
           return item
@@ -127,15 +211,15 @@ class GUI extends React.Component {
       })
       return newFolder
     }
-    let newFolder = recurseSearchIsOpen(this.state.folder)
+    let newFolder = recurseSearchIsOpen(this.state.nodes)
     this.setState({
-      folder: newFolder
+      nodes: newFolder
     })
   }
 
   render() {
     return ReactDOM.createPortal(
-      <RenderStructure toggleDropDown={this.toggleDropDown} folders={this.state.folder}/>,
+      <RenderStructure selectObject={this.selectObject} toggleDropDown={this.toggleDropDown} folders={this.state.nodes}/>,
       document.querySelector('body')
     )
   }

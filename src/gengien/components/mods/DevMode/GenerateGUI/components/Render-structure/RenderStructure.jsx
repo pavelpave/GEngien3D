@@ -15,7 +15,7 @@ class RenderStructure extends React.Component {
     const {
       display,
     } = this.state
-    const {toggleDropDown, folders} = this.props
+    const {toggleDropDown, folders, selectObject} = this.props
     return (
       <>
         <button
@@ -27,13 +27,14 @@ class RenderStructure extends React.Component {
           <div className={'dev-mode'}>
             <div className={'dev-mode-content'}>
               <FoldersCreator
+                selectObject={selectObject}
                 propsFolders={folders}
                 toggleDropDown={toggleDropDown}
               />
-              <TextField name={'lrfsd'} id={2231321} helpText={'fdsfsdfds'} />
-              <CheckBox name={'ddd'} id={423423} />
-              <NumberField name={'ffddfsss'} id={56788} />
-              <ColorPicker />
+              {/*<TextField name={'lrfsd'} id={2231321} helpText={'fdsfsdfds'} />*/}
+              {/*<CheckBox name={'ddd'} id={423423} />*/}
+              {/*<NumberField name={'ffddfsss'} id={56788} />*/}
+              {/*<ColorPicker />*/}
             </div>
           </div>
         </div>

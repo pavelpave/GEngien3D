@@ -39,48 +39,41 @@ class DevMode extends AbstractObject {
       z: props.camera.position.z,
     };
     this.state = {
-      object: null,
+      nodes: [
+        {
+          name: 'Объекты сцены',
+          id: v4(),
+          type: 'objectScene',
+          isOpen: false,
+        },
+        {
+          name: 'Геометрия',
+          id: v4(),
+          type: 'geometry',
+          isOpen: false,
+        },
+        {
+          name: 'Камера',
+          id: v4(),
+          type: 'camera',
+          isOpen: false,
+        },
+        {
+          name: 'Материалы',
+          id: v4(),
+          type: 'material',
+          isOpen: false,
+        },
+        {
+          name: 'Объект',
+          id: v4(),
+          type: 'object',
+          isOpen: false,
+        }
+      ],
     };
   }
 
-  initialStructure = () => {
-    let defaultFolders = [
-      {
-        name: 'Объекты сцены',
-        id: v4(),
-        type: 'objectScene',
-        isOpen: false,
-      },
-      {
-        name: 'Геометрия',
-        id: v4(),
-        type: 'geometry',
-        isOpen: false,
-      },
-      {
-        name: 'Камера',
-        id: v4(),
-        type: 'camera',
-        isOpen: false,
-      },
-      {
-        name: 'Материалы',
-        id: v4(),
-        type: 'material',
-        isOpen: false,
-      },
-      {
-        name: 'Объект',
-        id: v4(),
-        type: 'object',
-        isOpen: false,
-      }
-    ]
-
-    this.setState = {
-      object: defaultFolders
-    }
-  }
   // createFieldsForChilds = () => {
   //   let {scene} = this.props.props.requiredPropertys;
   //   /**
@@ -159,26 +152,28 @@ class DevMode extends AbstractObject {
   //   checkChilden(scene);
   // };
 
-  // addFolderForObjectScene = (node, id, name, type) => {
-  //   node.map(item => {
-  //     if (item.type === 'objectScene') {
-  //       item.folder.push({
-  //         name: name,
-  //         id: id,
-  //         type: type,
-  //         isOpen: false,
-  //         isSelect: false,
-  //       })
-  //     }
-  //   })
+
+
+  // addObjectScene = (arr) =>{
+  //
+  //   this.setState({object: newState})
   // }
 
+
   createObjects = (scene) => {
-    const newArr = [];
-    let folder = [];
+    const folder = []
     const checkChildren = (node) => {
       node.map(item => {
-        if (item.children && item.children.length) {
+        if (item.children && item.length) {
+          folder.push({
+            name: item.name,
+            id: item.uuid,
+            isOpen: false,
+            isSelect: false,
+            type: 'folder',
+          })
+          checkChildren(item.children)
+        } else {
           folder.push({
             name: item.name,
             id: item.uuid,
@@ -186,20 +181,23 @@ class DevMode extends AbstractObject {
             isSelect: false,
             type: item.type,
           })
-          checkChildren(item.children)
+          return item
         }
       })
+      // this.addObjectScene(folder)
     }
-    checkChildren(scene)
-    console.log(folder)
+    let newState = checkChildren(scene)
+    this.setState({
+      nodes: newState
+    })
   }
 
   componentDidMount() {
-    this.initialStructure()
     this.createObjects(this.props.requiredPropertys.scene.children)
   }
 
   render() {
+    console.log(this.state.object)
     console.log(this.props.requiredPropertys.scene)
     return (
       <>

@@ -56,6 +56,9 @@ button:active, input:active, input:focus, button:focus{
   &-folder{
     display: flex;
     align-items: center;
+    &.active{
+      background: #CD5C5C;
+    }
     &-drop-image{
       width: 17px;
       height: 17px;
@@ -86,7 +89,7 @@ button:active, input:active, input:focus, button:focus{
       }
     }
     &-children{
-      margin-left: 15px;
+      margin-left: 10px;
     }
   }
   &-fields{
