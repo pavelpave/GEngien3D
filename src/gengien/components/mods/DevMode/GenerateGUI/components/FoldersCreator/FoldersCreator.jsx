@@ -13,9 +13,9 @@ const FoldersCreator = ({propsFolders = [], toggleDropDown, selectObject}) => {
         name={el.name}
         isOpen={el.isOpen}>
         {
-          el.type === 'folder' ?
+          el.type !== 'field' ?
             (
-              <FoldersCreator key={i} selectObject={selectObject} toggleDropDown={toggleDropDown} propsFolders={el.childrens}/>
+              <FoldersCreator key={i} selectObject={selectObject} toggleDropDown={toggleDropDown} propsFolders={el.children}/>
             ) : (
               <div>
                 {el.name}

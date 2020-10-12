@@ -30,7 +30,6 @@ import DevMode from './gengien/components/mods'
 interface IState {
   color: string;
   texture: string;
-  animation: object;
   sky: string;
   linkToSceneObject: any;
 }
@@ -60,7 +59,6 @@ class App extends React.Component<any, IState, {}> {
       color: "red",
       sky: "/assets/sky2.jpg",
       texture: urlTexture,
-      animation: { clipName: "Take 001" },
       linkToSceneObject: null,
     };
   }
@@ -80,7 +78,7 @@ class App extends React.Component<any, IState, {}> {
   }
 
   render() {
-    const { color, texture, sky, animation, linkToSceneObject } = this.state;
+    const { color, texture, sky, linkToSceneObject } = this.state;
     // console.log(linkToSceneObject, "scene");
     return (
       <div className={"exemple_app-wraper"}>

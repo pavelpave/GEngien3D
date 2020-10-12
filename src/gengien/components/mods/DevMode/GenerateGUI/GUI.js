@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import RenderStructure from "./components/Render-structure";
-import { v4 } from 'uuid'
+import {v4} from 'uuid'
 
 
 class GUI extends React.Component {
@@ -14,13 +14,13 @@ class GUI extends React.Component {
           id: v4(),
           isOpen: false,
           type: 'folder',
-          childrens: [
+          children: [
             {
               name: 'name',
               id: v4(),
               isOpen: false,
               isSelect: false,
-              childrens: [],
+              children: [],
               type: 'folder',
             },
             {
@@ -29,48 +29,49 @@ class GUI extends React.Component {
               isOpen: false,
               isSelect: false,
               type: 'folder',
-              childrens: [
+              children: [
                 {
                   name: 'name',
                   id: v4(),
                   isOpen: false,
                   isSelect: false,
-                  childrens: [],
+                  children: [],
                   type: 'folder',
                 }
               ],
             },
           ],
-          isSelect: false},
-        {name: 'Геометрия', id: v4(), isOpen: false, childrens: [], isSelect: false, type: 'folder',},
+          isSelect: false
+        },
+        {name: 'Геометрия', id: v4(), isOpen: false, children: [], isSelect: false, type: 'folder',},
         {
           name: 'Камера',
           id: v4(),
           isOpen: false,
           isSelect: false,
           type: 'folder',
-          childrens: [
+          children: [
             {
               name: 'child',
               id: v4(),
               isOpen: false,
               isSelect: false,
               type: 'folder',
-              childrens: [
+              children: [
                 {
                   name: 'child1',
                   id: v4(),
                   isOpen: false,
                   isSelect: false,
                   type: 'folder',
-                  childrens: [
+                  children: [
                     {
                       name: 'child ifdf',
                       id: v4(),
                       isOpen: false,
                       isSelect: false,
                       type: 'folder',
-                      childrens: []
+                      children: []
                     },
                   ]
                 },
@@ -80,7 +81,7 @@ class GUI extends React.Component {
                   isOpen: false,
                   isSelect: false,
                   type: 'folder',
-                  childrens: []
+                  children: []
                 },
               ]
             },
@@ -90,39 +91,39 @@ class GUI extends React.Component {
               isOpen: false,
               isSelect: false,
               type: 'folder',
-              childrens: [],
+              children: [],
             }
           ]
         },
-        {name: 'Материалы', id: v4(), isOpen: false, childrens: [], isSelect: false,type: 'folder',},
+        {name: 'Материалы', id: v4(), isOpen: false, children: [], isSelect: false, type: 'folder',},
         {
           name: 'Объект',
           id: v4(),
           isOpen: false,
           isSelect: false,
           type: 'folder',
-          childrens: [
+          children: [
             {
               name: 'Children',
               id: v4(),
               isOpen: false,
               isSelect: false,
               type: 'folder',
-              childrens: [
+              children: [
                 {
                   name: 'Children1',
                   id: v4(),
                   isOpen: false,
                   isSelect: false,
                   type: 'folder',
-                  childrens: [
+                  children: [
                     {
                       name: 'Children12',
                       id: v4(),
                       isOpen: false,
                       isSelect: false,
                       type: 'field',
-                      childrens: []
+                      children: []
                     }
                   ]
                 }
@@ -131,6 +132,7 @@ class GUI extends React.Component {
           ]
         },
       ],
+      id: null,
     }
   }
 
@@ -145,10 +147,10 @@ class GUI extends React.Component {
             }
           )
         } else {
-          if (el.childrens && el.childrens.length) {
+          if (el.children && el.children.length) {
             let newItem = el
-            let newChild = searchIsSelected(el.childrens)
-            newItem.childrens = newChild
+            let newChild = searchIsSelected(el.children)
+            newItem.children = newChild
             return newItem
           }
           return el
@@ -158,22 +160,21 @@ class GUI extends React.Component {
     }
     return searchIsSelected(this.state.nodes)
   }
-  selectObject = (id) =>{
-    const getSelected = (node) =>{
-      console.log(node)
-      let newSelected = node.map(el =>{
-        if(el.id === id){
+  selectObject = (id) => {
+    const getSelected = (node) => {
+      let newSelected = node.map(el => {
+        if (el.id === id) {
           return (
             {
               ...el,
               isSelect: !el.isSelect
             }
           )
-        }else{
-          if(el.childrens && el.childrens.length){
+        } else {
+          if (el.children && el.children.length) {
             let newItem = el
-            let newChild = getSelected(el.childrens)
-            newItem.childrens = newChild
+            let newChild = getSelected(el.children)
+            newItem.children = newChild
             return newItem
           }
           return el
@@ -181,30 +182,35 @@ class GUI extends React.Component {
       })
       return newSelected
     }
-    let newSelected = getSelected(this.allUnselected())
-    this.setState({
-      nodes: newSelected
-    })
+    const checkSelect = (id !== this.state.id)
+      ?
+      this.setState({
+        nodes: getSelected(this.allUnselected(id)),
+        id: id
+      })
+      :
+      this.setState({
+        nodes: getSelected(this.state.nodes),
+        id: null
+      })
   }
   toggleDropDown = (id) => {
-
     const recurseSearchIsOpen = (node = []) => {
-
       let newFolder = node.map((item) => {
         if (item.id === id) {
-         let newitem = {
+          let newitem = {
             ...item,
-           isOpen: !item.isOpen,
+            isOpen: !item.isOpen,
           }
           return item = newitem
         } else {
           let newItem
-          if (item.childrens && item.childrens.length) {
-            newItem = recurseSearchIsOpen(item.childrens)
+          if (item.children && item.children.length) {
+            newItem = recurseSearchIsOpen(item.children)
           }
-          if(newItem) {
-            item.childrens = newItem
-            return  item
+          if (newItem) {
+            item.children = newItem
+            return item
           }
           return item
         }
@@ -217,9 +223,21 @@ class GUI extends React.Component {
     })
   }
 
+  initialState = () => {
+    const {nodes} = this.props.scene
+    this.setState({
+      nodes: nodes
+    })
+  }
+
+  componentDidMount() {
+    this.initialState()
+  }
+
   render() {
     return ReactDOM.createPortal(
-      <RenderStructure selectObject={this.selectObject} toggleDropDown={this.toggleDropDown} folders={this.state.nodes}/>,
+      <RenderStructure selectObject={this.selectObject} toggleDropDown={this.toggleDropDown}
+                       folders={this.state.nodes}/>,
       document.querySelector('body')
     )
   }

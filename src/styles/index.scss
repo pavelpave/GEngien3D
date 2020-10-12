@@ -57,7 +57,7 @@ button:active, input:active, input:focus, button:focus{
     display: flex;
     align-items: center;
     &.active{
-      background: #CD5C5C;
+      background: #4a5661;
     }
     &-drop-image{
       width: 17px;
@@ -85,7 +85,7 @@ button:active, input:active, input:focus, button:focus{
       }
       &.active{
         border-left: 3px solid #1E90FF;
-        color: #0C5DA5;
+        color: #fff;
       }
     }
     &-children{
@@ -95,6 +95,9 @@ button:active, input:active, input:focus, button:focus{
   &-fields{
     border-radius: 5px;
     padding: 10px;
+    &-color{
+      text-align: center;
+    }
     &-wrapper{
       display: flex;
       align-items: center;
@@ -115,5 +118,17 @@ button:active, input:active, input:focus, button:focus{
       margin-left: 10px;
     }
   }
-
+  &-button{
+    border: 1px solid #fff;
+    background: transparent;
+    width: 225px;
+    margin: 5px auto;
+    text-align: center;
+    color: #fff;
+    border-radius: 5px;
+  }
+}
+.chrome-picker{
+  position: absolute;
+  left: 30px;
 }

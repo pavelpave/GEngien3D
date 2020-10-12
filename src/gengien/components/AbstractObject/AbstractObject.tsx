@@ -94,6 +94,7 @@ export default abstract class AbstractObject extends React.Component<
   };
   /**
    * - удалаяет объект @member obj
+   * todo: add removed object in stack
    * @param parent
    */
   removeObject = (parent: any) => {

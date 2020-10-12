@@ -45,163 +45,120 @@ class DevMode extends AbstractObject {
           id: v4(),
           type: 'objectScene',
           isOpen: false,
+          children: [],
         },
         {
           name: 'Геометрия',
           id: v4(),
           type: 'geometry',
           isOpen: false,
+          children: [],
         },
         {
           name: 'Камера',
           id: v4(),
           type: 'camera',
           isOpen: false,
+          children: [],
         },
         {
           name: 'Материалы',
           id: v4(),
           type: 'material',
           isOpen: false,
+          children: [],
         },
         {
           name: 'Объект',
           id: v4(),
           type: 'object',
           isOpen: false,
+          children: [],
         }
-      ],
-    };
+      ]
+    }
+  }
+  addFolder = (name, idParent ) =>{
+    let newFolder = this.state.nodes
+    let isParent = false
+   const recurseCheckParent = (node) =>{
+
+    }
+
+    if(!isParent){
+
+    }
+  }
+  addFielder = () =>{
+
   }
 
-  // createFieldsForChilds = () => {
-  //   let {scene} = this.props.props.requiredPropertys;
-  //   /**
-  //    * принимает контейнер для полей и папок и создаст поле
-  //    * @param {*} nodeForFolder
-  //    * @param {*} param1
-  //    */
-  //   const addFieldForFolder = (nodeForFolder, {name, id, uuid}) => {
-  //     name = name ? `${name}---${uuid}` : `name Not found ${uuid.v4()}`;
-  //     let propertyForThisNode = {
-  //       [name]: false,
-  //     };
-  //     nodeForFolder.add(propertyForThisNode, name).onChange((e) => {
-  //       if (e) {
-  //         let object = scene.getObjectByProperty("uuid", uuid);
-  //         console.log(object);
-  //         if (name !== "CameraHelper") {
-  //           this.updateGUI(object)
-  //         }
+  // addNodesFolder = (node, item) => {
+  //   const recurseAddFolder = (node) => {
+  //     const structureObjectScene = node.map(el => {
+  //       if (el.children && el.children.length) {
+  //         item.node = [{
+  //           name: el.name,
+  //           isOpen: false,
+  //           isSelect: false,
+  //           id: el.id,
+  //           type: 'folder',
+  //           children: []
+  //         }]
+  //         recurseAddFolder(el.children)
+  //         return item
+  //       } else {
+  //         return (
+  //           {
+  //             ...item.node,
+  //             name: el.name,
+  //             isOpen: false,
+  //             isSelect: false,
+  //             id: el.id,
+  //             type: 'folder',
+  //             children: []
+  //           })
   //       }
-  //     });
-  //   };
-  //   /**
-  //    * принимает контeйнер для папки и создает её
-  //    * @param {*} nodeForFolder
-  //    * @param {*} param1
-  //    */
-  //   const addFolderForParentNode = (nodeForFolder, {name, id, uuid}) => {
-  //     let newFolder = nodeForFolder.addFolder(`${name}--${uuid}`);
-  //     return newFolder;
-  //   };
-  //   /**
-  //    * рекурсивный метод который пробегается по детям сцены и создает для каждой ноды у которой есть дети папку с детьми
-  //    * @param {*} node
-  //    * @param {*} containerFolder
-  //    */
-  //   const checkChilden = (node, containerFolder) => {
-  //     // дефолтный фолдер
-  //     let folderContainer = this.childsFolder;
-  //     if (node.name === "transformControler") {
-  //       return false;
-  //     }
-  //     // проверка естьли дети у сцены
-  //     if (node.children.length) {
-  //       // проверка на обновление фолдра обновление происходит из-за рекурсии и в нем может изменится контейнер для полей
-  //       if (containerFolder) {
-  //         folderContainer = containerFolder;
-  //       }
-  //       // создаст папку и вернет её для дальнейшей передачи её детям
-  //       let newFolder = addFolderForParentNode(folderContainer, {
-  //         name: node.name ? node.name : node.type,
-  //         id: node.id,
-  //         uuid: node.uuid,
-  //       });
-  //       // создает поля
-  //       addFieldForFolder(folderContainer, {
-  //         name: node.name ? node.name : node.type,
-  //         id: node.id,
-  //         uuid: node.uuid,
-  //       });
-  //       // сама рекурсия , проходится по детям и получает новую папку для следущей итерации
-  //       return node.children.map((el) => checkChilden(el, newFolder));
-  //     } else {
-  //       // тут все по аналогии только + выход
-  //       if (containerFolder) {
-  //         folderContainer = containerFolder;
-  //       }
-  //       addFieldForFolder(folderContainer, {
-  //         name: node.name ? node.name : node.type,
-  //         id: node.id,
-  //         uuid: node.uuid,
-  //       });
-  //       return false;
-  //     }
-  //   };
-  //   checkChilden(scene);
-  // };
-
-
-
-  // addObjectScene = (arr) =>{
+  //     })
+  //     return structureObjectScene
+  //   }
+  //   let newRecurseAddFolder = recurseAddFolder(node)
+  //   return newRecurseAddFolder
+  // }
+  // createObjects = (scene) => {
+  //   const addFolder = this.state.nodes.map(item => {
+  //     if (item.type === 'objectScene') {
+  //       item.children = this.addNodesFolder(scene, item)
+  //       return item
+  //     } else return item
+  //   })
+  //   this.setState({
+  //     nodes: addFolder
+  //   })
+  // }
   //
-  //   this.setState({object: newState})
+  // addNodesCamera = (node, item) =>{
+  //   node.map()
+  // }
+  //
+  // createFieldForCamera = (scene) => {
+  //   scene.map(item => {
+  //     if (item.type === 'PerspectiveCamera') {
+  //       item.children = this.addNodesCamera(scene, item)
+  //     }
+  //   })
   // }
 
-
-  createObjects = (scene) => {
-    const folder = []
-    const checkChildren = (node) => {
-      node.map(item => {
-        if (item.children && item.length) {
-          folder.push({
-            name: item.name,
-            id: item.uuid,
-            isOpen: false,
-            isSelect: false,
-            type: 'folder',
-          })
-          checkChildren(item.children)
-        } else {
-          folder.push({
-            name: item.name,
-            id: item.uuid,
-            isOpen: false,
-            isSelect: false,
-            type: item.type,
-          })
-          return item
-        }
-      })
-      // this.addObjectScene(folder)
-    }
-    let newState = checkChildren(scene)
-    this.setState({
-      nodes: newState
-    })
-  }
-
   componentDidMount() {
-    this.createObjects(this.props.requiredPropertys.scene.children)
+    // this.createObjects(this.props.requiredPropertys.scene.children)
   }
 
   render() {
-    console.log(this.state.object)
     console.log(this.props.requiredPropertys.scene)
+    console.log(this.state.nodes)
     return (
       <>
-        <GUI scene={this.props.requiredPropertys.scene}/>
+        <GUI scene={this.state}/>
       </>
     )
   }
