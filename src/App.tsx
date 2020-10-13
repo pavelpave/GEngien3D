@@ -17,7 +17,7 @@ import {
   Sky,
   DirectionalLight,
   PointLight,
-  SpotLight,
+  SpotLight
 } from "./gengien";
 import { urlTexture, urlTextureTwo } from "./testTexture.js";
 import GenericComponentReactSruct from "./GenericComponentReactSruct";
@@ -56,22 +56,22 @@ class App extends React.Component<any, IState, {}> {
       sky: "/assets/sky2.jpg",
       texture: urlTexture,
       animation: { clipName: "Take 001" },
-      linkToSceneObject: null,
+      linkToSceneObject: null
     };
   }
 
   getLinkScene = (scene: any) => {
     this.setState({
-      linkToSceneObject: scene,
+      linkToSceneObject: scene
     });
   };
 
   componentDidMount() {
-    setTimeout(() => {
-      this.setState({
-        texture: urlTextureTwo,
-      });
-    }, 5000);
+    // setTimeout(() => {
+    //   this.setState({
+    //     texture: urlTextureTwo
+    //   });
+    // }, 5000);
   }
 
   render() {
@@ -88,29 +88,25 @@ class App extends React.Component<any, IState, {}> {
           <Camera position={[0, 20, 0]}>
             <Raycaster />
             <OrbitControl />
-            <Sky url={sky} />
+            {/* <Sky url={sky} /> */}
           </Camera>
           {/* Тут сомнительная текстурка слабонервным не смотеть)))) */}
           {/* <Sphere color={color} texture={texture} /> */}
-          {/* <Plane color={color} texture={texture}/>
-          <Cylinder color={color} texture={texture} position={[10,10,10]}/> */}
-          <GLTF
-            callback={[
+          {/* <Plane color={color} texture={texture} />
+          <Cylinder color={color} texture={texture} position={[10, 10, 10]} /> */}
+          <Box
+            position={[10, 0, 0]}
+            scale={[2, 2, 10]}
+            color={"red"}
+            callbacks={[
               {
                 type: "click",
                 event: (e: any) => {
-                  console.log(e);
-                },
-              },
+                  console.log("e", e);
+                }
+              }
             ]}
-            animation={animation}
-            url={"/models/book/scene.gltf"}
           />
-          {/* <OBJ
-            url={"/models/city/Center city Sci-Fi/Center City Sci-Fi.obj"}
-            urlMLT={"/models/city/Center city Sci-Fi/Center_City_Sci-Fi.mtl"}
-          /> */}
-          {/* <Grid /> */}
           <GenericComponentReactSruct />
           <DirectionalLight />
         </Canvas>

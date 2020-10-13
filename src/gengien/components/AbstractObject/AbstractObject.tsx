@@ -3,7 +3,7 @@ import {
   TextureLoader,
   RepeatWrapping,
   MeshBasicMaterial,
-  Vector3,
+  Vector3
 } from "three";
 import { v4 } from "uuid";
 import { isEqual } from "lodash";
@@ -65,7 +65,7 @@ export default abstract class AbstractObject extends React.Component<
     this.uuid = null;
     this.visible = true;
     this.state = {
-      ready: false,
+      ready: false
     };
   }
 
@@ -81,16 +81,18 @@ export default abstract class AbstractObject extends React.Component<
    * @param texture
    */
   setTexture = (texture: string = "") => {
-    let map = new TextureLoader().load(texture);
-    map.wrapS = RepeatWrapping;
-    map.wrapT = RepeatWrapping;
-    map.repeat.set(1, 1);
-    var material = new MeshBasicMaterial({
-      map: map,
-      transparent: true,
-    });
-    material.needsUpdate = true;
-    this.obj.material = material;
+    if (texture) {
+      let map = new TextureLoader().load(texture);
+      map.wrapS = RepeatWrapping;
+      map.wrapT = RepeatWrapping;
+      map.repeat.set(1, 1);
+      var material = new MeshBasicMaterial({
+        map: map,
+        transparent: true
+      });
+      material.needsUpdate = true;
+      this.obj.material = material;
+    }
   };
   /**
    * - удалаяет объект @member obj
@@ -188,7 +190,7 @@ export default abstract class AbstractObject extends React.Component<
     if (!propretys) return;
     propretys!.onComponentInit({
       name: name,
-      uuid: uuid,
+      uuid: uuid
     });
     return this.name;
   };
@@ -201,7 +203,7 @@ export default abstract class AbstractObject extends React.Component<
     if (!propretys) return;
     propretys!.onComponentReady({
       name: this.name,
-      uuid: this.uuid,
+      uuid: this.uuid
     });
   };
   /**
@@ -218,7 +220,7 @@ export default abstract class AbstractObject extends React.Component<
       intensity,
       color,
       texture,
-      selectedMaterial = null,
+      selectedMaterial = null
     } = prevProps;
     if (nextProps.materials && this.obj !== null) {
       this.obj = this.obj.obj ? this.obj.obj : this.obj;
