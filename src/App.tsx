@@ -94,19 +94,7 @@ class App extends React.Component<any, IState, {}> {
           {/* <Sphere color={color} texture={texture} /> */}
           {/* <Plane color={color} texture={texture} />
           <Cylinder color={color} texture={texture} position={[10, 10, 10]} /> */}
-          <Box
-            position={[10, 0, 0]}
-            scale={[2, 2, 10]}
-            color={"red"}
-            callbacks={[
-              {
-                type: "click",
-                event: (e: any) => {
-                  console.log("e", e);
-                }
-              }
-            ]}
-          />
+       
           <GenericComponentReactSruct />
           <DirectionalLight />
         </Canvas>

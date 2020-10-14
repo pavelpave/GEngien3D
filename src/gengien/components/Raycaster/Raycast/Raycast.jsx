@@ -18,7 +18,7 @@ class Raycaster extends AbstractObject {
      * @param {Boolean} [options.autoAttach=false] - Should the manager automatically attach target element.
      * @param {Number} [options.interactionFrequency=10] - Frequency increases the interaction events will be checked.
      */
-    new Interaction(renderer, scene, camera, false, false, 1);
+    new Interaction(renderer, scene, camera, false, false, 10);
   }
 
   render() {

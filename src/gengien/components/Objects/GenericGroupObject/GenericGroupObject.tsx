@@ -23,7 +23,7 @@ class GenericGroupObject extends AbstractObject {
       color = "#000000",
       position = [0, 0, 0],
       rotation = [0, 0, 0],
-      callback = [],
+      callbacks = [],
       parent,
       visible = true,
       customAttribute = {},
@@ -42,7 +42,7 @@ class GenericGroupObject extends AbstractObject {
       transparent: true,
     });
     this.obj = new Mesh(geometry, this.material);
-    addEventCustomListener(this.obj, callback);
+    addEventCustomListener(this.obj, callbacks);
     this.setPosition(position);
     this.setRotation(rotation);
     this.obj._customAttribute = customAttribute;
