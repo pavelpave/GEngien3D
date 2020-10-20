@@ -9,7 +9,7 @@ const Folders = (props) => {
     id,
     select,
     toggleDropDown,
-    selectObject,
+    selectObj,
     isOpen,
     children
   } = props
@@ -17,8 +17,8 @@ const Folders = (props) => {
     <>
       <Button
         open={isOpen}
-        chooseButton={selectObject}
-        toggle={toggleDropDown}
+        toggleDropDown={toggleDropDown}
+        selectObj={selectObj}
         id={id}
         select={select}
         name={name}/>

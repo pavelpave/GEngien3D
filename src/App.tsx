@@ -18,6 +18,7 @@ import {
   DirectionalLight,
   PointLight,
   SpotLight,
+  DevMode
 } from "./gengien";
 import { urlTexture, urlTextureTwo } from "./testTexture.js";
 import GenericComponentReactSruct from "./GenericComponentReactSruct";
@@ -26,12 +27,15 @@ import Mountain from "./example/Mountain";
 import SchoolRom from "./example/SchoolRom";
 import Book from "./example/Book";
 import RenderStructure from "./gengien/components/mods/DevMode/GenerateGUI/components/Render-structure/RenderStructure";
-import DevMode from './gengien/components/mods'
+// import DevMode from './gengien/components/mods'
+
+
 interface IState {
   color: string;
   texture: string;
   sky: string;
   linkToSceneObject: any;
+  material: any
 }
 /**
  *  * The interaction manager deals with mouse, touch and pointer events. Any DisplayObject can be interactive
@@ -60,6 +64,7 @@ class App extends React.Component<any, IState, {}> {
       sky: "/assets/sky2.jpg",
       texture: urlTexture,
       linkToSceneObject: null,
+      material: null
     };
   }
 
@@ -70,16 +75,11 @@ class App extends React.Component<any, IState, {}> {
   };
 
   componentDidMount() {
-    setTimeout(() => {
-      this.setState({
-        texture: urlTextureTwo,
-      });
-    }, 5000);
   }
 
   render() {
-    const { color, texture, sky, linkToSceneObject } = this.state;
-    // console.log(linkToSceneObject, "scene");
+    const { material, color, texture, sky, linkToSceneObject } = this.state;
+    // console.log(linkToSceneObject, "scene");d
     return (
       <div className={"exemple_app-wraper"}>
         <Canvas
@@ -94,6 +94,8 @@ class App extends React.Component<any, IState, {}> {
             <Sky url={sky} />
             <DevMode />
           </Camera>
+          {/* <Line /> */}
+          <Box />
           <Book />
           {/* <OBJ
             url={"/models/city/Center city Sci-Fi/Center City Sci-Fi.obj"}
@@ -107,7 +109,8 @@ class App extends React.Component<any, IState, {}> {
           {/*<SpotLight color={'#FF0000'} position={[1, 1, 1]} intensity={2} />*/}
         </Canvas>
       </div>
-    );
+    )
+
   }
 }
 

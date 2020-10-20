@@ -3,6 +3,7 @@ import CheckBox from "./CheckBoxField";
 import NumberField from "./NumberField";
 import TextField from "./TextField";
 import ColorPicker from "./ColorPicker";
+import RangeFeild from "./RangeField";
 
 
 export {
@@ -10,5 +11,6 @@ export {
   CheckBox,
   NumberField,
   TextField,
-  ColorPicker
+  ColorPicker,
+  RangeFeild
 }

@@ -1,25 +1,29 @@
-import React, {useState} from 'react'
-import {ChromePicker} from 'react-color'
+import React, { useState } from 'react'
+import { ChromePicker } from 'react-color'
 
-const ColorPicker = () => {
-  const [color, setColor] = useState('#fff')
+const ColorPicker = (props) => {
   const [open, setOpen] = useState(false)
-
-  const changeColor = (color) => {
-    setColor(color.hex)
-  }
-
+  const {
+    name,
+    id,
+    value,
+    change
+  } = props
   return (
     <div className={'dev-mode-fields-color'}>
-    <button className={'dev-mode-button'} onClick={()=>setOpen(!open)}>Изменить цвет</button>
-      {open ? (
+      <p>{name}</p>
+      <div
+        className={` dev-mode-show-color ${open ? 'active' : 'not-active'}`}
+        onMouseLeave={() => setOpen(false)}
+        onMouseEnter={() => setOpen(true)}>
+        <p>{value}</p>
         <ChromePicker
-          className={'dev-mode-fields-color-picker'}
-          color={color}
-          onChange={changeColor}
+          id={id}
+          className={`dev-mode-fields-color-picker ${open ? 'active' : 'not-active'}`}
+          color={value}
+          onChangeComplete={(color)=>change(color.hex, id)}
         />
-      ): null
-      }
+      </div>
 
     </div>
   )

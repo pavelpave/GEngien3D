@@ -16,6 +16,9 @@ button:active, input:active, input:focus, button:focus{
   outline: none;
 }
 
+.form-group{
+  margin-bottom: 0;
+}
 // devMode
 .display-dev-mode {
   position: absolute;
@@ -40,6 +43,8 @@ button:active, input:active, input:focus, button:focus{
   max-width: 300px;
   width: 300px;
   transition: 0.5s;
+  color: #fff;
+  overflow-x: hidden;
   &.show {
     height: 100%;
   }
@@ -48,7 +53,10 @@ button:active, input:active, input:focus, button:focus{
   }
 }
 .dev-mode {
-  color: #fff;
+  &-loading{
+    display: block;
+    margin: 3em auto
+  }
   &-content {
     margin-top: 4em;
     padding: 10px;
@@ -74,6 +82,10 @@ button:active, input:active, input:focus, button:focus{
       }
     }
     &-button{
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
       text-align: left;
       width: 100%;
       background: transparent;
@@ -89,46 +101,101 @@ button:active, input:active, input:focus, button:focus{
       }
     }
     &-children{
-      margin-left: 10px;
+      margin-left: 5px;
     }
   }
   &-fields{
-    border-radius: 5px;
-    padding: 10px;
+    border-bottom: 1px solid #C0C0C0;
+    padding: 5px 0 10px 0;
     &-color{
+      margin: 10px 0;
+      border-bottom: 1px solid #C0C0C0;
+      font-size: 13px;
       text-align: center;
+      display: flex;
     }
     &-wrapper{
       display: flex;
       align-items: center;
-    }
-    &-input{
-      height: 1.5em;
-      max-width: 50%;
-      margin-left: 10px;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      & .form-label{
+        font-size: 13px;
+        display: inline;
+        margin-bottom: 0;
+      }
     }
     &-checkbox{
       width: 20px;
       height: 20px;
       margin-left: 10px;
     }
-    &-number{
-      height: 1.5em;
-      max-width: 50%;
-      margin-left: 10px;
-    }
   }
   &-button{
     border: 1px solid #fff;
     background: transparent;
-    width: 225px;
-    margin: 5px auto;
     text-align: center;
     color: #fff;
     border-radius: 5px;
   }
+  &-show-color{
+    cursor: pointer;
+    border: 1px solid #fff;
+    color: #fff;
+    width: 100%;
+    font-size: 14px;
+    border-radius: 5px;
+    background: #4a5661;
+    margin-left: 3em;
+    height: 2em;
+    transition: 0.8s;
+    & p{
+      margin: 0;
+      height: 100%;
+      padding: 4px;
+    }
+    &.active{
+      border: 1px solid #007bff;
+    }
+    &.not-active{
+      border: 1px solid #fff;
+    }
+  }
+  &-input{
+    height: 2em;
+    background: #4a5661;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 3px;
+    color: #fff;
+    padding: 0 0 0 10px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    width: 150px;
+    text-overflow: ellipsis;
+    font-size: 12px;
+    &:focus{
+      border: 1px solid #007bff;
+      background: #424242;
+      color: #fff;
+    }
+    &:read-only{
+      background: #4a5661;
+      text-overflow: ellipsis;
+    }
+  }
 }
 .chrome-picker{
   position: absolute;
-  left: 30px;
+  right: 10px;
+  transition: 0.5s;
+  margin-top: 5px;
+  &.active{
+    position: absolute;
+    right: 10px;
+  }
+  &.not-active{
+    transform: translateX(200%);
+  }
 }

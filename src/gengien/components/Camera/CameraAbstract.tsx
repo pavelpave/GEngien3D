@@ -78,6 +78,7 @@ export default class CameraAbstract extends React.Component<
       getComponentByUuid,
       enableShadows,
       debug,
+      name
     } = props.requiredPropertys;
     this.state = { ready: false };
     this.aspect = enableVR ? canvasWidth / canvasHeight : 1;

@@ -40,6 +40,7 @@ class Camera extends AbstractObject {
       position,
       degreesToCameraPerspective,
       aspect,
+      name,
       far,
       near,
       orthoganalEnable,

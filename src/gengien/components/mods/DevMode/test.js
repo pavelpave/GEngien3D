@@ -1,39 +1,21 @@
-import {v4} from "uuid";
+import { CheckBox, NumberField, TextField, RangeFeild } from "./GenerateGUI/components/Components-fields";
+import React from "react";
 
-export default  [
-  {
-    name: 'Объекты сцены',
-    id: v4(),
-    type: 'objectScene',
-    isOpen: false,
-    children: [],
-  },
-  {
-    name: 'Геометрия',
-    id: v4(),
-    type: 'geometry',
-    isOpen: false,
-    children: [],
-  },
-  {
-    name: 'Камера',
-    id: v4(),
-    type: 'camera',
-    isOpen: false,
-    children: [],
-  },
-  {
-    name: 'Материалы',
-    id: v4(),
-    type: 'material',
-    isOpen: false,
-    children: [],
-  },
-  {
-    name: 'Объект',
-    id: v4(),
-    type: 'object',
-    isOpen: false,
-    children: [],
-  }
-]
+const helpRenderFiled = {
+  x: (props) => <NumberField {...props} />,
+  y: (props) => <NumberField {...props} />,
+  z: (props) => <NumberField {...props} />,
+  w: (props) => <NumberField {...props} />,
+  zoom: (props) => <NumberField {...props} />,
+  isvector3: (props) => <CheckBox {...props} />,
+  name: (props) => <TextField {...props} />,
+  uuid: (props) => <TextField {...props} />,
+  id: (props) => <TextField {...props} />,
+  type: (props) => <TextField {...props} />,
+  lightMapIntensity: (props)=> <RangeFeild {...props}/>,
+  opacity: (props) => <RangeFeild {...props}/>,
+  type: (props) => <TextField {...props} />,
+}
+export {
+  helpRenderFiled
+}

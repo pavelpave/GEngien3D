@@ -19,6 +19,7 @@ class Box extends AbstractCanvas {
       callbacks = [],
       parent = false,
       material = {},
+      number = 1,
       uuid = v4(),
       customAttribute = {},
       texture = null,
@@ -39,15 +40,16 @@ class Box extends AbstractCanvas {
     this.material = new MeshBasicMaterial(objectMaterial);
     this.obj = new Mesh(geometry, this.material);
     addEventCustomListener(this.obj, callbacks);
-    this.setPosition(position);
-    this.setRotation(rotation);
+
     this.obj.name = name;
     this.obj.castShadow = enableShadows;
     this.obj.receiveShadow = enableShadows;
     this.obj.uuid = uuid;
     this.obj._customAttribute = customAttribute;
     this.setColor(color);
-    this.setTexture(texture);
+    this.setPosition(position);
+    this.setRotation(rotation);
+    // this.setTexture(texture);
     if (parent) {
       this.addToScene(parent);
     } else {
