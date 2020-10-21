@@ -27,6 +27,7 @@ import Mountain from "./example/Mountain";
 import SchoolRom from "./example/SchoolRom";
 import Book from "./example/Book";
 import RenderStructure from "./gengien/components/mods/DevMode/GenerateGUI/components/Render-structure/RenderStructure";
+import Ring from "./gengien/components/Primitives/Ring";
 // import DevMode from './gengien/components/mods'
 
 

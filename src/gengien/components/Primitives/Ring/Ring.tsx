@@ -12,7 +12,7 @@ class Ring extends AbstractCanvas {
   componentDidMount() {
     const {
       requiredPropertys,
-      innerRadius = 1,
+      innerRadius = 10,
       outerRadius = 5,
       thetaSegments = 30,
       phiSegments = 30,

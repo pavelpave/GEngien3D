@@ -18,7 +18,7 @@ const RangeField = (props) => {
             value={value}
             min={0}
             max={1}
-            step="0.1"
+            step="0.05"
             type="range"
             className={'dev-mode-fields-range dev-mode-input'}
             onChange={(e)=>change(e.target.value, id)}
