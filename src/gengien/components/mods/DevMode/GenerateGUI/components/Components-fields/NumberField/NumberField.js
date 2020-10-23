@@ -17,12 +17,13 @@ class NumberField extends React.Component {
       down = () => { },
       id,
       value,
+      className='',
       ...props
     } = this.props
     return (
       <Form>
         <Form.Group className={'dev-mode-fields'}>
-          <div className={'dev-mode-fields-wrapper'}>
+          <div className={`dev-mode-fields-wrapper ${className}`}>
             <Form.Label htmlFor={id}>{name}</Form.Label>
             <Form.Control
               {...props}

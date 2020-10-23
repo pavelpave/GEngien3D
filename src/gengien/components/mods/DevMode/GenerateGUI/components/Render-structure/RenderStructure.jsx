@@ -62,6 +62,7 @@ class RenderStructure extends React.Component {
                       value={deapthRecurse}
                       id={v4()}
                       change={changeRecurseDeapth}
+                      className={'deapth-search'}
                     />
                     <FoldersCreator
                       propsFolders={folders}

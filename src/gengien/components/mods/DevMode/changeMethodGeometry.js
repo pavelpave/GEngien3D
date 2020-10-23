@@ -1,43 +1,61 @@
-import {BufferGeometry, WireframeGeometry, BoxGeometry} from 'three'
+import {
+  BufferGeometry,
+  WireframeGeometry,
+  BoxGeometry,
+  RingBufferGeometry,
+  CylinderBufferGeometry,
+  PlaneGeometry,
+  SphereBufferGeometry
+} from 'three'
 
 
-const updateGroupGeometry = ( mesh, geometry ) => {
-
-  if ( geometry.isGeometry ) {
-
-    geometry = new BufferGeometry().fromGeometry( geometry );
-
+const updateGroupGeometry = (mesh, geometry) => {
+  let type = mesh.geometry.type
+    switch (type) {
+      case "BoxGeometry":
+        geometry = new BoxGeometry(...geometry);
+        break;
+      case "RingBufferGeometry":
+        geometry = new RingBufferGeometry(...geometry);
+        break;
+      case "CylinderBufferGeometry":
+        geometry = new CylinderBufferGeometry(...geometry);
+        break;
+      case "PlaneGeometry":
+        geometry = new PlaneGeometry(...geometry);
+        break;
+      case "SphereBufferGeometry":
+        geometry = new SphereBufferGeometry(...geometry);
+        break;
+      default:
+        console.log('f')
+        break
+    }
     // console.warn( 'THREE.GeometryBrowser: Converted Geometry to BufferGeometry.' );
+    mesh.geometry = geometry;
 
-  }
 
-  mesh.geometry.dispose();
-  mesh.geometry.dispose();
 
-  mesh.geometry = new WireframeGeometry( geometry );
-  mesh.geometry = geometry;
+  // mesh.geometry = new WireframeGeometry(geometry);
+
 
   // these do not update nicely together if shared
 
 }
 
 
-const checkChangeField = ( mesh, data, name, value) => {
-  
+const checkChangeField = (mesh, data, name, value) => {
+
   const arrValue = [];
 
   for (let key in data) {
     if (key === name) {
       arrValue.push(value)
     } else {
-      arrValue.push(data[key]) 
+      arrValue.push(data[key])
     }
   }
-  updateGroupGeometry(mesh,
-    new BoxGeometry(
-      ...arrValue
-    )
-  );
+  updateGroupGeometry(mesh, arrValue);
 }
 
 

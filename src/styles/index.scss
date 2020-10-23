@@ -45,6 +45,24 @@ button:active, input:active, input:focus, button:focus{
   transition: 0.5s;
   color: #fff;
   overflow-x: hidden;
+  &::-webkit-scrollbar {
+    width: 5px !important;
+  }
+
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1 !important;
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: #d8d8d8 !important;
+  }
+
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+    background: #555 !important;
+  }
   &.show {
     height: 100%;
   }
@@ -88,6 +106,7 @@ button:active, input:active, input:focus, button:focus{
       overflow: hidden;
       text-align: left;
       width: 100%;
+      font-size: 14px;
       background: transparent;
       border: none;
       margin: 5px 0;
@@ -105,8 +124,15 @@ button:active, input:active, input:focus, button:focus{
     }
   }
   &-fields{
+    &-select{
+      width: 100% !important;
+    }
+    &-file{
+      font-size: 14px;
+      width: 80%;
+    }
     border-bottom: 1px solid #C0C0C0;
-    padding: 5px 0 10px 0;
+    padding: 5px 0 5px 0;
     &-color{
       margin: 10px 0;
       border-bottom: 1px solid #C0C0C0;
@@ -119,10 +145,16 @@ button:active, input:active, input:focus, button:focus{
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
+      &.deapth-search{
+        justify-content: center;
+        padding-bottom: 10px;
+      }
       & .form-label{
         font-size: 13px;
         display: inline;
         margin-bottom: 0;
+        max-width: 89px;
+        word-wrap: break-word;
       }
     }
     &-checkbox{

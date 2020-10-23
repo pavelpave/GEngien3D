@@ -1,4 +1,15 @@
 
+import React from 'react'
+import {
+  CheckBox,
+  RangeField,
+  NumberField,
+  TextField,
+  ColorPicker,
+  FileField,
+  SelectField,
+} from './components/Components-fields'
+
 const HELP_TYPE_RANGE = {
   aoMapIntensity: 'aoMapIntensity',
   blending: 'blending',
@@ -27,6 +38,11 @@ const HELP_INFO_FIELD_FOR_CAMERA = {
     _x: 'rotX',
     _y: 'rotY',
     _z: 'rotZ',
+  },
+  scale: {
+    x: 'sclX',
+    y: 'sclY',
+    z: 'sclZ',
   },
   type: "PerspectiveCamera",
 }
@@ -75,11 +91,54 @@ const HELP_FUELDER_FOR_GEOMETRY = {
   },
 }
 
+const HELP_CHANGE_INFO_FIELD = {
+  'posX': (currentObject, value) => currentObject.position.setX(value),
+  'posY': (currentObject, value) => currentObject.position.setY(value),
+  'posZ': (currentObject, value) => currentObject.position.setZ(value),
+  'quatW': (currentObject, value) => currentObject.quaternion.set(currentObject.quaternion.x, currentObject.quaternion.y, currentObject.quaternion.z, value,),
+  'quatX': (currentObject, value) => currentObject.quaternion.set(value, currentObject.quaternion.y, currentObject.quaternion.z, currentObject.quaternion.w,),
+  'quatY': (currentObject, value) => currentObject.quaternion.set(currentObject.quaternion.z, value, currentObject.quaternion.z, currentObject.quaternion.w,),
+  'quatZ': (currentObject, value) => currentObject.quaternion.set(currentObject.quaternion.x, currentObject.quaternion.y, value, currentObject.quaternion.w,),
+  'rotX': (currentObject, value) => currentObject.rotation.set(value, currentObject.rotation.y, currentObject.rotation.z),
+  'rotY': (currentObject, value) => currentObject.rotation.set(currentObject.rotation.x, value, currentObject.rotation.z),
+  'rotZ': (currentObject, value) => currentObject.rotation.set(currentObject.rotation.x, currentObject.rotation.y, value),
+  'sclX': (currentObject, value) => currentObject.scale.setX(value),
+  'sclY': (currentObject, value) => currentObject.scale.setY(value),
+  'sclZ': (currentObject, value) => currentObject.scale.setZ(value),
+}
 
+const HELP_CHANGE_CAMERA_FIELD = {
+  'posX': (cameraObj, value) => cameraObj.position.setX(value),
+  'posY': (cameraObj, value) => cameraObj.position.setY(value),
+  'posZ': (cameraObj, value) => cameraObj.position.setZ(value),
+  'quatW': (cameraObj, value) => cameraObj.quaternion.set(cameraObj.quaternion.x, cameraObj.quaternion.y, cameraObj.quaternion.z, value,),
+  'quatX': (cameraObj, value) => cameraObj.quaternion.set(value, cameraObj.quaternion.y, cameraObj.quaternion.z, cameraObj.quaternion.w,),
+  'quatY': (cameraObj, value) => cameraObj.quaternion.set(cameraObj.quaternion.z, value, cameraObj.quaternion.z, cameraObj.quaternion.w,),
+  'quatZ': (cameraObj, value) => cameraObj.quaternion.set(cameraObj.quaternion.x, cameraObj.quaternion.y, value, cameraObj.quaternion.w,),
+  'rotX': (cameraObj, value) => cameraObj.rotation.set(value, cameraObj.rotation.y, cameraObj.rotation.z),
+  'rotY': (cameraObj, value) => cameraObj.rotation.set(cameraObj.rotation.x, value, cameraObj.rotation.z),
+  'rotZ': (cameraObj, value) => cameraObj.rotation.set(cameraObj.rotation.x, cameraObj.rotation.y, value),
+  'sclX': (cameraObj, value) => cameraObj.scale.setX(value),
+  'sclY': (cameraObj, value) => cameraObj.scale.setY(value),
+  'sclZ': (cameraObj, value) => cameraObj.scale.setZ(value),
+}
+
+const HELP_RENDER_FIELD = {
+  'boolean': (props) => <CheckBox {...props} />,
+  'file': (props) => <FileField {...props} />,
+  'number': (props) => <NumberField {...props} />,
+  'string': (props) => <TextField {...props} />,
+  'button': (props) => <ColorPicker {...props} />,
+  'range': (props) => <RangeField {...props} />,
+  'select': (props) => <SelectField {...props} />
+}
 
 
 export {
   HELP_INFO_FIELD_FOR_CAMERA,
   HELP_TYPE_RANGE,
   HELP_FUELDER_FOR_GEOMETRY,
+  HELP_CHANGE_INFO_FIELD,
+  HELP_CHANGE_CAMERA_FIELD,
+  HELP_RENDER_FIELD
 }

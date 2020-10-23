@@ -3,14 +3,18 @@ import CheckBox from "./CheckBoxField";
 import NumberField from "./NumberField";
 import TextField from "./TextField";
 import ColorPicker from "./ColorPicker";
-import RangeFeild from "./RangeField";
+import RangeField from "./RangeField";
+import FileField from './FileField';
+import SelectField from './SelectField';
 
 
 export {
   Button,
+  FileField,
   CheckBox,
   NumberField,
   TextField,
   ColorPicker,
-  RangeFeild
+  RangeField,
+  SelectField,
 }

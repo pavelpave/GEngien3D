@@ -1,4 +1,672 @@
-import React from "react";
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>GEngien3D API Documentation</title>
+    
+    <meta name="description" content="Documentation for GEngien3D library" />
+    
+        <meta name="keywords" content="docs, documentation, three.js, three.js event system, GEngien3D, renderer, html5, javascript, jsdoc" />
+        <meta name="keyword" content="docs, documentation, three.js, three.js event system, GEngien3D, renderer, html5, javascript, jsdoc" />
+    
+    
+    
+    
+    <meta property="og:title" content=""/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:image" content=""/>
+    
+    <meta property="og:url" content=""/>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <script src="scripts/jquery.min.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link href="https://fonts.googleapis.com/css?family=Libre+Franklin:400,700" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/main.css">
+
+    
+    <script>
+    var config = {"monospaceLinks":false,"cleverLinks":false,"default":{"outputSourceFiles":true},"applicationName":"GEngien3D","footer":"Made with ♥ by PuhDWL","copyright":"GEngien3D Copyright © 2020 PuhDWL.","disqus":"","googleAnalytics":"UA-103772589-5","openGraph":{"title":"","type":"website","image":"","site_name":"","url":""},"meta":{"title":"GEngien3D API Documentation","description":"Documentation for GEngien3D library","keyword":"docs, documentation, three.js, three.js event system, GEngien3D, renderer, html5, javascript, jsdoc"},"linenums":true};
+    </script>
+    
+
+    
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', config.googleAnalytics]);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    
+</head>
+<body>
+<div id="wrap" class="clearfix">
+    
+<div class="navigation">
+    <h3 class="applicationName"><a href="index.html">GEngien3D</a></h3>
+    <button id="menuToggle" class="btn btn-link btn-lg menu-toggle">
+        <span class="glyphicon glyphicon-menu-hamburger"></span>
+    </button>
+    <div class="search">
+        <input id="search" type="text" class="form-control input-md" placeholder="Search...">
+    </div>
+    <ul class="list">
+    
+    
+        <li class="item" data-name="global">
+            <span class="title namespace ">
+                
+                <span class="namespaceTag">
+                    <span class="glyphicon glyphicon-globe"></span>
+                </span>
+                
+                
+                    <a href="global.html">Global</a>
+                
+            </span>
+            
+            <ul class="members itemMembers">
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li class="parent  " data-name="addEventCustomListener"><a href="global.html#addEventCustomListener">addEventCustomListener</a></li>
+            
+                <li class="parent  " data-name="allUnselected"><a href="global.html#allUnselected">allUnselected</a></li>
+            
+                <li class="parent  " data-name="checkRequiredProperty"><a href="global.html#checkRequiredProperty">checkRequiredProperty</a></li>
+            
+                <li class="parent  " data-name="clearFolderWithField"><a href="global.html#clearFolderWithField">clearFolderWithField</a></li>
+            
+                <li class="parent  " data-name="searchElement"><a href="global.html#searchElement">searchElement</a></li>
+            
+            </ul>
+            
+            <ul class="events itemMembers">
+            
+            </ul>
+            
+        </li>
+    
+        <li class="item" data-name="AbstractObject">
+            <span class="title  ">
+                
+                
+                    <a href="AbstractObject.html">AbstractObject</a>
+                
+            </span>
+            
+            <ul class="members itemMembers">
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="methods itemMembers">
+            
+            </ul>
+            
+            <ul class="events itemMembers">
+            
+            </ul>
+            
+        </li>
+    
+        <li class="item" data-name="AmbientLight">
+            <span class="title  ">
+                
+                
+                    <a href="AmbientLight.html">AmbientLight</a>
+                
+            </span>
+            
+            <ul class="members itemMembers">
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="methods itemMembers">
+            
+            </ul>
+            
+            <ul class="events itemMembers">
+            
+            </ul>
+            
+        </li>
+    
+        <li class="item" data-name="Box">
+            <span class="title  ">
+                
+                
+                    <a href="Box.html">Box</a>
+                
+            </span>
+            
+            <ul class="members itemMembers">
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="methods itemMembers">
+            
+            </ul>
+            
+            <ul class="events itemMembers">
+            
+            </ul>
+            
+        </li>
+    
+        <li class="item" data-name="Camera">
+            <span class="title  ">
+                
+                
+                    <a href="Camera.html">Camera</a>
+                
+            </span>
+            
+            <ul class="members itemMembers">
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="methods itemMembers">
+            
+            </ul>
+            
+            <ul class="events itemMembers">
+            
+            </ul>
+            
+        </li>
+    
+        <li class="item" data-name="Canvas">
+            <span class="title  ">
+                
+                
+                    <a href="Canvas.html">Canvas</a>
+                
+            </span>
+            
+            <ul class="members itemMembers">
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="methods itemMembers">
+            
+            </ul>
+            
+            <ul class="events itemMembers">
+            
+            </ul>
+            
+        </li>
+    
+        <li class="item" data-name="Cylinder">
+            <span class="title  ">
+                
+                
+                    <a href="Cylinder.html">Cylinder</a>
+                
+            </span>
+            
+            <ul class="members itemMembers">
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="methods itemMembers">
+            
+            </ul>
+            
+            <ul class="events itemMembers">
+            
+            </ul>
+            
+        </li>
+    
+        <li class="item" data-name="DirectionalLight">
+            <span class="title  ">
+                
+                
+                    <a href="DirectionalLight.html">DirectionalLight</a>
+                
+            </span>
+            
+            <ul class="members itemMembers">
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="methods itemMembers">
+            
+            </ul>
+            
+            <ul class="events itemMembers">
+            
+            </ul>
+            
+        </li>
+    
+        <li class="item" data-name="GLTF">
+            <span class="title  ">
+                
+                
+                    <a href="GLTF.html">GLTF</a>
+                
+            </span>
+            
+            <ul class="members itemMembers">
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="methods itemMembers">
+            
+            </ul>
+            
+            <ul class="events itemMembers">
+            
+            </ul>
+            
+        </li>
+    
+        <li class="item" data-name="Light">
+            <span class="title  ">
+                
+                
+                    <a href="Light.html">Light</a>
+                
+            </span>
+            
+            <ul class="members itemMembers">
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="methods itemMembers">
+            
+            </ul>
+            
+            <ul class="events itemMembers">
+            
+            </ul>
+            
+        </li>
+    
+        <li class="item" data-name="Line">
+            <span class="title  ">
+                
+                
+                    <a href="Line.html">Line</a>
+                
+            </span>
+            
+            <ul class="members itemMembers">
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="methods itemMembers">
+            
+            </ul>
+            
+            <ul class="events itemMembers">
+            
+            </ul>
+            
+        </li>
+    
+        <li class="item" data-name="module.exports">
+            <span class="title  ">
+                
+                
+                    <a href="module.html#.exports">module.exports</a>
+                
+            </span>
+            
+            <ul class="members itemMembers">
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="methods itemMembers">
+            
+            </ul>
+            
+            <ul class="events itemMembers">
+            
+            </ul>
+            
+        </li>
+    
+        <li class="item" data-name="OrbitControl">
+            <span class="title  ">
+                
+                
+                    <a href="OrbitControl.html">OrbitControl</a>
+                
+            </span>
+            
+            <ul class="members itemMembers">
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="methods itemMembers">
+            
+            </ul>
+            
+            <ul class="events itemMembers">
+            
+            </ul>
+            
+        </li>
+    
+        <li class="item" data-name="Plane">
+            <span class="title  ">
+                
+                
+                    <a href="Plane.html">Plane</a>
+                
+            </span>
+            
+            <ul class="members itemMembers">
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="methods itemMembers">
+            
+            </ul>
+            
+            <ul class="events itemMembers">
+            
+            </ul>
+            
+        </li>
+    
+        <li class="item" data-name="PointLight">
+            <span class="title  ">
+                
+                
+                    <a href="PointLight.html">PointLight</a>
+                
+            </span>
+            
+            <ul class="members itemMembers">
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="methods itemMembers">
+            
+            </ul>
+            
+            <ul class="events itemMembers">
+            
+            </ul>
+            
+        </li>
+    
+        <li class="item" data-name="Ring">
+            <span class="title  ">
+                
+                
+                    <a href="Ring.html">Ring</a>
+                
+            </span>
+            
+            <ul class="members itemMembers">
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="methods itemMembers">
+            
+            </ul>
+            
+            <ul class="events itemMembers">
+            
+            </ul>
+            
+        </li>
+    
+        <li class="item" data-name="Sky">
+            <span class="title  ">
+                
+                
+                    <a href="Sky.html">Sky</a>
+                
+            </span>
+            
+            <ul class="members itemMembers">
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="methods itemMembers">
+            
+            </ul>
+            
+            <ul class="events itemMembers">
+            
+            </ul>
+            
+        </li>
+    
+        <li class="item" data-name="Sphere">
+            <span class="title  ">
+                
+                
+                    <a href="Sphere.html">Sphere</a>
+                
+            </span>
+            
+            <ul class="members itemMembers">
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="methods itemMembers">
+            
+            </ul>
+            
+            <ul class="events itemMembers">
+            
+            </ul>
+            
+        </li>
+    
+        <li class="item" data-name="SpotLight">
+            <span class="title  ">
+                
+                
+                    <a href="SpotLight.html">SpotLight</a>
+                
+            </span>
+            
+            <ul class="members itemMembers">
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="methods itemMembers">
+            
+            </ul>
+            
+            <ul class="events itemMembers">
+            
+            </ul>
+            
+        </li>
+    
+    </ul>
+</div>
+
+    <div class="main">
+        <h1 class="page-title" data-filename="components_mods_DevMode_DevMode.js.html">Source: components/mods/DevMode/DevMode.js</h1>
+        
+
+
+    
+    <section>
+        <header>
+            <div class="header content-size">
+                <h2>components/mods/DevMode/DevMode.js</h2>
+            </div>
+        </header>
+        <article>
+            <pre id="source-code" class="prettyprint source linenums"><code>import React from "react";
 import { AbstractObject } from "../../../index";
 import GUI from './GenerateGUI'
 import CONST from '../../../constants'
@@ -31,8 +699,8 @@ class DevMode extends AbstractObject {
   getMaterialAndGeometry = (uuid) => {
     const { requiredPropertys } = this.props
     let obj = requiredPropertys.scene.getObjectByProperty("uuid", uuid);
-    if (obj.material && Array.isArray(obj.material)) {
-      obj && obj.material && obj.geometry &&
+    if (obj.material &amp;&amp; Array.isArray(obj.material)) {
+      obj &amp;&amp; obj.material &amp;&amp; obj.geometry &amp;&amp;
         this.changeState({
           materials: null,
           arrayMaterials: obj.material,
@@ -40,7 +708,7 @@ class DevMode extends AbstractObject {
         })
       this.sceneObjectToDevPanel(this.state.selectId)
     } else {
-      obj && obj.material && obj.geometry &&
+      obj &amp;&amp; obj.material &amp;&amp; obj.geometry &amp;&amp;
         this.changeState({
           materials: obj.material,
           typeGeometry: obj.geometry.type,
@@ -84,7 +752,7 @@ class DevMode extends AbstractObject {
             ...props
           })
         } else {
-          if (item.children && item.children.length) {
+          if (item.children &amp;&amp; item.children.length) {
             recurseCheckParent(item.children)
           }
           return item
@@ -111,10 +779,10 @@ class DevMode extends AbstractObject {
    * @param node
    */
     const recurseCheckParent = (node) => {
-      if (node && node.length && idParent) {
+      if (node &amp;&amp; node.length &amp;&amp; idParent) {
         let newFolder = node.map((item) => {
           if (item.id === idParent) {
-            if ((!params.name && !params.name.length) || (!item.name && !item.name.length)) {
+            if ((!params.name &amp;&amp; !params.name.length) || (!item.name &amp;&amp; !item.name.length)) {
               item.name = 'no name'
             }
             item.children.push({
@@ -122,7 +790,7 @@ class DevMode extends AbstractObject {
             })
             return newId = params.id
           } else {
-            if (item.children && item.children.length) {
+            if (item.children &amp;&amp; item.children.length) {
               recurseCheckParent(item.children)
             }
             return item
@@ -258,11 +926,11 @@ class DevMode extends AbstractObject {
           selectObj: () => this.selectObject(scene.uuid),
           children: [],
         }, parentId, this.state.nodes)
-        if (scene.children && scene.children.length) {
+        if (scene.children &amp;&amp; scene.children.length) {
           recurseCheckScene(scene.children, scene.uuid)
         }
       } else {
-        if (counterDeapth < this.state.deapthRecurse) {
+        if (counterDeapth &lt; this.state.deapthRecurse) {
           scene.forEach(item => {
             this.addFolder({
               name: item.name,
@@ -273,7 +941,7 @@ class DevMode extends AbstractObject {
               selectObj: () => this.selectObject(item.uuid),
               children: [],
             }, parentId, this.state.nodes)
-            if (item.children && item.children.length) {
+            if (item.children &amp;&amp; item.children.length) {
               counterDeapth = counterDeapth + 1;
               recurseCheckScene(item.children, item.uuid)
             }
@@ -637,7 +1305,7 @@ class DevMode extends AbstractObject {
             }
           )
         } else {
-          if (el.children && el.children.length) {
+          if (el.children &amp;&amp; el.children.length) {
             if (!isChecked) {
               setParent(el)
             }
@@ -703,11 +1371,11 @@ class DevMode extends AbstractObject {
     * @param positionElement
     */
     const changeValue = (e, positionElement) => {
-      if (this.state.mouseDown && positionElement > e.clientY && document.activeElement.id === id) {
+      if (this.state.mouseDown &amp;&amp; positionElement > e.clientY &amp;&amp; document.activeElement.id === id) {
         valueInputTarget = +valueInputTarget + speedChangeValue
         positionElementTarget = e.clientY
         this.changeValueInputInState(valueInputTarget, id)
-      } else if (this.state.mouseDown && positionElement < e.clientY && document.activeElement.id === id) {
+      } else if (this.state.mouseDown &amp;&amp; positionElement &lt; e.clientY &amp;&amp; document.activeElement.id === id) {
         valueInputTarget = +valueInputTarget - speedChangeValue
         positionElementTarget = e.clientY
         this.changeValueInputInState(valueInputTarget, id)
@@ -1038,15 +1706,38 @@ class DevMode extends AbstractObject {
   render() {
     console.log(this.props.requiredPropertys.scene)
     return (
-      <>
-        <GUI
+      &lt;>
+        &lt;GUI
           scene={this.state}
           toggleDropDown={this.toggleDropDown}
           changeRecurseDeapth={this.changeRecurseDeapth}
         />
-      </>
+      &lt;/>
     )
   }
 }
 
-export default DevMode
+export default DevMode</code></pre>
+        </article>
+    </section>
+
+
+
+
+
+
+        
+
+        <footer class="content-size">
+            <div class="footer">
+                Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a> on Fri Oct 23 2020 18:28:43 GMT+0300 (Москва, стандартное время)
+            </div>
+        </footer>
+    </div>
+</div>
+<script>prettyPrint();</script>
+<script src="scripts/main.js"></script>
+
+
+</body>
+</html>

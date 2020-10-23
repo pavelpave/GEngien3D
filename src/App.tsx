@@ -29,6 +29,7 @@ import Book from "./example/Book";
 import RenderStructure from "./gengien/components/mods/DevMode/GenerateGUI/components/Render-structure/RenderStructure";
 import Ring from "./gengien/components/Primitives/Ring";
 // import DevMode from './gengien/components/mods'
+import { MeshBasicMaterial } from 'three'
 
 
 interface IState {
@@ -95,15 +96,38 @@ class App extends React.Component<any, IState, {}> {
             <Sky url={sky} />
             <DevMode />
           </Camera>
-          {/* <Line /> */}
-          <Box />
-          <Book />
+          <Line position={[15, 0, 0]} />
+          <Box
+            material={[
+              new MeshBasicMaterial({
+                color: "blue"
+              }),
+              new MeshBasicMaterial({
+                color: "blue"
+              }),
+              new MeshBasicMaterial({
+                color: "red"
+              }),
+              new MeshBasicMaterial({
+                color: "blue"
+              }),
+              new MeshBasicMaterial({
+                color: "red"
+              }),
+              new MeshBasicMaterial({
+                color: "blue"
+              }),
+            ]}
+            position={[5, 0, 0]}
+          />
+          <Cylinder radiusTop={1} radiusBottom={1} position={[10, 0, 10]} />
+          {/* <Book /> */}
           {/* <OBJ
             url={"/models/city/Center city Sci-Fi/Center City Sci-Fi.obj"}
             urlMLT={"/models/city/Center city Sci-Fi/Center_City_Sci-Fi.mtl"}
           /> */}
           {/* <Grid /> */}
-          <Bake />
+          {/* <Bake /> */}
           {/*<Mountain />*/}
           {/*<GenericComponentReactSruct />*/}
           <DirectionalLight color={'#696969'} position={[1, 1, 1]} />

@@ -33,11 +33,13 @@ class Box extends AbstractCanvas {
       color: color,
     };
     if (material) {
-      objectMaterial = material;
+      this.material = material;
     } else {
+      this.material = new MeshBasicMaterial(objectMaterial);
       this.setColor(color);
     }
-    this.material = new MeshBasicMaterial(objectMaterial);
+
+
     this.obj = new Mesh(geometry, this.material);
     addEventCustomListener(this.obj, callbacks);
 
@@ -49,7 +51,7 @@ class Box extends AbstractCanvas {
     this.setColor(color);
     this.setPosition(position);
     this.setRotation(rotation);
-    // this.setTexture(texture);
+    this.setTexture(texture);
     if (parent) {
       this.addToScene(parent);
     } else {

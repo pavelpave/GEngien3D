@@ -20,7 +20,7 @@ export default abstract class AbstractObject extends React.Component<
   any,
   IStateAbstractObject,
   {}
-> {
+  > {
   /**
    * - главный изменяемый объект (контекстный объект)
    * @member obj
@@ -80,7 +80,8 @@ export default abstract class AbstractObject extends React.Component<
    * - устанавливает текстуру на объект
    * @param texture
    */
-  setTexture = (texture: string = "") => {
+  setTexture = (texture: any = false) => {
+    if (!texture) return
     let map = new TextureLoader().load(texture);
     map.wrapS = RepeatWrapping;
     map.wrapT = RepeatWrapping;
@@ -124,6 +125,7 @@ export default abstract class AbstractObject extends React.Component<
    */
   setColor = (cssColor = "#ffffff") => {
     if (!this.material) return;
+    if (Array.isArray(this.material)) return;
     this.material.color.set(cssColor);
   };
   /**
