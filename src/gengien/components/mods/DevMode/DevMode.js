@@ -14,6 +14,8 @@ import { changeValueGeometry } from './changeMethodGeometry';
 import { searchElement, allUnselected, clearFolderWithField } from './methodForDevMode'
 import defaultState from './defaultState'
 import { TextureLoader, RepeatWrapping, MeshBasicMaterial } from 'three'
+import { timingSafeEqual } from "crypto";
+import DragAndDropControl from "../../Controls/DragAndDropControl";
 
 class DevMode extends AbstractObject {
   constructor(props) {
@@ -803,7 +805,6 @@ class DevMode extends AbstractObject {
      * @param state
      */
   parseFieldForMaterial = (parseObj, idParent, node) => {
-    console.log('parseObj', parseObj)
     for (let key in parseObj) {
       if (parseObj.hasOwnProperty(key)) {
         switch (key) {
@@ -1036,7 +1037,6 @@ class DevMode extends AbstractObject {
   }
 
   render() {
-    console.log(this.props.requiredPropertys.scene)
     return (
       <>
         <GUI

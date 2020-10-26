@@ -81,7 +81,6 @@ class App extends React.Component<any, IState, {}> {
 
   render() {
     const { material, color, texture, sky, linkToSceneObject } = this.state;
-    // console.log(linkToSceneObject, "scene");d
     return (
       <div className={"exemple_app-wraper"}>
         <Canvas
@@ -95,6 +94,7 @@ class App extends React.Component<any, IState, {}> {
             <OrbitControl />
             <Sky url={sky} />
             <DevMode />
+            <DragAndDropControl linkToSceneObject={linkToSceneObject} />
           </Camera>
           <Line position={[15, 0, 0]} />
           <Box
@@ -131,7 +131,7 @@ class App extends React.Component<any, IState, {}> {
           {/*<Mountain />*/}
           {/*<GenericComponentReactSruct />*/}
           <DirectionalLight color={'#696969'} position={[1, 1, 1]} />
-          {/*<SpotLight color={'#FF0000'} position={[1, 1, 1]} intensity={2} />*/}
+          {/* <SpotLight color={'#FF0000'} position={[1, 1, 1]} intensity={2} /> */}
         </Canvas>
       </div>
     )
