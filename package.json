@@ -22,7 +22,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "^3.4.3",
-    "three": "^0.120.0",
+    "three": "^0.137.0",
     "three.interaction": "^0.2.3",
     "typescript": "~3.7.2",
     "uuid": "^8.3.0"
