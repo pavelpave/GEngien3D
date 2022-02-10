@@ -18,7 +18,7 @@
     "jsdoc": "^3.6.5",
     "jsdoc-json": "^2.0.2",
     "lodash": "^4.17.20",
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "^3.4.3",
